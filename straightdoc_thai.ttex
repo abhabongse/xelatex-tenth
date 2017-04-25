@@ -1,0 +1,21 @@
+\documentclass[10pt,twoside,thai,sansthai,notypist]{straightdoc}
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\newrobustcmd{\codehl}[1]{\textlatin{\texttt{\color{RoyalBlue} #1}}}
+
+\title{คลาส \texttt{straightdoc}}
+\author{อาภา{\wbr}พงศ์ จันทร์{\wbr}ทอง}
+\date{24 เมษายน 2017}
+
+\begin{document}
+    \maketitle
+
+    นี่{\wbr}คือ{\wbr}เอกสาร{\wbr}ตัวอย่าง{\wbr}ที่{\wbr}ใช้{\wbr}คลาส \codehl{straightdoc} เพื่อ{\wbr}เขียน{\wbr}เอกสาร{\wbr}ภาษา{\wbr}ไทย โดย{\wbr}กำหนด \codehl{option} ชื่อ \codehl{thai} ให้{\wbr}กับ{\wbr}คลาส{\wbr}ของ{\wbr}เอกสาร{\wbr}นี้ \textlatin{And it could be used in conjunction with Latin script, as you can see here. This par of the sentence is using Latin font,} whereas this part is using the Thai font.
+
+    แม้{\wbr}ว่า{\wbr}ตอน{\wbr}นี้{\wbr}ฟอนต์{\wbr}ภาษา{\wbr}ไทย{\wbr}อาจ{\wbr}จะ{\wbr}ดู{\wbr}ใหญ่{\wbr}เกิน{\wbr}ไป{\wbr}บ้าง โปรด{\wbr}รอ{\wbr}อัปเดต{\wbr}ถัด{\wbr}ไป{\wbr}นะ{\wbr}
+
+    หาก{\wbr}ไม่{\wbr}กำหนด \codehl{option} ชื่อ \codehl{notypist} แล้ว{\wbr}เอกสาร{\wbr}นี้{\wbr}จะ{\wbr}ใช้{\wbr}ฟอนต์ Thai Typist ไป{\wbr}โดย{\wbr}ปริยาย{\wbr}สำหรับ Teletyped Font ซึ่ง{\wbr}อาจ{\wbr}ดู{\wbr}ไม่{\wbr}สวย{\wbr}เท่า Inconsolata เป็นต้น{\wbr}
+
+    การ{\wbr}กำหนด \codehl{option} ชื่อ \codehl{sansthai} ทำให้{\wbr}เอกสาร{\wbr}นี้{\wbr}ใช้{\wbr}ฟอนต์{\wbr}สำหรับ{\wbr}ภาษา{\wbr}ไทย{\wbr}เป็น{\wbr}แบบ Sans Serif เป็น{\wbr}ค่า{\wbr}ปริยาย แต่{\wbr}จะ{\wbr}ไม่{\wbr}ส่ง{\wbr}ผล{\wbr}ต่อ{\wbr}ค่า{\wbr}ปริยาย{\wbr}ของ{\wbr}ฟอนต์{\wbr}สำหรับ{\wbr}ภาษา{\wbr}อังกฤษ{\wbr}
+
+\end{document}

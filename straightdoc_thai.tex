@@ -1,0 +1,21 @@
+\documentclass[10pt,twoside,thai,sansthai,notypist]{straightdoc}
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\newrobustcmd{\codehl}[1]{\textlatin{\texttt{\color{RoyalBlue} #1}}}
+
+\title{คลาส \texttt{straightdoc}}
+\author{อาภาพงศ์ จันทร์ทอง}
+\date{24 เมษายน 2017}
+
+\begin{document}
+    \maketitle
+
+    นี่คือเอกสารตัวอย่างที่ใช้คลาส \codehl{straightdoc} เพื่อเขียนเอกสารภาษาไทย โดยกำหนด \codehl{option} ชื่อ \codehl{thai} ให้กับคลาสของเอกสารนี้ \textlatin{And it could be used in conjunction with Latin script, as you can see here. This par of the sentence is using Latin font,} whereas this part is using the Thai font.
+
+    แม้ว่าตอนนี้ฟอนต์ภาษาไทยอาจจะดูใหญ่เกินไปบ้าง โปรดรออัปเดตถัดไปนะ
+
+    หากไม่กำหนด \codehl{option} ชื่อ \codehl{notypist} แล้วเอกสารนี้จะใช้ฟอนต์ Thai Typist ไปโดยปริยายสำหรับ Teletyped Font ซึ่งอาจดูไม่สวยเท่า Inconsolata เป็นต้น
+
+    การกำหนด \codehl{option} ชื่อ \codehl{sansthai} ทำให้เอกสารนี้ใช้ฟอนต์สำหรับภาษาไทยเป็นแบบ Sans Serif เป็นค่าปริยาย แต่จะไม่ส่งผลต่อค่าปริยายของฟอนต์สำหรับภาษาอังกฤษ
+
+\end{document}
