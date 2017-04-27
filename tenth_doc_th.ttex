@@ -1,16 +1,16 @@
-\documentclass[10pt,twoside,thai,sansthai,notypist]{straightdoc}
+\documentclass[10pt,twoside,thai,sansthai,notypist]{tenth}
 
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \newrobustcmd{\codehl}[1]{\textlatin{\texttt{\color{RoyalBlue} #1}}}
 
-\title{คลาส \texttt{straightdoc}}
+\title{คลาส \texttt{tenth}}
 \author{อาภา{\wbr}พงศ์ จันทร์{\wbr}ทอง}
 \date{24 เมษายน 2017}
 
 \begin{document}
     \maketitle
 
-    นี่{\wbr}คือ{\wbr}เอกสาร{\wbr}ตัวอย่าง{\wbr}ที่{\wbr}ใช้{\wbr}คลาส \codehl{straightdoc} เพื่อ{\wbr}เขียน{\wbr}เอกสาร{\wbr}ภาษา{\wbr}ไทย โดย{\wbr}กำหนด \codehl{option} ชื่อ \codehl{thai} ให้{\wbr}กับ{\wbr}คลาส{\wbr}ของ{\wbr}เอกสาร{\wbr}นี้ \textlatin{And it could be used in conjunction with Latin script, as you can see here. This par of the sentence is using Latin font,} whereas this part is using the Thai font.
+    นี่{\wbr}คือ{\wbr}เอกสาร{\wbr}ตัวอย่าง{\wbr}ที่{\wbr}ใช้{\wbr}คลาส \codehl{tenth} เพื่อ{\wbr}เขียน{\wbr}เอกสาร{\wbr}ภาษา{\wbr}ไทย โดย{\wbr}กำหนด \codehl{option} ชื่อ \codehl{thai} ให้{\wbr}กับ{\wbr}คลาส{\wbr}ของ{\wbr}เอกสาร{\wbr}นี้ \textlatin{And it could be used in conjunction with Latin script, as you can see here. This par of the sentence is using Latin font,} whereas this part is using the Thai font.
 
     แม้{\wbr}ว่า{\wbr}ตอน{\wbr}นี้{\wbr}ฟอนต์{\wbr}ภาษา{\wbr}ไทย{\wbr}อาจ{\wbr}จะ{\wbr}ดู{\wbr}ใหญ่{\wbr}เกิน{\wbr}ไป{\wbr}บ้าง โปรด{\wbr}รอ{\wbr}อัปเดต{\wbr}ถัด{\wbr}ไป{\wbr}นะ{\wbr}
 
