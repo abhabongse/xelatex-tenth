@@ -200,7 +200,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{alphalph}
 \ifbool{isthai}{%
-    \RequirePackage{thaienum}} % local package supporting Thai labels
+    \RequirePackage{thaienum}}{} % local package supporting Thai labels
 \setlist[enumerate,1]{%
     topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
     itemindent=0pc}
@@ -306,30 +306,31 @@
     morestring=[b]",%
     morestring=[b]',%
     morecomment=[l]{//}}
-%
-% %% Include this package for a fancy header
-% \RequirePackage{fancyhdr}
-% \RequirePackage{lastpage}
-% % Reset the header and footer
-% \pagestyle{fancy}
-% \fancyhead{} % clear all header fields
-% \fancyhead[L]{\sffamily\small \topleft \\ \bottomleft}
-% \fancyhead[R]{\sffamily\small \topright \\ \bottomright}
-% \fancyhead[C]{}
-% \fancyfoot{} % clear all footer fields
-% \fancyfoot[L]{}
-% \fancyfoot[R]{\sffamily\small \thepage}
-% \fancyfoot[C]{}
-% \renewcommand{\headrulewidth}{0pt}
-% \renewcommand{\footrulewidth}{0pt}
-% \setlength{\parskip}{0pt}
-% \setlength{\parindent}{2em}
-%
-% %% Set the title, author, and date
-% \title{}
-% \author{}
-% \date{}
-%
+
+%%------------------------------------------------------------------
+%%  Page header package and settings
+%%------------------------------------------------------------------
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\newrobustcmd{\innerheader}{}  % renew to set inner header
+\newrobustcmd{\outerheader}{}  % renew to set outer header
+
+% Set up page header and footer for first page
+\fancypagestyle{plain}{%
+    \fancyhf{}  % clear all header and footer fields
+    \fancyfoot[R]{\sffamily\small \thepage}}
+
+% Set up page header and footer for all other pages
+\fancyhf{}  % clear all header and footer fields
+\fancyhead[LO,RE]{\sffamily\small \innerheader}
+\fancyhead[LE,RO]{\sffamily\small \outerheader}
+\fancyfoot[LE,RO]{\sffamily\small \thepage}
+\pagestyle{fancy}
+
+% Remove lines
+\renewrobustcmd{\headrulewidth}{0pt}
+\renewrobustcmd{\footrulewidth}{0pt}
+
 % %% Spaces
 % \DeclareRobustCommand{\HairSp}{\ifmmode\mskip1mu\else\kern0.0625em\fi}
 %
