@@ -1,12 +1,13 @@
-%% straightdoc.cls
+%% tenth.cls
 %% Author: Abhabongse Janthong
 %
 % This document class provides preloaded most common packages and most common
 % configurations of the document according to my own taste.
+%
 % It is released under MIT License because the author thinks that the
 % LaTeX Project Public License is annoying and life is complicated.
 \NeedsTeXFormat{LaTeX2e}[2016/02/01]
-\ProvidesClass{straightdoc}[2017/04/24 v0.1 (Abhabongse Janthong)]
+\ProvidesClass{tenth}[2017/04/28 v0.1.1 (Abhabongse Janthong)]
 
 %%------------------------------------------------------------------
 %%  Very important utility package
@@ -45,8 +46,8 @@
 %%  Setup paper margin and marginnote command.
 %%------------------------------------------------------------------
 \RequirePackage[%
-    top=1in,bottom=1in,outer=2.25in,inner=0.75in,heightrounded,%
-    marginparwidth=1.5in, marginparsep=1.5pc]{geometry}
+    top=1in,bottom=1in,outer=1.75in,inner=1in,heightrounded,%
+    marginparwidth=1.25in, marginparsep=1pc]{geometry}
 
 %%------------------------------------------------------------------
 %%  Setup marginnote command.
@@ -61,7 +62,7 @@
 %%  Setup constant lengths for parts of document.
 %%------------------------------------------------------------------
 \RequirePackage{setspace}
-\setstretch{1.17}
+\setstretch{1.2}
 \setlength{\headheight}{27.5pt}
 \setlength{\parskip}{0pc}
 \setlength{\parindent}{2pc}
@@ -119,43 +120,30 @@
      \textquotedblleft={,150},   % left quotation mark, space from right
      \textquotedblright={150,}}  % right quotation mark, space from left
 
-%% TODO: clean-up code below
+%%------------------------------------------------------------------
+%%  Setup color choices
+%%------------------------------------------------------------------
+\RequirePackage[dvipsnames,svgnames,table,fixpdftex,hyperref]{xcolor}
+\definecolor{DarkGray}{gray}{0.25}
+\definecolor{Gray}{gray}{0.5}
+\definecolor{LightGray}{gray}{0.65}
+\definecolor{VeryLightGray}{gray}{0.9}
+\definecolor{GrayBG}{gray}{0.9}
+\definecolor{LightGrayBG}{gray}{0.935}
+\definecolor{VeryLightGrayBG}{gray}{0.97}
 
-% %% Include this package for better font selection
-% % \RequirePackage{libertine}
-% %% Include math fonts.
-% \RequirePackage{amsthm}
-% % \RequirePackage[libertine]{newtxmath}
-% % \renewcommand*\ttdefault{cmtt}
-% % \RequirePackage[T1]{fontenc}
-%
-% %% LANGUAGE: thai
-% \RequirePackage[main=thai,english]{babel}
-% \RequirePackage[utf8x]{inputenc}
-% \RequirePackage[sans,rmnorasi,sflaksaman]{fonts-tlwg}
-% \RequirePackage{inconsolata}
-% \RequirePackage[libertine]{newtxmath}
-% \RequirePackage[T1]{fontenc}
-% \DeclareRobustCommand{\en}{\selectlanguage{english}}
-%
-% %% THE MOST AWESOME PACKAGE AVARRR!
-% \RequirePackage[
-%     activate={true,nocompatibility},final,tracking=true,letterspace=250,
-%     kerning=true,spacing=true,factor=1100,stretch=15,shrink=15]{microtype}
-% \microtypecontext{spacing=nonfrench}
-%
-% %% Include this package to be able to set font colors
-% \RequirePackage[usenames,dvipsnames]{color}
-% \RequirePackage[dvipsnames]{xcolor}
-% \definecolor{VeryLightGrayBackground}{gray}{0.96875}
-% \definecolor{LightGrayBackground}{gray}{0.9375}
-% \definecolor{DarkGray}{gray}{0.25}
-% \definecolor{Gray}{gray}{0.5}
-% \definecolor{LightGray}{gray}{0.75}
-% \definecolor{ShadeColor}{gray}{0.9}
-% \definecolor{BorderColor}{gray}{0.8}
-% \definecolor{ProcessBlue}{cmyk}{0.96,0,0,0}
-%
+% Color settings for mdframed
+\definecolor{ShadeColor}{gray}{0.935}
+\definecolor{BorderColor}{gray}{0.785}
+
+% Commands for colored squares
+\newrobustcmd{\colorsq}[1]{{%
+    \hspace{0.1pc}\color{#1}\rule[-0.02pc]{0.6pc}{0.6pc}\hspace{0.1pc}}}
+\newrobustcmd{\redsq}{\colorsq{red}}
+\newrobustcmd{\greensq}{\colorsq{green}}
+\newrobustcmd{\bluesq}{\colorsq{blue}}
+
+
 % %% Include necessary math packages
 % \RequirePackage{amsmath, amssymb, amsfonts, mathtools, chemarrow}
 % \RequirePackage{fdsymbol}
@@ -163,6 +151,8 @@
 % \renewcommand\qedsymbol{$\blacksquare$}
 %
 %
+
+%% TODO: clean-up code below
 % %% Framed environment
 % \mdfdefinestyle{standard}{backgroundcolor=LightGrayBackground,linecolor=BorderColor}
 % \mdfdefinestyle{codebox}{innertopmargin=0em,skipabove=0.75em}
