@@ -154,6 +154,7 @@
 \RequirePackage{mathtools}
 \RequirePackage{chemarrow}
 \RequirePackage{fdsymbol}  % nicer looking standard symbols
+\RequirePackage{textcomp}
 \renewrobustcmd{\qedsymbol}{$\blacksquare$}
 
 %%------------------------------------------------------------------
@@ -165,18 +166,6 @@
     innertopmargin=0pc,skipabove=0.25pc,skipbelow=0.25pc}
 \mdfdefinestyle{codebox}{%
     innertopmargin=0pc,skipabove=0.75pc}
-
-% \DeclareDocumentCommand\newmdtheoremenv*{O{} m o m o }{%
-%     \ifboolexpr{ test {\IfNoValueTF {#3}} and test {\IfNoValueTF {#5}} }%
-%     {\newtheorem{#2}{#4}}{%
-%         \IfValueTF{#3}{\newtheorem*{#2}[#3]{#4}}{}%
-%         \IfValueTF{#5}{\newtheorem*{#2}{#4}[#5]}{}%
-%     }%
-%     \BeforeBeginEnvironment{#2}{%
-%         \begin{mdframed}[#1]}%
-%     \AfterEndEnvironment{#2}{%
-%         \end{mdframed}}%
-% }
 
 %%------------------------------------------------------------------
 %%  Setup math theorem environments
@@ -205,45 +194,57 @@
     \newtheorem*{note}{Note}
     \newtheorem*{hint}{Hint}
 
+%%------------------------------------------------------------------
+%%  Graphic package
+%%------------------------------------------------------------------
+\RequirePackage[pdftex]{graphicx}
 
-% %% Include this package to be able to insert .eps file
-% \RequirePackage[pdftex]{graphicx}
-%
-% %% Include this package to use more symbols
-% \RequirePackage{textcomp}
-%
-% %% Include this package to customize item numbers
-% %\RequirePackage{enumerate}
-% \RequirePackage{enumitem}
-% \RequirePackage{alphalph}
-% \setlist[enumerate,1]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=0em}
-% \setlist[itemize,1]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=0em}
-% \setlist[description,1]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=-2em}
-% \setlist[enumerate,2]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=0em}
-% \setlist[itemize,2]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=0em}
-% \setlist[description,2]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=-2em}
-% \setlist[enumerate,3]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=0em}
-% \setlist[itemize,3]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=0em}
-% \setlist[description,3]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=-2em}
-% \setlist[enumerate,4]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=0em}
-% \setlist[itemize,4]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=0em}
-% \setlist[description,4]{topsep=1em, partopsep=0em, parsep=0em, itemsep=1em, listparindent=2em, itemindent=-2em}
-%
-% %% Extra enumerate labels
-% \makeatletter
-% \newcommand*{\single@thai}[1]{%
-%   \expandafter\@single@thai\csname c@#1\endcsname%
-% }
-% \newcommand*{\@single@thai}[1]{%
-%   \ifcase#1\orก\orข\orค\orฆ\orง\orจ\orฉ\orช\orซ\orฌ\orญ\orฎ\orฏ\orฐ\orฑ\orฒ\orณ\orด\orต\orถ\orท\orธ\orน\orบ\orป\orผ\orฝ\orพ\orฟ\orภ\orม\orย\orร\orล\orว\orศ\orษ\orส\orห\orฬ\orอ\orฮ\else\@ctrerr\fi%
-% }
-% \newalphalph{\@thai}[alph]{\@single@thai}{24}
-% \newcommand*{\thai}[1]{%
-%   \expandafter\@thai\csname c@#1\endcsname%
-% }
-% \AddEnumerateCounter{\thai}{\@thai}{ณ}
-%
-%
+%%------------------------------------------------------------------
+%%  Enumeration package
+%%------------------------------------------------------------------
+\RequirePackage{enumitem}
+\RequirePackage{alphalph}
+\RequirePackage{thaienum}  % local package supporting Thai labels
+\setlist[enumerate,1]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=0pc}
+\setlist[itemize,1]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=0pc}
+\setlist[description,1]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=-2pc}
+\setlist[enumerate,2]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=0pc}
+\setlist[itemize,2]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=0pc}
+\setlist[description,2]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=-2pc}
+\setlist[enumerate,3]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=0pc}
+\setlist[itemize,3]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=0pc}
+\setlist[description,3]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=-2pc}
+\setlist[enumerate,4]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=0pc}
+\setlist[itemize,4]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=0pc}
+\setlist[description,4]{%
+    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
+    itemindent=-2pc}
+
+%%------------------------------------------------------------------
+%%  Professional looking tabular styles
+%%------------------------------------------------------------------
 % %% Include this package for professional table style
 % \RequirePackage{array, booktabs}
 %

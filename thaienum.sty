@@ -1,1 +1,71 @@
-../latex-thaienum/thaienum.sty
+%% thaienum.sty
+%% Copyright 2017 Abhabongse Janthong
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% The Current Maintainer of this work is Abhabongse Janthong.
+% This work consists of all files in the repository, including
+% thaienum.sty and thaienum.tex.
+%
+% This package provides Thai enumeration labels to the 'enumitem' package.
+% It was heavily inspired by the package 'moreenum'.
+%
+\ProvidesPackage{thaienum}[2017/04/25 v0.2]
+\RequirePackage{alphalph}     % For doubling characters
+
+%%------------------------------------------------------------------
+%%  Expectes 'enumitem' and 'babel-thai' to be loaded.
+%%------------------------------------------------------------------
+\@ifpackageloaded{enumitem}{}{%
+\RequirePackage{enumitem}%
+\PackageWarning{thaienum}{Package 'enumitem' not loaded before 'thaienum' %
+(please load 'enumitem' package before 'thaienum')}%
+}
+\@ifpackageloaded{babel}{}{%
+\PackageError{thaienum}{Package 'babel' not loaded before 'thaienum' %
+(please load 'babel' package before 'thaienum')}%
+{Please load 'babel' package before 'thaienum'}%
+}
+\@ifpackagewith{babel}{thai}{}{%
+\PackageWarning{thaienum}{Package 'babel' not loaded with option 'thai' %
+(please load 'babel' package with option 'thai')}%
+}
+
+%%------------------------------------------------------------------
+%%  Reuses the counter defined by 'babel-thai' package.
+%%      How convenient is that!
+%%  However, note that \thaialph and \thaiAlph will run
+%%      out of counters once it reaches 41 and 44, respectively.
+%%------------------------------------------------------------------
+\AddEnumerateCounter{\thaialph}{\@thaialph}{\thaiNoNen}
+\AddEnumerateCounter{\thaiAlph}{\@thaiAlph}{\thaiNoNen}
+\AddEnumerateCounter{\thainum}{\@thainum}{\thainine}
+\AddEnumerateCounter{\thaibracenum}{\@thaibracenum}{\thainine}
+
+%%-----------------------------------------------------------------
+%%  \thaimultialph and \thaimultiAlph are the multi-character
+%%      version of \thaialph and \thaiAlph, respectively.
+%%  Once the counter reaches \thaiHoNokhuk, it continues with
+%%      \thaiKoKai\thaiKoKai, \thaiKoKai\thaiKhoKhai,
+%%      \thaiKoKai\thaiKhoKhwai, etc.
+%%-----------------------------------------------------------------
+\newalphalph{\@thaimultialph}[alph]{\@thaialph}{41}
+\newcommand*{\thaimultialph}[1]{%
+\expandafter\@thaimultialph\csname c@#1\endcsname%
+}
+\AddEnumerateCounter{\thaimultialph}{\@thaimultialph}{\thaiNoNen}
+
+\newalphalph{\@thaimultiAlph}[alph]{\@thaiAlph}{41}
+\newcommand*{\thaimultiAlph}[1]{%
+\expandafter\@thaimultiAlph\csname c@#1\endcsname%
+}
+\AddEnumerateCounter{\thaimultiAlph}{\@thaimultiAlph}{\thaiNoNen}
+
+\endinput
