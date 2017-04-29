@@ -195,16 +195,12 @@
     \newtheorem*{hint}{Hint}
 
 %%------------------------------------------------------------------
-%%  Graphic package
-%%------------------------------------------------------------------
-\RequirePackage[pdftex]{graphicx}
-
-%%------------------------------------------------------------------
 %%  Enumeration package
 %%------------------------------------------------------------------
 \RequirePackage{enumitem}
 \RequirePackage{alphalph}
-\RequirePackage{thaienum}  % local package supporting Thai labels
+\ifbool{isthai}{%
+    \RequirePackage{thaienum}} % local package supporting Thai labels
 \setlist[enumerate,1]{%
     topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
     itemindent=0pc}
@@ -245,70 +241,71 @@
 %%------------------------------------------------------------------
 %%  Professional looking tabular styles
 %%------------------------------------------------------------------
-% %% Include this package for professional table style
-% \RequirePackage{array, booktabs}
-%
-% %% Include this package for different styles of a figure
-% \RequirePackage[margin=1em, font={footnotesize,sf}, labelfont=bf, labelsep=period, format=plain, indention=1em, justification=justified]{caption}
-% \RequirePackage{subcaption}
-% % \DeclareCaptionFormat{llap}{\llap{#1#2}#3\par}
-% % \captionsetup{format=llap,labelsep=quad,singlelinecheck=no}
-%
-% %% Include this package for formatting the date and time
-% \RequirePackage{datetime}
-%
-% %% Include this package to allow verbatim input
-% \RequirePackage{fancyvrb}
-%
-% %% Include this package to include beautiful pseudocode
-% \RequirePackage{clrscode3e}
-%
-% %% Include the code formatter.
-% \RequirePackage{listings}
-% \lstset{
-%   % Basic Settings
-%   basicstyle=\footnotesize\ttfamily,
-%   captionpos=b,
-%   % Margins and Background
-%   xleftmargin=3em,
-%   xrightmargin=1em,
-%   rulesep=1em,
-%   framextopmargin=5em,
-%   framexbottommargin=5em,
-%   framexleftmargin=1em,
-%   framexrightmargin=1em,
-%   backgroundcolor=\color{LightGrayBackground},
-%   % Spacing and Horizontal Flow
-%   showspaces=false,
-%   showstringspaces=false,
-%   showtabs=false,
-%   tabsize=2,
-%   breaklines=true,
-%   columns=fullflexible,
-%   keepspaces=true,
-%   % Vertical Flow
-%   aboveskip=\bigskipamount,
-%   belowskip=\bigskipamount,
-%   lineskip=0.00001pt,
-%   % Line Numbers
-%   stepnumber=1,
-%   numbers=left,
-%   numbersep=2em,
-%   numberstyle=\ttfamily\color{Gray},
-%   % Special Keyword Format
-%   stringstyle=\color{Maroon},
-%   keywordstyle=\color{NavyBlue},
-%   keywordstyle={[2]\color{teal}},
-%   commentstyle=\color{ForestGreen},
-%   extendedchars=true
-%  }
-% \lstdefinelanguage{pseudocode}{
-%     morekeywords={,if,then,else,while,do,end,loop,until,for,to,downto,return,print,def},
-%     morekeywords={[2],true,false},
-%     sensitive=false,
-%     morestring=[b]",
-%     morecomment=[l]{//},
-%   }
+\RequirePackage{array, booktabs}
+
+%%------------------------------------------------------------------
+%%  Graphics and figures packages
+%%------------------------------------------------------------------
+\RequirePackage[pdftex]{graphicx}
+\RequirePackage[%
+    margin=2pc,font={footnotesize,sf},labelfont={bf},labelsep=period,%
+    format=plain,indention=2pc,justification=justified]{caption}
+\RequirePackage{subcaption}
+% \DeclareCaptionFormat{llap}{\llap{#1#2}#3\par}
+% \captionsetup{format=llap,labelsep=quad,singlelinecheck=no}
+
+%%------------------------------------------------------------------
+%%  Code listings package and settings
+%%------------------------------------------------------------------
+\RequirePackage{listings}
+\lstset{%
+    % Basic Settings
+    basicstyle=\small\ttfamily,%
+    captionpos=b,%
+    % Margins and Background
+    xleftmargin=0pc,%
+    xrightmargin=0pc,%
+    rulesep=2pc,%
+    frame=trbl,%
+    framesep=0.5pc,%
+    framextopmargin=0pc,%
+    framexbottommargin=0pc,%
+    framexleftmargin=0.125pc,%
+    framexrightmargin=0pc,%
+    backgroundcolor=\color{ShadeColor},%
+    rulecolor=\color{BorderColor},%
+    % Spacing and Horizontal Flow
+    showspaces=false,%
+    showstringspaces=false,%
+    showtabs=false,%
+    tabsize=2,%
+    breaklines=true,%
+    columns=fullflexible,%
+    keepspaces=true,%
+    % Vertical Flow
+    aboveskip=\bigskipamount,%
+    belowskip=\bigskipamount,%
+    lineskip=0.0001pt,
+    % Line Numbers
+    stepnumber=1,%
+    numbers=left,%
+    numbersep=1.25pc,%
+    numberstyle=\ttfamily\color{Gray},%
+    % Special Keyword Format
+    stringstyle=\color{red},%
+    commentstyle=\color{ForestGreen!90},%
+    keywordstyle=\color{MidnightBlue!80},%
+    keywordstyle={[2]\color{teal!80}},%
+    extendedchars=true}
+
+\lstdefinelanguage{pseudocode}{%
+    morekeywords={[1],if,then,else,while,do,end,loop,until,for,to,downto,%
+        return,print,def},%
+    morekeywords={[2],true,false,null,nil},%
+    sensitive=false,%
+    morestring=[b]",%
+    morestring=[b]',%
+    morecomment=[l]{//}}
 %
 % %% Include this package for a fancy header
 % \RequirePackage{fancyhdr}
