@@ -331,50 +331,52 @@
 \renewrobustcmd{\headrulewidth}{0pt}
 \renewrobustcmd{\footrulewidth}{0pt}
 
-% %% Spaces
-% \DeclareRobustCommand{\HairSp}{\ifmmode\mskip1mu\else\kern0.0625em\fi}
-%
-% %% Mathematical symbol
-% \DeclareRobustCommand{\Algebraic}{\mathbb{A}}
-% \DeclareRobustCommand{\Complex}{\mathbb{C}}
-% \DeclareRobustCommand{\Field}{\mathbb{F}}
-% \DeclareRobustCommand{\N}{\mathbb{N}}
-% \DeclareRobustCommand{\Q}{\mathbb{Q}}
-% \DeclareRobustCommand{\R}{\mathbb{R}}
-% \DeclareRobustCommand{\Z}{\mathbb{Z}}
-%
-% \DeclareRobustCommand{\ol}[1]{\overline{#1}}
-%
-% \DeclareRobustCommand{\hl}[1]{\mathchoice%
-%   {\colorbox{Goldenrod!30}{\color{black}$\displaystyle#1$}}%
-%   {\colorbox{Goldenrod!30}{\color{black}$\textstyle#1$}}%
-%   {\colorbox{Goldenrod!30}{\color{black}$\scriptstyle#1$}}%
-%   {\colorbox{Goldenrod!30}{\color{black}$\scriptscriptstyle#1$}}}
-% \DeclareRobustCommand{\bhl}[1]{\mathchoice%
-%   {\colorbox{LimeGreen!30}{\color{black}$\displaystyle#1$}}%
-%   {\colorbox{LimeGreen!30}{\color{black}$\textstyle#1$}}%
-%   {\colorbox{LimeGreen!30}{\color{black}$\scriptstyle#1$}}%
-%   {\colorbox{LimeGreen!30}{\color{black}$\scriptscriptstyle#1$}}}
-% \DeclareRobustCommand{\grayed}[1]{\mathchoice%
-%   {\colorbox{VeryLightGrayBackground}{\color{Gray}$\displaystyle#1$}}%
-%   {\colorbox{VeryLightGrayBackground}{\color{Gray}$\textstyle#1$}}%
-%   {\colorbox{VeryLightGrayBackground}{\color{Gray}$\scriptstyle#1$}}%
-%   {\colorbox{VeryLightGrayBackground}{\color{Gray}$\scriptscriptstyle#1$}}}
-%
-% \DeclareRobustCommand{\colorsq}[1]{{\color{#1}\rule{0.625em}{0.625em}}}
-% \DeclareRobustCommand{\redsq}{\colorsq{red}}
-% \DeclareRobustCommand{\greensq}{\colorsq{green}}
-% \DeclareRobustCommand{\bluesq}{\colorsq{blue}}
-%
-% %% Drawings
+%%------------------------------------------------------------------
+%%  Additional definitions
+%%------------------------------------------------------------------
+% Define hair space
+\newrobustcmd{\hrsp}{\ifmmode\mskip1mu\else\kern0.0625em\fi}
+
+% Define shorthands for mathematical sets
+\newrobustcmd{\Algebraic}{\mathbb{A}}
+\newrobustcmd{\Complex}{\mathbb{C}}
+\newrobustcmd{\Field}{\mathbb{F}}
+\newrobustcmd{\N}{\mathbb{N}}
+\newrobustcmd{\Q}{\mathbb{Q}}
+\newrobustcmd{\R}{\mathbb{R}}
+\newrobustcmd{\Z}{\mathbb{Z}}
+
+% Define shorthand for overline
+\newrobustcmd{\ol}{\overline}
+
+% Define shorthand for blocks
+\newrobustcmd{\hl}[2][LightGrayBG]{%
+    \ifmmode{\mathchoice%
+        {\colorbox{#1}{$\displaystyle #2$}}%
+        {\colorbox{#1}{$\textstyle #2$}}%
+        {\colorbox{#1}{$\scriptstyle #2$}}%
+        {\colorbox{#1}{$\scriptscriptstyle #2$}}}%
+    \else%
+        {\colorbox{#1}{#2}}%
+    \fi}
+\newrobustcmd{\rhl}[1]{\hl[Red!20]{#1}}
+\newrobustcmd{\ghl}[1]{\hl[LimeGreen!30]{#1}}
+\newrobustcmd{\bhl}[1]{\hl[ProcessBlue!30]{#1}}
+\newrobustcmd{\yhl}[1]{\hl[Goldenrod!30]{#1}}
+
+%%------------------------------------------------------------------
+%%  Tikz package for drawing
+%%------------------------------------------------------------------
+% These are no longer included since it returns lots of errors/warnings
 % \RequirePackage{tikz}
-% \RequirePackage[usenames,dvipsnames]{pstricks}
-% \RequirePackage{epsfig,pst-grad,pst-plot}
+% \RequirePackage{pstricks}
+% \RequirePackage{epsfig,pst-node}
+% \RequirePackage{pst-grad,pst-plot}
 % \usetikzlibrary{positioning}
-%
-% %% Unfinished tag
-% \DeclareRobustCommand{\unfinished}{\colorbox{red}{\sffamily\bfseries\color{white}unfinished}}
-%
-% %% Include this package to allow cross-reference hyperlink
-% %% PEOPLE SAY THIS SHOULD BE ADDED LAST
-% \RequirePackage[bookmarks=true,pdftex]{hyperref}
+
+%%------------------------------------------------------------------
+%%  Final hyperref package
+%%------------------------------------------------------------------
+% Include this package to allow cross-reference hyperlink
+% PEOPLE SAY THIS SHOULD BE ADDED LAST
+\RequirePackage[bookmarks=true,pdftex]{hyperref}
