@@ -32,8 +32,12 @@
     \booltrue{istypistdisabled}}
 
 \newbool{issansthai}  % whether use sans serif as default for Thai only
-    \DeclareOption{sansthai}{%
+\DeclareOption{sansthai}{%
     \booltrue{issansthai}}
+
+\newbool{isthmsec}  % whether theorem env will have section numbering
+\DeclareOption{thmsec}{%
+    \booltrue{isthmsec}}
 
 %%  Pass along all other options not captured above
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -143,53 +147,65 @@
 \newrobustcmd{\greensq}{\colorsq{green}}
 \newrobustcmd{\bluesq}{\colorsq{blue}}
 
+%%------------------------------------------------------------------
+%%  Setup math equations and symbols
+%%------------------------------------------------------------------
+\RequirePackage{amsmath, amssymb, amsfonts}
+\RequirePackage{mathtools}
+\RequirePackage{chemarrow}
+\RequirePackage{fdsymbol}  % nicer looking standard symbols
+\renewrobustcmd{\qedsymbol}{$\blacksquare$}
 
-% %% Include necessary math packages
-% \RequirePackage{amsmath, amssymb, amsfonts, mathtools, chemarrow}
-% \RequirePackage{fdsymbol}
-% \RequirePackage{mdframed}
-% \renewcommand\qedsymbol{$\blacksquare$}
-%
-%
+%%------------------------------------------------------------------
+%%  Setup mdframed environment
+%%------------------------------------------------------------------
+\RequirePackage{mdframed}
+\mdfdefinestyle{standard}{%
+    backgroundcolor=ShadeColor,linecolor=BorderColor,%
+    innertopmargin=0pc,skipabove=0.25pc,skipbelow=0.25pc}
+\mdfdefinestyle{codebox}{%
+    innertopmargin=0pc,skipabove=0.75pc}
 
-%% TODO: clean-up code below
-% %% Framed environment
-% \mdfdefinestyle{standard}{backgroundcolor=LightGrayBackground,linecolor=BorderColor}
-% \mdfdefinestyle{codebox}{innertopmargin=0em,skipabove=0.75em}
-%
-% \let\orig@maketag@@@\maketag@@@
-% \renewcommand{\eqref}[1]{\textup{\let\maketag@@@\orig@maketag@@@\tagform@{\ref{#1}}}}
-% \def\maketag@@@#1{\hbox{\rlap{\kern\marginparsep\m@th\normalfont#1}\kern1sp}}
-% \makeatother
-%
-% \theoremstyle{plain}
-%   \newtheorem{theorem}{Theorem}[section]
-%   \newtheorem{lemma}[theorem]{Lemma}
-%   \newtheorem{corollary}[theorem]{Corollary}
-%   \newtheorem{claim}[theorem]{Claim}
-%   \newtheorem{observation}[theorem]{Observation}
-%   \newtheorem{conjecture}[theorem]{Conjecture}
-%   \newtheorem{fact}[theorem]{Fact}
-%
-% \theoremstyle{definition}
-%   \newtheorem{definition}[theorem]{Definition}
-%     \renewcommand{\enddefinition}{\hfill$\Diamond$\endtrivlist}
-%   \newtheorem{example}[theorem]{Example}
-%   \newtheorem{protocol}[theorem]{Protocol}
-%   \newtheorem{game}[theorem]{Game}
-%   \newmdtheoremenv[style=standard,innertopmargin=0em]{question}{Question}[section]
-%
-% \theoremstyle{remark}
-%   \newtheorem{remark}[theorem]{Remark}
-%     \renewcommand{\endremark}{\hfill$\Diamond$\endtrivlist}
-%   \newtheorem{note}[theorem]{Note}
-%   \newtheorem{hint}[theorem]{Hint}
-%
-%
-% %% Include this package to be able to set the line space
-% \RequirePackage{setspace}
-% \setstretch{1.333}
-%
+% \DeclareDocumentCommand\newmdtheoremenv*{O{} m o m o }{%
+%     \ifboolexpr{ test {\IfNoValueTF {#3}} and test {\IfNoValueTF {#5}} }%
+%     {\newtheorem{#2}{#4}}{%
+%         \IfValueTF{#3}{\newtheorem*{#2}[#3]{#4}}{}%
+%         \IfValueTF{#5}{\newtheorem*{#2}{#4}[#5]}{}%
+%     }%
+%     \BeforeBeginEnvironment{#2}{%
+%         \begin{mdframed}[#1]}%
+%     \AfterEndEnvironment{#2}{%
+%         \end{mdframed}}%
+% }
+
+%%------------------------------------------------------------------
+%%  Setup math theorem environments
+%%------------------------------------------------------------------
+\theoremstyle{plain}
+    \ifbool{isthmsec}{%
+        \newmdtheoremenv[style=standard]{theorem}{Theorem}[section]}%
+    {%else
+        \newmdtheoremenv[style=standard]{theorem}{Theorem}}
+    \newmdtheoremenv[style=standard]{lemma}[theorem]{Lemma}
+    \newmdtheoremenv[style=standard]{proposition}[theorem]{Proposition}
+    \newmdtheoremenv[style=standard]{corollary}[theorem]{Corollary}
+    \newmdtheoremenv[style=standard]{claim}[theorem]{Claim}
+    \newmdtheoremenv[style=standard]{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+    \newmdtheoremenv[style=standard]{definition}[theorem]{Definition}
+    \newmdtheoremenv[style=standard]{fact}[theorem]{Fact}
+    \newmdtheoremenv[style=standard]{example}[theorem]{Example}
+    \newmdtheoremenv[style=standard]{question}[theorem]{Question}
+    \newmdtheoremenv[style=standard]{problem}[theorem]{Problem}
+
+\theoremstyle{remark}
+    \newtheorem*{remark}{Remark}
+    \renewcommand{\endremark}{\hfill$\Diamond$\endtrivlist}
+    \newtheorem*{note}{Note}
+    \newtheorem*{hint}{Hint}
+
+
 % %% Include this package to be able to insert .eps file
 % \RequirePackage[pdftex]{graphicx}
 %
