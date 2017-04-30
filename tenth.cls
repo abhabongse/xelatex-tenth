@@ -364,6 +364,11 @@
 \newrobustcmd{\bhl}[1]{\hl[ProcessBlue!30]{#1}}
 \newrobustcmd{\yhl}[1]{\hl[Goldenrod!30]{#1}}
 
+% Define some more math operators
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator*{\argmax}{arg{\hrsp}max}
+\DeclareMathOperator*{\argmin}{arg{\hrsp}min}
+
 %%------------------------------------------------------------------
 %%  Tikz package for drawing
 %%------------------------------------------------------------------
