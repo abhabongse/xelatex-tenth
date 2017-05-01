@@ -92,7 +92,7 @@
     \RequirePackage[thai]{babel}%
     \RequirePackage[utf8x]{inputenc}%
     \RequirePackage[rmnorasi,sflaksaman]{fonts-tlwg}%
-    \renewcommand{\baselinestretch}{1.5}
+    \renewcommand{\baselinestretch}{1.333}
     \renewrobustcmd{\englishrmdefault}{\linuxlib}%
     \renewrobustcmd{\englishsfdefault}{\linuxbio}%
     \renewrobustcmd{\englishttdefault}{\inconsol}%
