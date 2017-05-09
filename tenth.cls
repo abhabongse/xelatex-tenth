@@ -70,6 +70,8 @@
 \setlength{\headheight}{27.5pt}
 \setlength{\parskip}{0pc}
 \setlength{\parindent}{2pc}
+\setlength{\abovedisplayskip}{0.75pc}
+\setlength{\belowdisplayskip}{0.75pc}
 
 %%------------------------------------------------------------------
 %%  Setup font families (including for math)
@@ -128,6 +130,7 @@
 %%  Setup color choices
 %%------------------------------------------------------------------
 \RequirePackage[dvipsnames,svgnames,table,fixpdftex,hyperref]{xcolor}
+\definecolor{VeryDarkGray}{gray}{0.1}
 \definecolor{DarkGray}{gray}{0.25}
 \definecolor{Gray}{gray}{0.5}
 \definecolor{LightGray}{gray}{0.65}
@@ -135,10 +138,20 @@
 \definecolor{GrayBG}{gray}{0.9}
 \definecolor{LightGrayBG}{gray}{0.935}
 \definecolor{VeryLightGrayBG}{gray}{0.97}
+\definecolor{DarkLavender}{rgb}{0.45,0.31,0.59}
+\definecolor{DeepCarrotOrange}{rgb}{0.88,0.38,0.14}
+\definecolor{Fandango}{rgb}{0.71,0.2,0.54}
 
 % Color settings for mdframed
 \definecolor{ShadeColor}{gray}{0.935}
 \definecolor{BorderColor}{gray}{0.785}
+
+% Color settings for listings
+\colorlet{PrimaryKeyword}{MidnightBlue!80}
+\colorlet{SecondaryKeyword}{teal!90}
+\colorlet{Identifier}{DeepCarrotOrange}
+\colorlet{String}{red}
+\colorlet{Comment}{ForestGreen!90}
 
 % Commands for colored squares
 \newrobustcmd{\colorsq}[1]{{%
@@ -163,30 +176,31 @@
 \RequirePackage{mdframed}
 \mdfdefinestyle{standard}{%
     backgroundcolor=ShadeColor,linecolor=BorderColor,%
-    innertopmargin=0pc,skipabove=0.25pc,skipbelow=0.25pc}
-\mdfdefinestyle{codebox}{%
-    innertopmargin=0pc,skipabove=0.75pc}
+    skipabove=0.75pc,skipbelow=0.25pc}
+\mdfdefinestyle{mathbox}{%
+    backgroundcolor=ShadeColor,linecolor=BorderColor,%
+    skipabove=0.75pc,skipbelow=0.25pc,innertopmargin=0pc}
 
 %%------------------------------------------------------------------
 %%  Setup math theorem environments
 %%------------------------------------------------------------------
 \theoremstyle{plain}
     \ifbool{isthmsec}{%
-        \newmdtheoremenv[style=standard]{theorem}{Theorem}[section]}%
+        \newmdtheoremenv[style=mathbox]{theorem}{Theorem}[section]}%
     {%else
-        \newmdtheoremenv[style=standard]{theorem}{Theorem}}
-    \newmdtheoremenv[style=standard]{lemma}[theorem]{Lemma}
-    \newmdtheoremenv[style=standard]{proposition}[theorem]{Proposition}
-    \newmdtheoremenv[style=standard]{corollary}[theorem]{Corollary}
-    \newmdtheoremenv[style=standard]{claim}[theorem]{Claim}
-    \newmdtheoremenv[style=standard]{conjecture}[theorem]{Conjecture}
+        \newmdtheoremenv[style=mathbox]{theorem}{Theorem}}
+    \newmdtheoremenv[style=mathbox]{lemma}[theorem]{Lemma}
+    \newmdtheoremenv[style=mathbox]{proposition}[theorem]{Proposition}
+    \newmdtheoremenv[style=mathbox]{corollary}[theorem]{Corollary}
+    \newmdtheoremenv[style=mathbox]{claim}[theorem]{Claim}
+    \newmdtheoremenv[style=mathbox]{conjecture}[theorem]{Conjecture}
 
 \theoremstyle{definition}
-    \newmdtheoremenv[style=standard]{definition}[theorem]{Definition}
-    \newmdtheoremenv[style=standard]{fact}[theorem]{Fact}
-    \newmdtheoremenv[style=standard]{example}[theorem]{Example}
-    \newmdtheoremenv[style=standard]{question}[theorem]{Question}
-    \newmdtheoremenv[style=standard]{problem}[theorem]{Problem}
+    \newmdtheoremenv[style=mathbox]{definition}[theorem]{Definition}
+    \newmdtheoremenv[style=mathbox]{fact}[theorem]{Fact}
+    \newmdtheoremenv[style=mathbox]{example}[theorem]{Example}
+    \newmdtheoremenv[style=mathbox]{question}[theorem]{Question}
+    \newmdtheoremenv[style=mathbox]{problem}[theorem]{Problem}
 
 \theoremstyle{remark}
     \newtheorem*{remark}{Remark}
@@ -260,11 +274,11 @@
 \RequirePackage{listings}
 \lstset{%
     % Basic Settings
-    basicstyle=\small\ttfamily,%
+    basicstyle={\footnotesize\ttfamily\color{VeryDarkGray}{}},%
     captionpos=b,%
     % Margins and Background
-    xleftmargin=0pc,%
-    xrightmargin=0pc,%
+    xleftmargin=0.5pc,%
+    xrightmargin=0.5pc,%
     rulesep=2pc,%
     frame=trbl,%
     framesep=0.5pc,%
@@ -292,10 +306,11 @@
     numbersep=1.25pc,%
     numberstyle=\ttfamily\color{Gray},%
     % Special Keyword Format
-    stringstyle=\color{red},%
-    commentstyle=\color{ForestGreen!90},%
-    keywordstyle=\color{MidnightBlue!80},%
-    keywordstyle={[2]\color{teal!80}},%
+    stringstyle=\color{String},%
+    commentstyle=\color{Comment},%
+    identifierstyle=\color{Identifier},%
+    keywordstyle=[1]{\bfseries\color{PrimaryKeyword}},%
+    keywordstyle=[2]{\bfseries\color{SecondaryKeyword}},%
     extendedchars=true}
 
 \lstdefinelanguage{pseudocode}{%
