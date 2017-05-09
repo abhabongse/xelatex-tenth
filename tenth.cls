@@ -138,9 +138,10 @@
 \definecolor{GrayBG}{gray}{0.9}
 \definecolor{LightGrayBG}{gray}{0.935}
 \definecolor{VeryLightGrayBG}{gray}{0.97}
-\definecolor{DarkLavender}{rgb}{0.45,0.31,0.59}
-\definecolor{DeepCarrotOrange}{rgb}{0.88,0.38,0.14}
-\definecolor{Fandango}{rgb}{0.71,0.2,0.54}
+\definecolor{TealBlue}{rgb}{0.21, 0.46, 0.53}
+\definecolor{CrimsonGlory}{rgb}{0.75, 0.0, 0.2}
+\definecolor{DeepCarrotOrange}{rgb}{0.91, 0.41, 0.17}
+\definecolor{Eggplant}{rgb}{0.38, 0.25, 0.32}
 
 % Color settings for mdframed
 \definecolor{ShadeColor}{gray}{0.935}
@@ -148,9 +149,10 @@
 
 % Color settings for listings
 \colorlet{PrimaryKeyword}{MidnightBlue!80}
-\colorlet{SecondaryKeyword}{teal!90}
-\colorlet{Identifier}{DeepCarrotOrange}
-\colorlet{String}{red}
+\colorlet{SecondaryKeyword}{CrimsonGlory}
+\colorlet{TertiaryKeyword}{TealBlue}
+\colorlet{Identifier}{Eggplant!85}
+\colorlet{String}{DeepCarrotOrange}
 \colorlet{Comment}{ForestGreen!90}
 
 % Commands for colored squares
@@ -274,7 +276,7 @@
 \RequirePackage{listings}
 \lstset{%
     % Basic Settings
-    basicstyle={\footnotesize\ttfamily\color{VeryDarkGray}{}},%
+    basicstyle={\small\ttfamily\color{VeryDarkGray}},%
     captionpos=b,%
     % Margins and Background
     xleftmargin=0.5pc,%
@@ -311,6 +313,7 @@
     identifierstyle=\color{Identifier},%
     keywordstyle=[1]{\bfseries\color{PrimaryKeyword}},%
     keywordstyle=[2]{\bfseries\color{SecondaryKeyword}},%
+    keywordstyle=[3]{\bfseries\color{TertiaryKeyword}},%
     extendedchars=true}
 
 \lstdefinelanguage{pseudocode}{%
