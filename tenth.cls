@@ -102,7 +102,7 @@
 
 %% Setup Thai fonts is 'thai' option is specified.
 \ifbool{isthai}{%
-    \RequirePackage[thai]{babel}%
+    \RequirePackage[main=thai,thai,english]{babel}%
     \RequirePackage[utf8x]{inputenc}%
     \RequirePackage[rmnorasi,sflaksaman]{fonts-tlwg}%
     \renewcommand{\baselinestretch}{1.333}
@@ -110,6 +110,48 @@
     \renewrobustcmd{\englishsfdefault}{\linuxbio}%
     \renewrobustcmd{\englishttdefault}{\inconsol}%
     \renewrobustcmd{\thaittdefault}{\inconsol}%
+    % This command below allows users to use the following commands
+    % where <lang> ISO 639-2 language code in three characters.
+    % For example,
+    %   \texteng{some text}, {\eng some text}, and
+    %   \begin{eng} some text \end{eng}  for English; and
+    %   \texttha{some text}, {\tha some text}, and
+    %   \begin{tha} some text \end{tha}  for Thai.
+    \babeltags{eng = english,tha = thai}%
+    % Additional hardwired texts for hyperref
+    \addto\captionsthai{%
+        \def\partautorefname{\thaiPhoSamphao\thaiSaraAa\thaiKhoKhwai%
+            \thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+        \def\equationautorefname{%
+            \thaiSoSua\thaiMoMa\thaiKoKai\thaiSaraAa\thaiRoRua\thaiThoThahan%
+            \thaiSaraIi\thaiMaiEk}%
+        \def\Itemautorefname{%
+            \thaiWoWaen\thaiRoRua\thaiRoRua\thaiKhoKhwai\thaiThoThahan%
+            \thaiSaraIi\thaiMaiEk}%
+        \def\sectionautorefname{%
+            \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
+            \thaiOAng\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+        \def\subsectionautorefname{%
+            \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
+            \thaiOAng\thaiYoYak\thaiMaiEk\thaiOAng\thaiYoYak\thaiThoThahan%
+            \thaiSaraIi\thaiMaiEk}%
+        \def\subsubsectionautorefname{%
+            \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
+            \thaiOAng\thaiYoYak\thaiMaiEk\thaiOAng\thaiYoYak\thaiThoThahan%
+            \thaiSaraIi\thaiMaiEk}%
+        \def\paragraphautorefname{%
+            \thaiYoYak\thaiMaiEk\thaiOAng\thaiHoHip\thaiNoNu\thaiMaiTho%
+            \thaiSaraAa\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+        \def\Hfootnoteautorefname{%
+            \thaiSaraE\thaiChoChang\thaiSaraI\thaiNgoNgu\thaiOAng\thaiRoRua%
+            \thaiRoRua\thaiThoThung\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+        \def\AMSautorefname{%
+            \thaiSoSua\thaiMoMa\thaiKoKai\thaiSaraAa\thaiRoRua\thaiThoThahan%
+            \thaiSaraIi\thaiMaiEk}%
+        \def\theoremautorefname{%
+            \thaiThoThahan\thaiRu\thaiSoRusi\thaiDoChada\thaiSaraIi%
+            \thaiBoBaimai\thaiThoThahan\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+        }
     \renewrobustcmd{\ttfamily}{%
         \fontencoding{\latinencoding}%
         \fontfamily{\ttdefault}%
@@ -196,6 +238,7 @@
 %%------------------------------------------------------------------
 %%  Setup math theorem environments
 %%------------------------------------------------------------------
+% TODO: make autoref works with these theorem
 \theoremstyle{plain}
     \ifbool{isthmsec}{%
         \newmdtheoremenv[style=mathbox]{theorem}{Theorem}[section]}%

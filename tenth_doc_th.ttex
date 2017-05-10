@@ -8,7 +8,25 @@
 \begin{document}
     \maketitle
 
-    นี่{\wbr}คือ{\wbr}เอกสาร{\wbr}ตัวอย่าง{\wbr}ที่{\wbr}ใช้{\wbr}คลาส \codehl{tenth} เพื่อ{\wbr}เขียน{\wbr}เอกสาร{\wbr}ภาษา{\wbr}ไทย โดย{\wbr}กำหนด \codehl{option} ชื่อ \codehl{thai} ให้{\wbr}กับ{\wbr}คลาส{\wbr}ของ{\wbr}เอกสาร{\wbr}นี้ \textlatin{And it could be used in conjunction with Latin script, as you can see here. This par of the sentence is using Latin font,} whereas this part is using the Thai font.
+    \section{บทนำ \label{sec:intro}}
+
+    \subsection{บาง{\wbr}อย่าง}
+
+    \subsubsection{บาง{\wbr}อย่าง{\wbr}อีก \label{ssub:wow}}
+
+    นี่{\wbr}คือ{\wbr}เอกสาร{\wbr}ตัวอย่าง{\wbr}ที่{\wbr}ใช้{\wbr}คลาส \codehl{tenth} เพื่อ{\wbr}เขียน{\wbr}เอกสาร{\wbr}ภาษา{\wbr}ไทย โดย{\wbr}กำหนด \codehl{option} ชื่อ \codehl{thai} ให้{\wbr}กับ{\wbr}คลาส{\wbr}ของ{\wbr}เอกสาร{\wbr}นี้ \texteng{And it could be used in conjunction with Latin script, as you can see here. This par of the sentence is using Latin font,} whereas this part is using the Thai font.
+
+    \begin{eng}
+        English text here. {\tha และ{\wbr}นี่{\wbr}ภาษา{\wbr}ไทย}
+    \end{eng}
+
+    \autoref{sec:intro} a \sectionname b \autoref{eq:a} \autoref{ssub:wow} \autoref{item:j}
+    \Hfootnoteautorefname{} \AMSautorefname{} \autoref{thm:asdfdasf}
+
+    \begin{theorem}
+        \label{thm:asdfdasf}
+        นะ{\wbr}จ๊ะ{\wbr}
+    \end{theorem}
 
     แม้{\wbr}ว่า{\wbr}ตอน{\wbr}นี้{\wbr}ฟอนต์{\wbr}ภาษา{\wbr}ไทย{\wbr}อาจ{\wbr}จะ{\wbr}ดู{\wbr}ใหญ่{\wbr}เกิน{\wbr}ไป{\wbr}บ้าง โปรด{\wbr}รอ{\wbr}อัปเดต{\wbr}ถัด{\wbr}ไป{\wbr}นะ{\wbr}
 
@@ -21,13 +39,12 @@
 
             นิว{\wbr}ทัวริสต์{\wbr}เคลม{\wbr}คอร์ป คอลเล็กชั่น{\wbr}โปรเจกเตอร์{\wbr}ต่อรอง{\wbr}หยวน{\wbr}พลาซ่า ทรู เทรลเลอร์ สกาย{\wbr}คาปูชิโน{\wbr}เทวาธิราช เฮอร์ริเคน{\wbr}ฮาลาล{\wbr}แฮนด์ ภควัทคีตา{\wbr}ฮัม{\wbr}วโรกาส{\wbr}วอลซ์ ออร์แกน{\wbr}หงวน ซิ้ม{\wbr}สโรชา ลิสต์ อิ่มแปร้{\wbr}แรงดูด{\wbr}ลาติน{\wbr}แจ็กพอต{\wbr}ดีลเลอร์ เจได{\wbr}ปฏิสัมพันธ์{\wbr}เพาเวอร์ วอล์ก{\wbr}เฉิ่ม แจ๊กพ็อต{\wbr}สโรชา{\wbr}คาร์ ลาติน{\wbr}แฟ็กซ์{\wbr}ซีน{\wbr}เอ๋{\wbr}กรีน พุดดิ้ง{\wbr}พาร์{\wbr}ซูม{\wbr}
 
-
         \begin{enumerate}
             \item 1
             \item 2
         \end{enumerate}
 
-        \item  ธรรมา{\wbr}เดบิต{\wbr}ซูชิ{\wbr}พุดดิ้ง{\wbr}โปรเจกต์ วีซ่า อินเตอร์{\wbr}นินจา{\wbr}นินจา ไพลิน ออร์เดอร์{\wbr}ฮาร์ด ทัวร์นาเมนท์{\wbr}ไอเดีย{\wbr}โลโก้{\wbr}กฤษณ์ นรีแพทย์{\wbr}คอลเล็กชั่น{\wbr}ความหมาย{\wbr}วอล์ก บอดี้{\wbr}บาบูน{\wbr}คาวบอย โซลาร์{\wbr}ชิฟฟอน{\wbr}อึ้ม{\wbr}คอนโด{\wbr}รีเสิร์ช เนิร์สเซอรี่{\wbr}แอปเปิล{\wbr}ตรวจทาน{\wbr}สต๊อค{\wbr}แชมเปี้ยน บาร์บีคิว{\wbr}ฮากกา{\wbr}เรตติ้ง{\wbr}ซาตาน{\wbr}เอาท์ เซรามิก{\wbr}รีสอร์ท บอดี้{\wbr}ต่อยอด{\wbr}บอดี้{\wbr}รองรับ{\wbr}ไวกิ้ง ไฮเปอร์{\wbr}วโรกาส{\wbr}ภารตะ พาเหรด{\wbr}แฟรนไชส์{\wbr}เทคโน เป็นไง{\wbr}
+        \item  \label{item:j} ธรรมา{\wbr}เดบิต{\wbr}ซูชิ{\wbr}พุดดิ้ง{\wbr}โปรเจกต์ วีซ่า อินเตอร์{\wbr}นินจา{\wbr}นินจา ไพลิน ออร์เดอร์{\wbr}ฮาร์ด ทัวร์นาเมนท์{\wbr}ไอเดีย{\wbr}โลโก้{\wbr}กฤษณ์ นรีแพทย์{\wbr}คอลเล็กชั่น{\wbr}ความหมาย{\wbr}วอล์ก บอดี้{\wbr}บาบูน{\wbr}คาวบอย โซลาร์{\wbr}ชิฟฟอน{\wbr}อึ้ม{\wbr}คอนโด{\wbr}รีเสิร์ช เนิร์สเซอรี่{\wbr}แอปเปิล{\wbr}ตรวจทาน{\wbr}สต๊อค{\wbr}แชมเปี้ยน บาร์บีคิว{\wbr}ฮากกา{\wbr}เรตติ้ง{\wbr}ซาตาน{\wbr}เอาท์ เซรามิก{\wbr}รีสอร์ท บอดี้{\wbr}ต่อยอด{\wbr}บอดี้{\wbr}รองรับ{\wbr}ไวกิ้ง ไฮเปอร์{\wbr}วโรกาส{\wbr}ภารตะ พาเหรด{\wbr}แฟรนไชส์{\wbr}เทคโน เป็นไง{\wbr}
 
             พุดดิ้ง{\wbr}ไฮเอนด์{\wbr}ฟยอร์ด{\wbr}แอปเปิ้ล แรงใจ{\wbr}สเตชัน{\wbr}เกสต์เฮาส์ เฟรช{\wbr}แซลมอน ผ้าห่ม{\wbr}เปปเปอร์มินต์{\wbr}ม้ง{\wbr}โมเดิร์น เฟรช{\wbr}มายาคติ สไปเดอร์{\wbr}ซิ้ม{\wbr}ฮอต{\wbr}ฟีด{\wbr}ปฏิสัมพันธ์ วโรกาส ไฮแจ็ค{\wbr}ฮีโร่{\wbr}โทร{\wbr}โอยัวะ{\wbr}ไฟลต์ สป็อต{\wbr}อีโรติก{\wbr}เทเลกราฟ คอรัปชัน ไหร่{\wbr}บ๋อย{\wbr}อวอร์ด{\wbr}ศิลปากร{\wbr}เทรด อัตลักษณ์{\wbr}ซากุระ{\wbr}โปร{\wbr}เจ็ค ลีเมอร์{\wbr}ธรรมา{\wbr}ซาบะ{\wbr}แต๋ว{\wbr}จ๊อกกี้ แมมโบ้ จอหงวน{\wbr}ซะ{\wbr}แยมโรล{\wbr}วิป{\wbr}เอสเพรสโซ มิลค์{\wbr}
 
@@ -35,5 +52,8 @@
     \end{enumerate}
 
     \label{page:y}
+    \begin{equation}
+        1 + 1 = 2 \label{eq:a}
+    \end{equation}
 
 \end{document}
