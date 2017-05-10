@@ -18,31 +18,35 @@
 %%  Define and process variables and options for this document
 %%  class. This has to be done before base class is loaded.
 %%------------------------------------------------------------------
-\newbool{istwoside}  % whether 'twoside' option is loaded (default: false)
+
+%%  Whether 'twoside' option is loaded (default: false)
+\newbool{istwoside}
 \DeclareOption{twoside}{%
     \booltrue{istwoside}%
     \PassOptionsToClass{twoside}{article}}
 
-\newbool{isthai}  % whether the document is written in Thai
+%%  Whether the document is written in Thai
+\newbool{isthai}
 \DeclareOption{thai}{%
     \booltrue{isthai}}
 
-\newbool{istypistdisabled}  % whether Thai Typist font should be disabled
-\DeclareOption{notypist}{%
-    \booltrue{istypistdisabled}}
+%%  Whether use serif as default instead of sans-serif (for Thai only)
+%$  This takes no effect is `thai` option is not specified
+\newbool{isthaiserif}
+\DeclareOption{thaiserif}{%
+    \booltrue{isthaiserif}}
 
-\newbool{issansthai}  % whether use sans serif as default for Thai only
-\DeclareOption{sansthai}{%
-    \booltrue{issansthai}}
-
-\newbool{isthmsec}  % whether theorem env will have section numbering
-\DeclareOption{thmsec}{%
-    \booltrue{isthmsec}}
-
-                           % whether thai numbering should be used for
-\newbool{isthainumbering}  % pages, sections, enumeration by default
+%%  Whether thai numbering should be used for pages, sections,
+%%  and enumeration by default
+%$  This takes no effect is `thai` option is not specified
+\newbool{isthainumbering}
 \DeclareOption{thainumbering}{%
     \booltrue{isthainumbering}}
+
+%%  Whether theorem environment will have section numbering
+\newbool{isthmsec}
+\DeclareOption{thmsec}{%
+    \booltrue{isthmsec}}
 
 %%  Pass along all other options not captured above
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -105,14 +109,13 @@
     \renewrobustcmd{\englishrmdefault}{\linuxlib}%
     \renewrobustcmd{\englishsfdefault}{\linuxbio}%
     \renewrobustcmd{\englishttdefault}{\inconsol}%
-    \ifbool{issansthai}{%
-        \renewrobustcmd{\thaifamilydefault}{\thaisfdefault}}{}%
-    \ifbool{istypistdisabled}{%
-        \renewrobustcmd{\thaittdefault}{\inconsol}
-        \renewrobustcmd{\ttfamily}{%
-            \fontencoding{\latinencoding}%
-            \fontfamily{\ttdefault}%
-            \selectfont}}{}}{}
+    \renewrobustcmd{\thaittdefault}{\inconsol}%
+    \renewrobustcmd{\ttfamily}{%
+        \fontencoding{\latinencoding}%
+        \fontfamily{\ttdefault}%
+        \selectfont}%
+    \ifbool{isthaiserif}{}{%
+        \renewrobustcmd{\thaifamilydefault}{\thaisfdefault}}}{}
 
 %% TODO: use relsize to control the scale of Thai fonts
 
@@ -222,44 +225,27 @@
 %%------------------------------------------------------------------
 \RequirePackage{enumitem}
 \RequirePackage{alphalph}
+\setlist{%
+    topsep=0.25pc,itemsep=0.25pc,partopsep=0pc,parsep=0pc,listparindent=2pc,%
+    itemindent=0pc}
+\setlist[description]{itemindent=-2pc}
+\setlist[2]{topsep=0.5pc,itemsep=0.5pc}
+\setlist[1]{topsep=1pc,itemsep=1pc}
+
+%%------------------------------------------------------------------
+%%  Set numbering of pages and enumerations
+%%------------------------------------------------------------------
+\newrobustcmd{\footerpage}{\arabic{page}}
 \ifbool{isthai}{%
-    \RequirePackage{thaienum}}{} % local package supporting Thai labels
-\setlist[enumerate,1]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=0pc}
-\setlist[itemize,1]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=0pc}
-\setlist[description,1]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=-2pc}
-\setlist[enumerate,2]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=0pc}
-\setlist[itemize,2]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=0pc}
-\setlist[description,2]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=-2pc}
-\setlist[enumerate,3]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=0pc}
-\setlist[itemize,3]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=0pc}
-\setlist[description,3]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=-2pc}
-\setlist[enumerate,4]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=0pc}
-\setlist[itemize,4]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=0pc}
-\setlist[description,4]{%
-    topsep=1pc,partopsep=0pc,parsep=0pc,itemsep=1pc,listparindent=2pc,%
-    itemindent=-2pc}
+    \RequirePackage{thaienum}% local package supporting Thai labels
+    \ifbool{isthainumbering}{%
+        \renewrobustcmd{\footerpage}{\thainum{page}}
+        % TODO: make sure the thai numbering works for hyperref
+        \setlist[enumerate,1]{label={\thainum*.}}
+        \setlist[enumerate,2]{label={\thaimultialph*.}}
+        \setlist[enumerate,3]{label={(\arabic*)}}
+        \setlist[enumerate,4]{label={\alph*.}}
+    }{}}{} % local package supporting Thai labels
 
 %%------------------------------------------------------------------
 %%  Professional looking tabular styles
@@ -336,25 +322,24 @@
 %%  Page header package and settings
 %%------------------------------------------------------------------
 \RequirePackage{fancyhdr}
-\RequirePackage{lastpage}
 \newrobustcmd{\innerheader}{}  % renew to set inner header
 \newrobustcmd{\outerheader}{}  % renew to set outer header
 
 % Set up page header and footer for first page
 \fancypagestyle{plain}{%
     \fancyhf{}  % clear all header and footer fields
-    \fancyfoot[R]{\sffamily\small \thepage}}
+    \fancyfoot[R]{\sffamily\small \footerpage}}
 
 % Set up page header and footer for all other pages
 \fancyhf{}  % clear all header and footer fields
 \ifbool{istwoside}{%
     \fancyhead[LO,RE]{\sffamily\small \innerheader}
     \fancyhead[LE,RO]{\sffamily\small \outerheader}
-    \fancyfoot[LE,RO]{\sffamily\small \thepage}}%
+    \fancyfoot[LE,RO]{\sffamily\small \footerpage}}%
 {%else
     \fancyhead[L]{\sffamily\small \innerheader}
     \fancyhead[R]{\sffamily\small \outerheader}
-    \fancyfoot[R]{\sffamily\small \thepage}}
+    \fancyfoot[R]{\sffamily\small \footerpage}}
 
 \pagestyle{fancy}
 
@@ -415,4 +400,4 @@
 %%------------------------------------------------------------------
 % Include this package to allow cross-reference hyperlink
 % PEOPLE SAY THIS SHOULD BE ADDED LAST
-\RequirePackage[bookmarks=true,pdftex]{hyperref}
+\RequirePackage[pdftex,unicode]{hyperref}
