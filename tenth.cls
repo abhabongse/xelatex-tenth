@@ -39,6 +39,11 @@
 \DeclareOption{thmsec}{%
     \booltrue{isthmsec}}
 
+                           % whether thai numbering should be used for
+\newbool{isthainumbering}  % pages, sections, enumeration by default
+\DeclareOption{thainumbering}{%
+    \booltrue{isthainumbering}}
+
 %%  Pass along all other options not captured above
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
@@ -50,13 +55,16 @@
 %%  Setup paper margin and marginnote command.
 %%------------------------------------------------------------------
 \RequirePackage[%
-    top=1in,bottom=1in,outer=1.75in,inner=1in,heightrounded,%
-    marginparwidth=1.25in, marginparsep=1pc]{geometry}
+    top=1.25in,bottom=1.25in,outer=1.75in,inner=1in,heightrounded,%
+    marginparwidth=1in,marginparsep=1.25pc,head=2pc,foot=3.5pc]{geometry}
 
 %%------------------------------------------------------------------
 %%  Setup marginnote command.
 %%------------------------------------------------------------------
-\RequirePackage{marginnote}
+\RequirePackage[heightadjust]{marginnote}
+\renewrobustcmd*\marginnotevadjust{3.5pt}
+\renewrobustcmd*\marginfont{\color{DarkGray}\footnotesize\setstretch{1}}
+%% LEGACY CODE
 % \newrobustcmd{\marginnote}[1]{\marginpar{%
 %     \ifnumodd{\thepage}%
 %         {\flushleft #1}%
@@ -67,7 +75,6 @@
 %%------------------------------------------------------------------
 \RequirePackage{setspace}
 \setstretch{1.2}
-\setlength{\headheight}{27.5pt}
 \setlength{\parskip}{0pc}
 \setlength{\parindent}{2pc}
 \setlength{\abovedisplayskip}{0.75pc}
@@ -144,8 +151,8 @@
 \definecolor{Eggplant}{rgb}{0.38, 0.25, 0.32}
 
 % Color settings for mdframed
-\definecolor{ShadeColor}{gray}{0.935}
-\definecolor{BorderColor}{gray}{0.785}
+\definecolor{ShadeColor}{gray}{0.95}
+\definecolor{BorderColor}{gray}{0.75}
 
 % Color settings for listings
 \colorlet{PrimaryKeyword}{MidnightBlue!80}
@@ -181,7 +188,7 @@
     skipabove=0.75pc,skipbelow=0.25pc}
 \mdfdefinestyle{mathbox}{%
     backgroundcolor=ShadeColor,linecolor=BorderColor,%
-    skipabove=0.75pc,skipbelow=0.25pc,innertopmargin=0pc}
+    skipabove=0.125pc,skipbelow=0.125pc,innertopmargin=0pc}
 
 %%------------------------------------------------------------------
 %%  Setup math theorem environments
@@ -340,9 +347,15 @@
 
 % Set up page header and footer for all other pages
 \fancyhf{}  % clear all header and footer fields
-\fancyhead[LO,RE]{\sffamily\small \innerheader}
-\fancyhead[LE,RO]{\sffamily\small \outerheader}
-\fancyfoot[LE,RO]{\sffamily\small \thepage}
+\ifbool{istwoside}{%
+    \fancyhead[LO,RE]{\sffamily\small \innerheader}
+    \fancyhead[LE,RO]{\sffamily\small \outerheader}
+    \fancyfoot[LE,RO]{\sffamily\small \thepage}}%
+{%else
+    \fancyhead[L]{\sffamily\small \innerheader}
+    \fancyhead[R]{\sffamily\small \outerheader}
+    \fancyfoot[R]{\sffamily\small \thepage}}
+
 \pagestyle{fancy}
 
 % Remove lines
@@ -379,7 +392,7 @@
     \fi}
 \newrobustcmd{\rhl}[1]{\hl[Red!20]{#1}}
 \newrobustcmd{\ghl}[1]{\hl[LimeGreen!30]{#1}}
-\newrobustcmd{\bhl}[1]{\hl[ProcessBlue!30]{#1}}
+\newrobustcmd{\bhl}[1]{\hl[Cerulean!20]{#1}}
 \newrobustcmd{\yhl}[1]{\hl[Goldenrod!30]{#1}}
 
 % Define some more math operators
