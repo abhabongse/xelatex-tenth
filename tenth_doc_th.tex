@@ -20,13 +20,24 @@
         English text here. {\tha และนี่ภาษาไทย}
     \end{eng}
 
-    \autoref{sec:intro} a \sectionname b \autoref{eq:a} \autoref{ssub:wow} \autoref{item:j}
-    \Hfootnoteautorefname{} \AMSautorefname{} \autoref{thm:asdfdasf}
+    \autoref{sec:intro} a \sectionautorefname{} b \autoref{eq:a} \autoref{ssub:wow} \autoref{item:j}
+    \Hfootnoteautorefname{} \AMSautorefname{} \autoref{thm:asdfdasf} \autoref{lem:ad} \lemmaautorefname{}
+
+    {\selectlanguage{english} This is english \autoref{thm:asdfdasf} and \chaptername}
 
     \begin{theorem}
         \label{thm:asdfdasf}
         นะจ๊ะ
     \end{theorem}
+    \unskip
+    \begin{lemma}
+        \label{lem:ad}
+        นะจ๊ะ
+    \end{lemma}
+
+    \begin{remark}
+        นะจ๊ะ
+    \end{remark}
 
     แม้ว่าตอนนี้ฟอนต์ภาษาไทยอาจจะดูใหญ่เกินไปบ้าง โปรดรออัปเดตถัดไปนะ
 

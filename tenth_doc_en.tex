@@ -11,6 +11,8 @@
 
     Here is the example document using \texttt{tenth} class. This particular example uses font size 11pt with twoside option, and thus margin notes \marginnote{such as text in the margin like this, which continues for a while} appears on different sides for odd- and even-numbered pages (keep reading until the next page for illustration).
 
+    Wow. \autoref{thm:a} and \autoref{lem:b}. \lemmaautorefname
+
     \lipsum[1-5]
 
     There are 2--4 people around this house at 3--5 \textsc{am}. \marginnote{\emph{Actually, they are here to shout} $E = mc^2$.} Do not worry; it is totally normal. These are \redsq, \greensq, and \bluesq\ respectively.
@@ -25,15 +27,32 @@
     \begin{question}
         Tell me who you are?
     \end{question}
+    \unskip
     \begin{definition}
         Tell me who you are?
     \end{definition}
+    \unskip
     \begin{theorem}
+        \label{thm:a}
         Tell me who you are?
+
+        \lipsum[1-4]
     \end{theorem}
+    \unskip
+    \begin{lemma}[likeme]
+        \label{lem:b}
+        Tell me who you are?
+    \end{lemma}
+    \begin{claim}
+        \label{clm:c}
+        Tell me who you are?
+    \end{claim}
     \begin{remark}
         Tell me who you are?
     \end{remark}
+    \begin{note}
+        Tell me who you are?
+    \end{note}
 
     \begin{enumerate}
         \item \lipsum[1-3]

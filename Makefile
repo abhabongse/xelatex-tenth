@@ -4,4 +4,5 @@ tenth_doc_th.pdf: tenth_doc_th.ttex
 tenth_doc_th.ttex: tenth_doc_th.tex
 	swath -f latex -u u,u < tenth_doc_th.tex > tenth_doc_th.ttex
 clean:
-	rm -f tenth_doc_th.ttex tenth_doc_th.pdf
+	latexmk -c
+	rm -rf tenth_doc_th.ttex tenth_doc_th.pdf

@@ -96,20 +96,47 @@
 % \RequirePackage{lib­ert­i­nust1­math}
 
 %% Setup font names
-\newrobustcmd{\linuxlib}{LinuxLibertineT-TLF}
-\newrobustcmd{\linuxbio}{LinuxBiolinumT-TLF}
-\newrobustcmd{\inconsol}{zi4}
+\newrobustcmd\linuxlib{LinuxLibertineT-TLF}
+\newrobustcmd\linuxbio{LinuxBiolinumT-TLF}
+\newrobustcmd\inconsol{zi4}
+\newrobustcmd\norasi{norasi}
+\newrobustcmd\laksaman{laksaman}
 
 %% Setup Thai fonts is 'thai' option is specified.
 \ifbool{isthai}{%
     \RequirePackage[main=thai,thai,english]{babel}%
     \RequirePackage[utf8x]{inputenc}%
-    \RequirePackage[rmnorasi,sflaksaman]{fonts-tlwg}%
+    \RequirePackage{fonts-tlwg}%
     \renewcommand{\baselinestretch}{1.333}
-    \renewrobustcmd{\englishrmdefault}{\linuxlib}%
-    \renewrobustcmd{\englishsfdefault}{\linuxbio}%
-    \renewrobustcmd{\englishttdefault}{\inconsol}%
-    \renewrobustcmd{\thaittdefault}{\inconsol}%
+    \renewrobustcmd\englishrmdefault{\linuxlib}%
+    \renewrobustcmd\englishsfdefault{\linuxbio}%
+    \renewrobustcmd\englishttdefault{\inconsol}%
+    \renewrobustcmd\thairmdefault{\norasi}%
+    \renewrobustcmd\thaisfdefault{\laksaman}%
+    \renewrobustcmd\thaittdefault{\inconsol}%
+    % Temporary fix for \familydefault
+    \renewrobustcmd\thaitext{%
+        \fontencoding{LTH}\fontfamily{\thaifamilydefault}%
+        \selectfont
+        \def\familydefault{\thaifamilydefault}% FIX
+        \def\rmdefault{\thairmdefault}%
+        \def\sfdefault{\thaisfdefault}%
+        \def\ttdefault{\thaittdefault}%
+        \def\encodingdefault{LTH}}%
+    \renewrobustcmd\latintext{%
+        \fontencoding{\latinencoding}\fontfamily{\englishfamilydefault}%
+        \selectfont
+        \def\familydefault{\englishfamilydefault}% FIX
+        \def\rmdefault{\englishrmdefault}%
+        \def\sfdefault{\englishsfdefault}%
+        \def\ttdefault{\englishttdefault}%
+        \def\encodingdefault{\latinencoding}}%
+    \renewrobustcmd\ttfamily{%  FIXME: cannot be nested with another family
+        \fontencoding{\latinencoding}%
+        \fontfamily{\ttdefault}%
+        \selectfont}%
+    \ifbool{isthaiserif}{}{%else
+        \renewrobustcmd\thaifamilydefault{\thaisfdefault}}
     % This command below allows users to use the following commands
     % where <lang> ISO 639-2 language code in three characters.
     % For example,
@@ -118,46 +145,56 @@
     %   \texttha{some text}, {\tha some text}, and
     %   \begin{tha} some text \end{tha}  for Thai.
     \babeltags{eng = english,tha = thai}%
-    % Additional hardwired texts for hyperref
+    \newrobustcmd\thaitext@part{%
+        \thaiPhoSamphao\thaiSaraAa\thaiKhoKhwai\thaiThoThahan\thaiSaraIi%
+        \thaiMaiEk}%
+    \newrobustcmd\thaitext@equation{%
+        \thaiSoSua\thaiMoMa\thaiKoKai\thaiSaraAa\thaiRoRua%
+        \thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@Item{%
+        \thaiWoWaen\thaiRoRua\thaiRoRua\thaiKhoKhwai\thaiThoThahan%
+        \thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@section{%
+        \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
+        \thaiOAng\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@subsection{%
+        \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
+        \thaiOAng\thaiYoYak\thaiMaiEk\thaiOAng\thaiYoYak%
+        \thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@subsubsection{%
+        \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
+        \thaiOAng\thaiYoYak\thaiMaiEk\thaiOAng\thaiYoYak%
+        \thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@paragraph{%
+        \thaiYoYak\thaiMaiEk\thaiOAng\thaiHoHip\thaiNoNu\thaiMaiTho%
+        \thaiSaraAa\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@Hfootnote{%
+        \thaiSaraE\thaiChoChang\thaiSaraI\thaiNgoNgu\thaiOAng%
+        \thaiRoRua\thaiRoRua\thaiThoThung\thaiThoThahan\thaiSaraIi%
+        \thaiMaiEk}%
+    \newrobustcmd\thaitext@AMS{%
+        \thaiSoSua\thaiMoMa\thaiKoKai\thaiSaraAa\thaiRoRua%
+        \thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@theorem{%
+        \thaiThoThahan\thaiRu\thaiSoRusi\thaiDoChada\thaiSaraIi%
+        \thaiBoBaimai\thaiThoThahan\thaiThoThahan\thaiSaraIi%
+        \thaiMaiEk}%
+    \newrobustcmd\thaitext@lemma{%
+        \thaiBoBaimai\thaiThoThahan\thaiToTao\thaiMaiHanakat%
+        \thaiMaiTho\thaiNgoNgu\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
     \addto\captionsthai{%
-        \def\partautorefname{\thaiPhoSamphao\thaiSaraAa\thaiKhoKhwai%
-            \thaiThoThahan\thaiSaraIi\thaiMaiEk}%
-        \def\equationautorefname{%
-            \thaiSoSua\thaiMoMa\thaiKoKai\thaiSaraAa\thaiRoRua\thaiThoThahan%
-            \thaiSaraIi\thaiMaiEk}%
-        \def\Itemautorefname{%
-            \thaiWoWaen\thaiRoRua\thaiRoRua\thaiKhoKhwai\thaiThoThahan%
-            \thaiSaraIi\thaiMaiEk}%
-        \def\sectionautorefname{%
-            \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
-            \thaiOAng\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
-        \def\subsectionautorefname{%
-            \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
-            \thaiOAng\thaiYoYak\thaiMaiEk\thaiOAng\thaiYoYak\thaiThoThahan%
-            \thaiSaraIi\thaiMaiEk}%
-        \def\subsubsectionautorefname{%
-            \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
-            \thaiOAng\thaiYoYak\thaiMaiEk\thaiOAng\thaiYoYak\thaiThoThahan%
-            \thaiSaraIi\thaiMaiEk}%
-        \def\paragraphautorefname{%
-            \thaiYoYak\thaiMaiEk\thaiOAng\thaiHoHip\thaiNoNu\thaiMaiTho%
-            \thaiSaraAa\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
-        \def\Hfootnoteautorefname{%
-            \thaiSaraE\thaiChoChang\thaiSaraI\thaiNgoNgu\thaiOAng\thaiRoRua%
-            \thaiRoRua\thaiThoThung\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
-        \def\AMSautorefname{%
-            \thaiSoSua\thaiMoMa\thaiKoKai\thaiSaraAa\thaiRoRua\thaiThoThahan%
-            \thaiSaraIi\thaiMaiEk}%
-        \def\theoremautorefname{%
-            \thaiThoThahan\thaiRu\thaiSoRusi\thaiDoChada\thaiSaraIi%
-            \thaiBoBaimai\thaiThoThahan\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
-        }
-    \renewrobustcmd{\ttfamily}{%
-        \fontencoding{\latinencoding}%
-        \fontfamily{\ttdefault}%
-        \selectfont}%
-    \ifbool{isthaiserif}{}{%
-        \renewrobustcmd{\thaifamilydefault}{\thaisfdefault}}}{}
+        \def\partautorefname{\thaitext@part}%
+        \def\equationautorefname{\thaitext@equation}%
+        \def\Itemautorefname{\thaitext@Item}%
+        \def\sectionautorefname{\thaitext@section}%
+        \def\subsectionautorefname{\thaitext@subsection}%
+        \def\subsubsectionautorefname{\thaitext@subsubsection}%
+        \def\paragraphautorefname{\thaitext@paragraph}%
+        \def\Hfootnoteautorefname{\thaitext@Hfootnote}%
+        \def\AMSautorefname{\thaitext@AMS}%
+        \def\theoremautorefname{\thaitext@theorem}%
+        \def\lemmaautorefname{\thaitext@lemma}%
+    }}{}
 
 %% TODO: use relsize to control the scale of Thai fonts
 
@@ -222,46 +259,71 @@
 \RequirePackage{chemarrow}
 \RequirePackage{fdsymbol}  % nicer looking standard symbols
 \RequirePackage{textcomp}
+\RequirePackage{aliascnt}
 \renewrobustcmd{\qedsymbol}{$\blacksquare$}
 
 %%------------------------------------------------------------------
 %%  Setup mdframed environment
 %%------------------------------------------------------------------
-\RequirePackage{mdframed}
+\RequirePackage[xcolor]{mdframed}
 \mdfdefinestyle{standard}{%
     backgroundcolor=ShadeColor,linecolor=BorderColor,%
     skipabove=0.75pc,skipbelow=0.25pc}
 \mdfdefinestyle{mathbox}{%
     backgroundcolor=ShadeColor,linecolor=BorderColor,%
-    skipabove=0.125pc,skipbelow=0.125pc,innertopmargin=0pc}
+    skipabove=0.75pc,skipbelow=0.25pc,splittopskip=1.25pc,%
+    innertopmargin=0pc,footnoteinside=false}
 
 %%------------------------------------------------------------------
 %%  Setup math theorem environments
 %%------------------------------------------------------------------
-% TODO: make autoref works with these theorem
+%% Set the shortcut to create new alias and define new theorem environment
+\newrobustcmd\newaliasandtheorem[2]{
+    \newaliascnt{#1}{theorem}%
+    \newmdtheoremenv[style=mathbox]{#1}[#1]{#2}%
+    \aliascntresetthe{#1}%
+    \expandafter\providerobustcmd\csname#1autorefname\endcsname{#2}}
+\newrobustcmd\newblanktheorem[2]{
+    \newtheorem*{#1}{#2}
+    \expandafter\renewrobustcmd\csname end#1\endcsname%
+        {\hfill$\Diamond$\endtrivlist}}
+
 \theoremstyle{plain}
-    \ifbool{isthmsec}{%
-        \newmdtheoremenv[style=mathbox]{theorem}{Theorem}[section]}%
-    {%else
-        \newmdtheoremenv[style=mathbox]{theorem}{Theorem}}
-    \newmdtheoremenv[style=mathbox]{lemma}[theorem]{Lemma}
-    \newmdtheoremenv[style=mathbox]{proposition}[theorem]{Proposition}
-    \newmdtheoremenv[style=mathbox]{corollary}[theorem]{Corollary}
-    \newmdtheoremenv[style=mathbox]{claim}[theorem]{Claim}
-    \newmdtheoremenv[style=mathbox]{conjecture}[theorem]{Conjecture}
+\ifbool{isthmsec}{%
+    \newmdtheoremenv[style=mathbox]{theorem}{Theorem}[section]}%
+{%else
+    \newmdtheoremenv[style=mathbox]{theorem}{Theorem}}
+\newaliasandtheorem{lemma}{Lemma}
+\newaliasandtheorem{corollary}{Corollary}
+\newaliasandtheorem{proposition}{Proposition}
+\newaliasandtheorem{conjecture}{Conjecture}
+\newaliasandtheorem{criterion}{Criterion}
+\newaliasandtheorem{assertion}{Assertion}
 
 \theoremstyle{definition}
-    \newmdtheoremenv[style=mathbox]{definition}[theorem]{Definition}
-    \newmdtheoremenv[style=mathbox]{fact}[theorem]{Fact}
-    \newmdtheoremenv[style=mathbox]{example}[theorem]{Example}
-    \newmdtheoremenv[style=mathbox]{question}[theorem]{Question}
-    \newmdtheoremenv[style=mathbox]{problem}[theorem]{Problem}
+\newaliasandtheorem{definition}{Definition}
+\newaliasandtheorem{condition}{Condition}
+\newaliasandtheorem{problem}{Problem}
+\newaliasandtheorem{example}{Example}
+\newaliasandtheorem{exercise}{Exercise}
+\newaliasandtheorem{algorithm}{Algorithm}
+\newaliasandtheorem{question}{Question}
+\newaliasandtheorem{axiom}{Axiom}
+\newaliasandtheorem{property}{Property}
+\newaliasandtheorem{assumption}{Assumption}
+\newaliasandtheorem{hypothesis}{Hypothesis}
+\newaliasandtheorem{fact}{Fact}
 
 \theoremstyle{remark}
-    \newtheorem*{remark}{Remark}
-    \renewcommand{\endremark}{\hfill$\Diamond$\endtrivlist}
-    \newtheorem*{note}{Note}
-    \newtheorem*{hint}{Hint}
+\newblanktheorem{remark}{Remark}
+\newblanktheorem{note}{Note}
+\newblanktheorem{notation}{Notation}
+\newblanktheorem{claim}{Claim}
+\newblanktheorem{summary}{Summary}
+\newblanktheorem{acknowledgement}{Acknowledgement}
+\newblanktheorem{case}{Case}
+\newblanktheorem{conclusion}{Conclusion}
+\newblanktheorem{hint}{Hint}
 
 %%------------------------------------------------------------------
 %%  Enumeration package
