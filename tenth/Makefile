@@ -5,4 +5,5 @@ tenth_doc_th.ttex: tenth_doc_th.tex
 	swath -f latex -u u,u < tenth_doc_th.tex > tenth_doc_th.ttex
 clean:
 	latexmk -c
+clean-all: clean
 	rm -rf tenth_doc_th.ttex tenth_doc_th.pdf
