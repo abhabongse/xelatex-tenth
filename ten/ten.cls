@@ -1,4 +1,4 @@
-%% tenth.cls
+%% ten.cls
 %% Author: Abhabongse Janthong
 %
 % This document class provides preloaded most common packages and most common
@@ -7,12 +7,13 @@
 % It is released under MIT License because the author thinks that the
 % LaTeX Project Public License is annoying and life is complicated.
 \NeedsTeXFormat{LaTeX2e}[2016/02/01]
-\ProvidesClass{tenth}[2017/07/16 v0.1.2 (Abhabongse Janthong)]
+\ProvidesClass{ten}[2017/08/26 v0.2 (Abhabongse Janthong)]
 
 %%------------------------------------------------------------------
 %%  Very important utility package
 %%------------------------------------------------------------------
 \RequirePackage{etoolbox}
+\RequirePackage{xparse}
 
 %%------------------------------------------------------------------
 %%  Define and process variables and options for this document
@@ -23,7 +24,12 @@
 \newbool{istwoside}
 \DeclareOption{twoside}{%
     \booltrue{istwoside}%
-    \PassOptionsToClass{twoside}{article}}
+    \PassOptionsToClass{twoside}{article}%
+}
+\newbool{issecnum}
+\DeclareOption{secnum}{%
+    \booltrue{istwoside}%
+}
 
 %%  Pass along all other options not captured above
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -71,16 +77,11 @@
 %% Include math fonts.
 \RequirePackage{amsthm}
 \RequirePackage[libertine]{newtxmath}
-% \RequirePackage{lib­ert­i­nust1­math}
 
 %% Setup font names
-\newrobustcmd\linuxlib{LinuxLibertineT-TLF}
-\newrobustcmd\linuxbio{LinuxBiolinumT-TLF}
-\newrobustcmd\inconsol{zi4}
-\newrobustcmd\norasi{norasi}
-\newrobustcmd\laksaman{laksaman}
-
-%% TODO: use relsize to control the scale of Thai fonts
+\newrobustcmd\linuxlibertine{LinuxLibertineT-TLF}
+\newrobustcmd\linuxbiolinum{LinuxBiolinumT-TLF}
+\newrobustcmd\inconsolata{zi4}
 
 %%------------------------------------------------------------------
 %%  Load 'microtype' which is the best package ever
@@ -93,7 +94,7 @@
     {encoding={*},family={\linuxlib},series={*},%
         size={footnotesize,small,normalsize}}%
     {\textendash={250,250},      % en-dash, add more space around it
-     \textemdash={250,250},      % en-dash, add more space around it
+     \textemdash={300,300},      % em-dash, add more space around it
      "28={,150},                 % left bracket, add space from right
      "29={150,},                 % right bracket, add space from left
      \textquotedblleft={,150},   % left quotation mark, space from right
@@ -107,10 +108,10 @@
 % Color settings for mdframed
 \definecolor{DefaultShade}{gray}{0.975}
 \definecolor{DefaultBorder}{gray}{0.75}
-\colorlet{ExampleShade}{LightYellow1!50}
-\colorlet{ExampleBorder}{LightYellow4!40}
-\colorlet{AlgorithmShade}{DarkSeaGreen1!50}
-\colorlet{AlgorithmBorder}{DarkSeaGreen4!40}
+\colorlet{YellowShade}{LightYellow1!50}
+\colorlet{YellowBorder}{LightYellow4!40}
+\colorlet{GreenShade}{DarkSeaGreen1!50}
+\colorlet{GreenBorder}{DarkSeaGreen4!40}
 
 % Color settings for listings
 \colorlet{PrimaryKeyword}{RoyalBlue3}
@@ -139,9 +140,12 @@
 \RequirePackage{adforn}  % Ornaments package
 \RequirePackage{textcomp}
 \RequirePackage{aliascnt}
+
+% Customization of math environment
 \renewrobustcmd{\qedsymbol}{$\blacksquare$}
-\def\tagform@#1{\maketag@@@{(\ignorespaces{\footnotesize\faPaperPlane}\,\textbf{#1}\unskip\@@italiccorr)}}
-\renewcommand{\eqref}[1]{(\hyperref[#1]{{\footnotesize\faPaperPlane}\,\textbf{\ref*{#1}}})}
+\newrobustcmd{\pencileq}[1]{{\footnotesize\faPencil}\,\textbf{#1}}
+\def\tagform@#1{\maketag@@@{(\ignorespaces\pencileq{#1}\unskip\@@italiccorr)}}
+\renewrobustcmd{\eqref}[1]{\textup{\maketag@@@{(\hyperref[#1]{\ignorespaces\pencileq{\ref*{#1}}\unskip\@@italiccorr})}}}
 
 %%------------------------------------------------------------------
 %%  Setup mdframed environment
@@ -150,65 +154,90 @@
 
 \mdfdefinestyle{standard}{%
     backgroundcolor=DefaultShade,linecolor=DefaultBorder,%
-    skipabove=0.5pc,skipbelow=0.25pc}
-\mdfdefinestyle{mathbox}{style=standard,%
+    skipabove=0.5pc,skipbelow=0.25pc%
+}
+\mdfdefinestyle{mathbox}{%
+    backgroundcolor=DefaultShade,linecolor=DefaultBorder,%
+    skipabove=0.75pc,skipbelow=0.25pc,%
     splitbottomskip=0.75pc,splittopskip=1.25pc,%
     innertopmargin=0pc,footnoteinside=true,%
-    nobreak=false}
-\mdfdefinestyle{mathbox-example}{style=mathbox,%
-    backgroundcolor=ExampleShade,linecolor=ExampleBorder}
-\mdfdefinestyle{mathbox-algorithm}{style=mathbox,%
-    backgroundcolor=AlgorithmShade,linecolor=AlgorithmBorder}
+    nobreak=false%
+}
+\mdfdefinestyle{blankbox}{%
+    linecolor=DefaultBorder,linewidth=0.25pc%
+    innerleftmargin=0.25pc,%
+    skipabove=1.0pc,skipbelow=0.5pc,%
+    splitbottomskip=0.75pc,splittopskip=1.25pc,%
+    innertopmargin=0.25pc,footnoteinside=true,%
+    nobreak=false,topline=false,bottomline=false,rightline=false%
+}
 
 %%------------------------------------------------------------------
 %%  Setup math theorem environments
 %%------------------------------------------------------------------
 %% Set the shortcut to create new alias and define new theorem environment
-\newrobustcmd\newaliasandtheorem[3][mathbox]{%
-    \newmdtheoremenv[style=#1]{#2}{#3}%
-    \expandafter\providerobustcmd\csname#2autorefname\endcsname{#3}}
-\newrobustcmd\newblanktheorem[2]{%
+
+\DeclareDocumentCommand\newmdftheorem{O{} m o m o}{%
+    % Numbered theorem
+    \IfValueTF{#3}{%
+        \IfValueTF{#5}{\newtheorem{#2}[#3]{#4}[#5]}%
+                      {\newtheorem{#2}[#3]{#4}}%
+    }{ % else
+        \IfValueTF{#5}{\newtheorem{#2}{#4}[#5]}%
+                      {\newtheorem{#2}{#4}}%
+    }%
+    \BeforeBeginEnvironment{#2}{\begin{mdframed}[style=mathbox,#1]}%
+    \AfterEndEnvironment{#2}{\end{mdframed}}%
+    % Provide autorefname
+    \expandafter\providerobustcmd\csname#2autorefname\endcsname{#3}
+    % Unnumbered Theorem
+    \newtheorem*{#2*}{#4}%
+    \BeforeBeginEnvironment{#2*}{\begin{mdframed}[style=mathbox,#1]}%
+    \AfterEndEnvironment{#2*}{\end{mdframed}}%
+}
+
+\newrobustcmd*\newmdfxtheorem[2]{%
     \newtheorem*{#1}{#2}%
-    \expandafter\providerobustcmd\csname#1autorefname\endcsname{#2}%
-    \expandafter\renewrobustcmd\csname end#1\endcsname%
-        {\hfill$\Diamond$\endtrivlist}%
-    \BeforeBeginEnvironment{#1}{\smallskip}
-    \AfterEndEnvironment{#1}{\smallskip}}%
+    % \expandafter\renewrobustcmd\csname end#1\endcsname%
+    %     {\hfill$\Diamond$\endtrivlist}%
+    \BeforeBeginEnvironment{#1}{\begin{mdframed}[style=blankbox]}%
+    \AfterEndEnvironment{#1}{\end{mdframed}}%
+}
 
-\theoremstyle{plain}
-\newaliasandtheorem{theorem}{Theorem}
-\newaliasandtheorem{lemma}{Lemma}
-\newaliasandtheorem{corollary}{Corollary}
-\newaliasandtheorem{proposition}{Proposition}
-\newaliasandtheorem{conjecture}{Conjecture}
-\newaliasandtheorem{criterion}{Criterion}
-\newaliasandtheorem{assertion}{Assertion}
-
+% \theoremstyle{plain}
 \theoremstyle{definition}
-\newaliasandtheorem{definition}{Definition}
-\newaliasandtheorem{condition}{Condition}
-\newaliasandtheorem{problem}{Problem}
-\newaliasandtheorem[mathbox-example]{example}{Example}
-\newaliasandtheorem{exercise}{Exercise}
-\newaliasandtheorem[mathbox-algorithm]{algorithm}{Algorithm}
-\newaliasandtheorem[mathbox-algorithm]{procedure}{Procedure}
-\newaliasandtheorem{question}{Question}
-\newaliasandtheorem{axiom}{Axiom}
-\newaliasandtheorem{property}{Property}
-\newaliasandtheorem{assumption}{Assumption}
-\newaliasandtheorem{hypothesis}{Hypothesis}
-\newaliasandtheorem{fact}{Fact}
+\newmdftheorem{theorem}{Theorem}
+\newmdftheorem{lemma}{Lemma}
+\newmdftheorem{corollary}{Corollary}
+\newmdftheorem{proposition}{Proposition}
+\newmdftheorem{conjecture}{Conjecture}
+\newmdftheorem{criterion}{Criterion}
+\newmdftheorem{assertion}{Assertion}
+
+\newmdftheorem{definition}{Definition}
+\newmdftheorem{condition}{Condition}
+\newmdftheorem{problem}{Problem}
+\newmdftheorem[backgroundcolor=GreenShade]{example}{Example}
+\newmdftheorem{exercise}{Exercise}
+\newmdftheorem{algorithm}{Algorithm}
+\newmdftheorem{question}{Question}
+\newmdftheorem{axiom}{Axiom}
+\newmdftheorem{property}{Property}
+\newmdftheorem{assumption}{Assumption}
+\newmdftheorem{hypothesis}{Hypothesis}
+\newmdftheorem{fact}{Fact}
 
 \theoremstyle{remark}
-\newblanktheorem{remark}{Remark}
-\newblanktheorem{note}{Note}
-\newblanktheorem{notation}{Notation}
-\newblanktheorem{claim}{Claim}
-\newblanktheorem{summary}{Summary}
-\newblanktheorem{acknowledgement}{Acknowledgement}
-\newblanktheorem{case}{Case}
-\newblanktheorem{conclusion}{Conclusion}
-\newblanktheorem{hint}{Hint}
+\newmdfxtheorem{remark}{Remark}
+\newmdfxtheorem{note}{Note}
+\newmdfxtheorem{notation}{Notation}
+\newmdfxtheorem{claim}{Claim}
+\newmdfxtheorem{summary}{Summary}
+\newmdfxtheorem{acknowledgement}{Acknowledgement}
+\newmdfxtheorem{case}{Case}
+\newmdfxtheorem{conclusion}{Conclusion}
+\newmdfxtheorem{hint}{Hint}
+
 
 %%------------------------------------------------------------------
 %%  Enumeration package
