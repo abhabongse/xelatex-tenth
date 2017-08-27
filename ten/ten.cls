@@ -26,10 +26,6 @@
     \booltrue{istwoside}%
     \PassOptionsToClass{twoside}{article}%
 }
-\newbool{issecnum}
-\DeclareOption{secnum}{%
-    \booltrue{istwoside}%
-}
 
 %%  Pass along all other options not captured above
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}

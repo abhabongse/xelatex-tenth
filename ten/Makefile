@@ -1,5 +1,5 @@
-main: ten_example_oneside_contnum.pdf
-	
+main: ten_oneside.pdf ten_twoside.pdf
+
 %.pdf: %.tex
 	latexmk -pdf -interaction=nonstopmode $<
 	latexmk -c
