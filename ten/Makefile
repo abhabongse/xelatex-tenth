@@ -1,7 +1,11 @@
-main: ten_oneside.pdf ten_twoside.pdf
+.PHONY: pdfs clean
+pdfs = ten_oneside.pdf ten_twoside.pdf
 
-%.pdf: %.tex
+all: $(pdfs)
+
+$(pdfs): %.pdf: %.tex shared.tex ten.cls
 	latexmk -pdf -interaction=nonstopmode $<
 	latexmk -c
+
 clean:
 	latexmk -c

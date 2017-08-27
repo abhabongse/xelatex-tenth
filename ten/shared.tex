@@ -1,0 +1,70 @@
+\usepackage{lipsum}
+\title{Document class \texttt{ten}}
+\author{Abhabongse Janthong}
+
+\begin{document}
+    \maketitle
+
+    \section{Introduction}
+    \label{sec:intro}
+
+    \lipsum[1]
+
+\begin{lstlisting}[language=python,caption={A square function, obviously.}]
+def square(x):
+    return x ** 2
+\end{lstlisting}
+
+    \marginnote{This is a sidenote in the margin, useful for uninterrupting note.}
+    \lipsum[2]
+
+    Here is an example.
+
+    \begin{equation}
+        x^2 + y^2 = z^2  \label{eq:pythagorean}
+    \end{equation}
+
+    This is an example of \eqref{eq:pythagorean}. \lipsum[3]
+
+    \begin{example}
+        This is an example of \eqref{eq:pythagorean}.
+    \end{example}
+
+    \lipsum[4]
+
+    \begin{example*}
+        This is an example of \eqref{eq:pythagorean}.
+    \end{example*}
+
+    \lipsum[5]
+    \begin{note}
+        This is an example of \eqref{eq:pythagorean}. \rsq\gsq\bsq\ysq -- {-}{-}
+    \end{note}
+    \lipsum[6]
+
+    \begin{itemize}
+        \item  First item
+        \item  Second item
+            \begin{itemize}
+                \item  First subitem
+                    \begin{itemize}
+                        \item  What the hell!
+                    \end{itemize}
+                \item  Second subitem
+            \end{itemize}
+    \end{itemize}
+
+
+\begin{lstlisting}[language=pseudocode,escapeinside={<}{>}]
+one < \SuppressNumber >
+two
+three < \ReactivateNumber >
+four < \SuppressNumber >
+five < \ActivateNumber{7} >
+six
+seven < \SuppressNumber\ActivateNumber{13} >
+eight
+if then while true
+\end{lstlisting}
+
+\end{document}

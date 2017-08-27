@@ -94,12 +94,20 @@
      "28={,150},                 % left bracket, add space from right
      "29={150,},                 % right bracket, add space from left
      \textquotedblleft={,150},   % left quotation mark, space from right
-     \textquotedblright={150,}}  % right quotation mark, space from left
+     \textquotedblright={150,}  % right quotation mark, space from left
+}
 
 %%------------------------------------------------------------------
 %%  Setup color choices
 %%------------------------------------------------------------------
 \RequirePackage[dvipsnames,svgnames,x11names,table,fixpdftex,hyperref]{xcolor}
+
+% Color palette
+\definecolor{pRed}{HTML}{A42D4B}
+\definecolor{pGreen}{HTML}{6EB233}
+\definecolor{pBlue}{HTML}{29339B}
+\definecolor{pYellow}{HTML}{F2BB05}
+\definecolor{pWhite}{HTML}{E5F9E0}
 
 % Color settings for mdframed
 \definecolor{DefaultShade}{gray}{0.975}
@@ -119,10 +127,11 @@
 \colorlet{Comment}{Green4}
 
 % Commands for colored squares
-\newrobustcmd{\redsq}{{\textcolor{red}{$\blacksquare$}}}
-\newrobustcmd{\greensq}{{\textcolor{green}{$\blacksquare$}}}
-\newrobustcmd{\bluesq}{{\textcolor{blue}{$\blacksquare$}}}
-\newrobustcmd{\yellowsq}{{\textcolor{yellow}{$\blacksquare$}}}
+\newrobustcmd{\colorsq}[1]{\textcolor{#1}{$\blacksquare$}}
+\newrobustcmd{\rsq}{\colorsq{pRed}}
+\newrobustcmd{\gsq}{\colorsq{pGreen}}
+\newrobustcmd{\bsq}{\colorsq{pBlue}}
+\newrobustcmd{\ysq}{\colorsq{pYellow}}
 
 %%------------------------------------------------------------------
 %%  Setup math equations and symbols
@@ -139,7 +148,7 @@
 
 % Customization of math environment
 \renewrobustcmd{\qedsymbol}{$\blacksquare$}
-\newrobustcmd{\pencileq}[1]{{\footnotesize\faPencil}\,\textbf{#1}}
+\newrobustcmd{\pencileq}[1]{{\footnotesize\faPencil}\hrsp\textbf{#1}}
 \def\tagform@#1{\maketag@@@{(\ignorespaces\pencileq{#1}\unskip\@@italiccorr)}}
 \renewrobustcmd{\eqref}[1]{\textup{\maketag@@@{(\hyperref[#1]{\ignorespaces\pencileq{\ref*{#1}}\unskip\@@italiccorr})}}}
 
@@ -192,7 +201,7 @@
     \AfterEndEnvironment{#2*}{\end{mdframed}}%
 }
 
-\newrobustcmd*\newmdfxtheorem[2]{%
+\newrobustcmd*\newmdfblanktheorem[2]{%
     \newtheorem*{#1}{#2}%
     % \expandafter\renewrobustcmd\csname end#1\endcsname%
     %     {\hfill$\Diamond$\endtrivlist}%
@@ -224,15 +233,15 @@
 \newmdftheorem{fact}{Fact}
 
 \theoremstyle{remark}
-\newmdfxtheorem{remark}{Remark}
-\newmdfxtheorem{note}{Note}
-\newmdfxtheorem{notation}{Notation}
-\newmdfxtheorem{claim}{Claim}
-\newmdfxtheorem{summary}{Summary}
-\newmdfxtheorem{acknowledgement}{Acknowledgement}
-\newmdfxtheorem{case}{Case}
-\newmdfxtheorem{conclusion}{Conclusion}
-\newmdfxtheorem{hint}{Hint}
+\newmdfblanktheorem{remark}{Remark}
+\newmdfblanktheorem{note}{Note}
+\newmdfblanktheorem{notation}{Notation}
+\newmdfblanktheorem{claim}{Claim}
+\newmdfblanktheorem{summary}{Summary}
+\newmdfblanktheorem{acknowledgement}{Acknowledgement}
+\newmdfblanktheorem{case}{Case}
+\newmdfblanktheorem{conclusion}{Conclusion}
+\newmdfblanktheorem{hint}{Hint}
 
 
 %%------------------------------------------------------------------
@@ -241,13 +250,16 @@
 \RequirePackage{enumitem}
 \RequirePackage{alphalph}
 \setlist{%
-    topsep=0.25pc,itemsep=0.25pc,partopsep=0pc,parsep=0pc,listparindent=2pc,%
-    itemindent=0pc}
+    topsep=0.25pc,itemsep=0.25pc,partopsep=0pc,parsep=0pc,%
+    listparindent=2pc,itemindent=0pc%
+}
 \setlist[description]{itemindent=-2pc}
-\setlist[2]{topsep=0.5pc,itemsep=0.5pc}
-\setlist[1]{topsep=1pc,itemsep=1pc}
+% \setlist[2]{topsep=0.5pc,itemsep=0.5pc}
+% \setlist[1]{topsep=0.5pc,itemsep=0.5pc}
 % FontAwesome replacement for bullet points
-\setlist[itemize,1]{label={\small\faChevronCircleRight}}
+\setlist[itemize,1]{label={\footnotesize\faChevronCircleRight}}
+\setlist[itemize,2]{label={\small\faAngleRight}}
+\setlist[itemize,3]{label={\footnotesize\faAngleDoubleRight}}
 
 %%------------------------------------------------------------------
 %%  Set numbering of pages and enumerations
@@ -337,9 +349,9 @@
     keywordstyle=[1]{\bfseries\color{PrimaryKeyword}},%
     keywordstyle=[2]{\bfseries\color{SecondaryKeyword}},%
     keywordstyle=[3]{\color{TertiaryKeyword}},%
-    morekeywords={[1],if,then,else,while,do,end,loop,until,for,to,downto,%
-        return,print,def},%
-    morekeywords={[2],true,false,null,nil},%
+    morekeywords=[1]{if,then,else,while,do,end,loop,until,for,to,downto,%
+        return,print,def,halt,terminate},%
+    morekeywords=[2]{true,false,null,nil},%
     sensitive=false,%
     morestring=[b]",%
     morestring=[b]',%
@@ -348,7 +360,8 @@
         %% Single character
         {:}{{{\bfseries\color{Symbol}{:}}}}1
         ,
-    mathescape=true}
+    mathescape=true%
+}
 
 %%------------------------------------------------------------------
 %%  Page header package and settings
