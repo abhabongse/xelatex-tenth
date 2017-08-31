@@ -5,7 +5,10 @@ all: $(pdfs)
 
 $(pdfs): %.pdf: %.tex shared.tex ten.cls
 	latexmk -pdf -interaction=nonstopmode $<
-	latexmk -c
 
 clean:
 	latexmk -c
+
+allclean:
+	latexmk -c
+	rm -f $(pdfs)
