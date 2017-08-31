@@ -1,4 +1,4 @@
-.PHONY: pdfs clean
+.PHONY: all clean
 pdfs = ten_oneside.pdf ten_twoside.pdf
 
 all: $(pdfs)
