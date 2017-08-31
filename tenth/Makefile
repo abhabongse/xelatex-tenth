@@ -1,9 +1,23 @@
-tenth_doc_th.pdf: tenth_doc_th.ttex
-	latexmk -pdf -interaction=nonstopmode tenth_doc_th.ttex
-	latexmk -c
-tenth_doc_th.ttex: tenth_doc_th.tex
-	swath -f latex -u u,u < tenth_doc_th.tex > tenth_doc_th.ttex
+.PHONY: all clean
+en_pdfs = tenth_en_oneside.pdf tenth_en_twoside.pdf
+th_pdfs = tenth_th_oneside.pdf tenth_th_twoside.pdf
+th_texs = $(patsubst %.pdf,%.tex,$(th_pdfs))
+pdfs = $(en_pdfs) $(th_pdfs)
+
+all: $(pdfs)
+
+$(en_pdfs): %.pdf: %.tex shared_en.tex tenth.cls
+	latexmk -pdf -interaction=nonstopmode $<
+
+$(th_pdfs): %.pdf: %.tex shared_th.tex tenth.cls
+	latexmk -pdf -interaction=nonstopmode $<
+
+$(th_texs): %.tex: %.pre.tex
+	swath -f latex -u u,u < $< > $@
+
 clean:
 	latexmk -c
-clean-all: clean
-	rm -rf tenth_doc_th.ttex tenth_doc_th.pdf
+
+allclean:
+	latexmk -c
+	rm -f $(pdfs) $(th_texs)
