@@ -84,6 +84,93 @@
 \newrobustcmd\linuxlibertine{LinuxLibertineT-TLF}
 \newrobustcmd\linuxbiolinum{LinuxBiolinumT-TLF}
 \newrobustcmd\inconsolata{zi4}
+\newrobustcmd\norasi{norasi}
+\newrobustcmd\laksaman{laksaman}
+
+%% Setup Thai fonts is the option is specified
+\ifbool{isthai}{%
+    \RequirePackage[main=thai,thai,english]{babel}%
+    \RequirePackage[utf8x]{inputenc}%
+    \RequirePackage{fonts-tlwg}%
+    \renewrobustcmd\englishrmdefault{\linuxlibertine}%
+    \renewrobustcmd\englishsfdefault{\linuxbiolinum}%
+    \renewrobustcmd\englishttdefault{\inconsolata}%
+    \renewrobustcmd\thairmdefault{\norasi}%
+    \renewrobustcmd\thaisfdefault{\laksaman}%
+    \renewrobustcmd\thaittdefault{\inconsolata}%
+    % Temporary fix for \familydefault
+    \renewrobustcmd\thaitext{%
+        \fontencoding{LTH}\fontfamily{\thaifamilydefault}%
+        \selectfont
+        \def\familydefault{\thaifamilydefault}% FIX
+        \def\rmdefault{\thairmdefault}%
+        \def\sfdefault{\thaisfdefault}%
+        \def\ttdefault{\thaittdefault}%
+        \def\encodingdefault{LTH}}%
+    \renewrobustcmd\latintext{%
+        \fontencoding{\latinencoding}\fontfamily{\englishfamilydefault}%
+        \selectfont
+        \def\familydefault{\englishfamilydefault}% FIX
+        \def\rmdefault{\englishrmdefault}%
+        \def\sfdefault{\englishsfdefault}%
+        \def\ttdefault{\englishttdefault}%
+        \def\encodingdefault{\latinencoding}}%
+    \renewrobustcmd\thaifamilydefault{\thaisfdefault}
+    \renewrobustcmd\ttfamily{%  FIXME: cannot be nested with another family
+        \fontencoding{\latinencoding}%
+        \fontfamily{\ttdefault}%
+        \selectfont}%
+    \babeltags{eng = english,tha = thai}%
+    \newrobustcmd\thaitext@part{%
+        \thaiPhoSamphao\thaiSaraAa\thaiKhoKhwai\thaiThoThahan\thaiSaraIi%
+        \thaiMaiEk}%
+    \newrobustcmd\thaitext@equation{%
+        \thaiSoSua\thaiMoMa\thaiKoKai\thaiSaraAa\thaiRoRua%
+        \thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@Item{%
+        \thaiWoWaen\thaiRoRua\thaiRoRua\thaiKhoKhwai\thaiThoThahan%
+        \thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@section{%
+        \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
+        \thaiOAng\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@subsection{%
+        \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
+        \thaiOAng\thaiYoYak\thaiMaiEk\thaiOAng\thaiYoYak%
+        \thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@subsubsection{%
+        \thaiHoHip\thaiMaiHanakat\thaiWoWaen\thaiKhoKhai\thaiMaiTho%
+        \thaiOAng\thaiYoYak\thaiMaiEk\thaiOAng\thaiYoYak%
+        \thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@paragraph{%
+        \thaiYoYak\thaiMaiEk\thaiOAng\thaiHoHip\thaiNoNu\thaiMaiTho%
+        \thaiSaraAa\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@Hfootnote{%
+        \thaiSaraE\thaiChoChang\thaiSaraI\thaiNgoNgu\thaiOAng%
+        \thaiRoRua\thaiRoRua\thaiThoThung\thaiThoThahan\thaiSaraIi%
+        \thaiMaiEk}%
+    \newrobustcmd\thaitext@AMS{%
+        \thaiSoSua\thaiMoMa\thaiKoKai\thaiSaraAa\thaiRoRua%
+        \thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \newrobustcmd\thaitext@theorem{%
+        \thaiThoThahan\thaiRu\thaiSoRusi\thaiDoChada\thaiSaraIi%
+        \thaiBoBaimai\thaiThoThahan\thaiThoThahan\thaiSaraIi%
+        \thaiMaiEk}%
+    \newrobustcmd\thaitext@lemma{%
+        \thaiBoBaimai\thaiThoThahan\thaiToTao\thaiMaiHanakat%
+        \thaiMaiTho\thaiNgoNgu\thaiThoThahan\thaiSaraIi\thaiMaiEk}%
+    \addto\captionsthai{%
+        \def\partautorefname{\thaitext@part}%
+        \def\equationautorefname{\thaitext@equation}%
+        \def\Itemautorefname{\thaitext@Item}%
+        \def\sectionautorefname{\thaitext@section}%
+        \def\subsectionautorefname{\thaitext@subsection}%
+        \def\subsubsectionautorefname{\thaitext@subsubsection}%
+        \def\paragraphautorefname{\thaitext@paragraph}%
+        \def\Hfootnoteautorefname{\thaitext@Hfootnote}%
+        \def\AMSautorefname{\thaitext@AMS}%
+        \def\theoremautorefname{\thaitext@theorem}%
+        \def\lemmaautorefname{\thaitext@lemma}}%
+}{}
 
 %%------------------------------------------------------------------
 %%  Load 'microtype' which is the best package ever
