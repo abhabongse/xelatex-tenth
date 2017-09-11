@@ -1,4 +1,4 @@
-% lthlaksaman.fd
+% lthkinnari.fd
 %
 % This file is part of the fonts-tlwg package
 %
@@ -19,10 +19,12 @@
 %
 % 2017/05/11 Abhabongse Janthong <abhabongse@gmail.com>
 %            - add font scaling
-% 2014/06/26 Theppitak Karoonboonyanan <thep@linux.thai.net>
-%            - first version
+% 2005/01/24 Theppitak Karoonboonyanan <thep@linux.thai.net>
+%            - italic shape added for medium and bold face series
+% 2004/02/05 Poonlap Veerathanabutr <poonlap@linux.thai.net>
+%            - first release (based on lthgaruda.fd)
 
-\ProvidesFile{lthlaksaman.fd}[2014/06/24 v1.0 Thai font definitions]
+\ProvidesFile{lthkinnari.fd}[2004/02/05 v1.0 Thai font definitions]
 
 % Check if the scale factor has been defined
 \ifcsname fontstlwg@scale\endcsname
@@ -32,20 +34,19 @@
 \fi
 
 % Primary declarations
-\DeclareFontFamily{LTH}{laksaman}{}
-\DeclareFontShape{LTH}{laksaman}{m}{n}{<-> \fontstlwg@@scale laksaman}{}
-\DeclareFontShape{LTH}{laksaman}{m}{it}{<-> \fontstlwg@@scale laksaman_i}{}
+\DeclareFontFamily{LTH}{kinnari}{}
+\DeclareFontShape{LTH}{kinnari}{m}{n}{<-> \fontstlwg@@scale kinnari}{}
+\DeclareFontShape{LTH}{kinnari}{m}{it}{<-> \fontstlwg@@scale kinnari_i}{}
+\DeclareFontShape{LTH}{kinnari}{m}{sl}{<-> \fontstlwg@@scale kinnari_o}{}
 %%%%%%% bold series
-\DeclareFontShape{LTH}{laksaman}{b}{n}{<-> \fontstlwg@@scale laksaman_b}{}
-\DeclareFontShape{LTH}{laksaman}{b}{it}{<-> \fontstlwg@@scale laksaman_bi}{}
+\DeclareFontShape{LTH}{kinnari}{b}{n}{<-> \fontstlwg@@scale kinnari_b}{}
+\DeclareFontShape{LTH}{kinnari}{b}{it}{<-> \fontstlwg@@scale kinnari_bi}{}
+\DeclareFontShape{LTH}{kinnari}{b}{sl}{<-> \fontstlwg@@scale kinnari_bo}{}
 
 % Substitutions
-\DeclareFontShape{LTH}{laksaman}{m}{sl}{<->ssub * laksaman/m/it}{}
-\DeclareFontShape{LTH}{laksaman}{b}{sl}{<->ssub * laksaman/b/it}{}
-
-\DeclareFontShape{LTH}{laksaman}{bx}{n}{<->ssub * laksaman/b/n}{}
-\DeclareFontShape{LTH}{laksaman}{bx}{it}{<->ssub * laksaman/b/it}{}
-\DeclareFontShape{LTH}{laksaman}{bx}{sl}{<->ssub * laksaman/b/it}{}
+\DeclareFontShape{LTH}{kinnari}{bx}{n}{<->ssub * kinnari/b/n}{}
+\DeclareFontShape{LTH}{kinnari}{bx}{sl}{<->ssub * kinnari/b/sl}{}
+\DeclareFontShape{LTH}{kinnari}{bx}{it}{<->ssub * kinnari/b/it}{}
 \endinput
 
 %

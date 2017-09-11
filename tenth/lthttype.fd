@@ -1,4 +1,4 @@
-% lthlaksaman.fd
+% lthttype.fd
 %
 % This file is part of the fonts-tlwg package
 %
@@ -19,10 +19,13 @@
 %
 % 2017/05/11 Abhabongse Janthong <abhabongse@gmail.com>
 %            - add font scaling
-% 2014/06/26 Theppitak Karoonboonyanan <thep@linux.thai.net>
-%            - first version
+% 2004/11/15 Theppitak Karoonboonyanan <thep@linux.thai.net>
+%            - pmono is now ttype (TlwgTypewriter)
+% 2004/02/05 Poonlap Veerathanabutr <poonlap@linux.thai.net>
+%            - first release (based on lthgaruda.fd)
+%	     - pmono is PseudoMono (TlwgMono) font
 
-\ProvidesFile{lthlaksaman.fd}[2014/06/24 v1.0 Thai font definitions]
+\ProvidesFile{lthttype.fd}[2004/02/05 v1.0 Thai font definitions]
 
 % Check if the scale factor has been defined
 \ifcsname fontstlwg@scale\endcsname
@@ -32,20 +35,20 @@
 \fi
 
 % Primary declarations
-\DeclareFontFamily{LTH}{laksaman}{}
-\DeclareFontShape{LTH}{laksaman}{m}{n}{<-> \fontstlwg@@scale laksaman}{}
-\DeclareFontShape{LTH}{laksaman}{m}{it}{<-> \fontstlwg@@scale laksaman_i}{}
+\DeclareFontFamily{LTH}{ttype}{}
+\DeclareFontShape{LTH}{ttype}{m}{n}{<-> \fontstlwg@@scale ttype}{}
+\DeclareFontShape{LTH}{ttype}{m}{sl}{<-> \fontstlwg@@scale ttype_o}{}
 %%%%%%% bold series
-\DeclareFontShape{LTH}{laksaman}{b}{n}{<-> \fontstlwg@@scale laksaman_b}{}
-\DeclareFontShape{LTH}{laksaman}{b}{it}{<-> \fontstlwg@@scale laksaman_bi}{}
+\DeclareFontShape{LTH}{ttype}{b}{n}{<-> \fontstlwg@@scale ttype_b}{}
+\DeclareFontShape{LTH}{ttype}{b}{sl}{<-> \fontstlwg@@scale ttype_bo}{}
 
 % Substitutions
-\DeclareFontShape{LTH}{laksaman}{m}{sl}{<->ssub * laksaman/m/it}{}
-\DeclareFontShape{LTH}{laksaman}{b}{sl}{<->ssub * laksaman/b/it}{}
+\DeclareFontShape{LTH}{ttype}{m}{it}{<->ssub * ttype/m/sl}{}
+\DeclareFontShape{LTH}{ttype}{b}{it}{<->ssub * ttype/b/sl}{}
 
-\DeclareFontShape{LTH}{laksaman}{bx}{n}{<->ssub * laksaman/b/n}{}
-\DeclareFontShape{LTH}{laksaman}{bx}{it}{<->ssub * laksaman/b/it}{}
-\DeclareFontShape{LTH}{laksaman}{bx}{sl}{<->ssub * laksaman/b/it}{}
+\DeclareFontShape{LTH}{ttype}{bx}{n}{<->ssub * ttype/b/n}{}
+\DeclareFontShape{LTH}{ttype}{bx}{sl}{<->ssub * ttype/b/sl}{}
+\DeclareFontShape{LTH}{ttype}{bx}{it}{<->ssub * ttype/b/sl}{}
 \endinput
 
 %

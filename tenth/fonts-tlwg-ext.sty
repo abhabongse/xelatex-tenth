@@ -1,4 +1,4 @@
-%% fonts-twlg-ext.sty
+%% font-tenth.sty
 %% Copyright 2017 Abhabongse Janthong
 %
 % This work may be distributed and/or modified under the
@@ -17,7 +17,7 @@
 % This package simplifies the font familiy switching for babel-thai
 % and acts as a replacement of fonts-tlwg.
 %
-\ProvidesPackage{fonts-tlwg-ext}[2017/09/11 v0.1]
+\ProvidesPackage{font-tenth}[2017/09/11 v0.1]
 \RequirePackage{etoolbox}
 
 %%------------------------------------------------------------------
@@ -38,8 +38,8 @@
 %%------------------------------------------------------------------
 % Set whether to reset letterform upon language switching. If set,
 % then \letterformdefault@en and \letterformdefault@th will be ignored.
-\newbool{fontstlwgext@letterformreset}
-\DeclareOption{resetletterform}{\booltrue{fontstlwgext@letterformreset}}
+\newbool{fonttenth@letterformreset}
+\DeclareOption{resetletterform}{\booltrue{fonttenth@letterformreset}}
 \ProcessOptions\relax
 
 %%------------------------------------------------------------------
@@ -52,7 +52,7 @@
 %%  Inspired by the package 'mweights'
 %%------------------------------------------------------------------
 % Font switching functions all should call this function first.
-\newrobustcmd\fontstlwgext@setup{%
+\newrobustcmd\fonttenth@setup{%
     % % Expand all macros
     \edef\encodingdefault@@v{\encodingdefault}%
     \edef\familydefault@@v{\familydefault}%
@@ -90,7 +90,7 @@
 }
 
 % Invoke font selection after \langdefault@@s and \familydefault@@s are set.
-\newrobustcmd\fontstlwgext@invoke{%
+\newrobustcmd\fonttenth@invoke{%
     \fontencoding{\csname encodingdefault@\language@@s @\letterform@@s\endcsname}%
     \fontfamily{\csname familydefault@\language@@s @\letterform@@s\endcsname}%
     \selectfont%
@@ -102,26 +102,26 @@
 }
 
 % Language switching commands
-\newrobustcmd\fontstlwgext@setlanguage[1]{%
-    \fontstlwgext@setup%
+\newrobustcmd\fonttenth@setlanguage[1]{%
+    \fonttenth@setup%
     \edef\language@@s{#1}%
-    \ifbool{fontstlwgext@letterformreset}{%
+    \ifbool{fonttenth@letterformreset}{%
         \edef\letterform@@s{\csname letterformdefault@\language@@s\endcsname}%
     }{}
-    \fontstlwgext@invoke%
+    \fonttenth@invoke%
 }
-\renewrobustcmd\latintext{\fontstlwgext@setlanguage{en}}
-\renewrobustcmd\thaitext{\fontstlwgext@setlanguage{th}}
+\renewrobustcmd\latintext{\fonttenth@setlanguage{en}}
+\renewrobustcmd\thaitext{\fonttenth@setlanguage{th}}
 
 % Letterform switching commands
-\newrobustcmd\fontstlwgext@setletterform[1]{%
-    \fontstlwgext@setup%
+\newrobustcmd\fonttenth@setletterform[1]{%
+    \fonttenth@setup%
     \edef\letterform@@s{#1}%
-    \fontstlwgext@invoke%
+    \fonttenth@invoke%
 }
-\renewrobustcmd\rmfamily{\fontstlwgext@setletterform{rm}}
-\renewrobustcmd\sffamily{\fontstlwgext@setletterform{sf}}
-\renewrobustcmd\ttfamily{\fontstlwgext@setletterform{tt}}
+\renewrobustcmd\rmfamily{\fonttenth@setletterform{rm}}
+\renewrobustcmd\sffamily{\fonttenth@setletterform{sf}}
+\renewrobustcmd\ttfamily{\fonttenth@setletterform{tt}}
 
 %%------------------------------------------------------------------
 %%  Autoref translated names

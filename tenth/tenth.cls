@@ -91,9 +91,11 @@
     \RequirePackage[utf8x]{inputenc}%
     \RequirePackage[resetletterform]{fonts-tlwg-ext}%
     \babeltags{eng = english,tha = thai}
+    \def\fontstlwg@scale{0.92}
+    \def\familydefault@th@sf{laksaman}
     \def\familydefault@th@tt{zi4}
     \def\encodingdefault@th@tt{T1}
-    \setstretch{1.5}
+    \setstretch{1.33}
 }{}
 
 %%------------------------------------------------------------------
@@ -293,7 +295,7 @@
 %%------------------------------------------------------------------
 \RequirePackage[pdftex]{graphicx}
 \RequirePackage[%
-    margin=1pc,font={footnotesize},labelfont={bf},labelsep=period,%
+    margin=1pc,font={rm,up,md,footnotesize},labelfont={bf},labelsep=period,%
     format=plain,indention=1pc,justification=justified]{caption}
 \RequirePackage{subcaption}
 % \DeclareCaptionFormat{llap}{\llap{#1#2}#3\par}
