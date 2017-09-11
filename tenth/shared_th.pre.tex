@@ -7,14 +7,16 @@
 \begin{document}
     \maketitle
 
-    \section{บทนำ \label{sec:intro}}
+    \section{บทนำ Intro \label{sec:intro}}
     \subsection{บางอย่าง}
     \subsubsection{บางอย่างอีก \label{ssub:wow}}
+
+    \makeatletter
 
     นี่คือเอกสารตัวอย่างที่ใช้คลาส \codehl{tenth} เพื่อเขียนเอกสารภาษาไทย โดยกำหนด \codehl{option} ชื่อ \codehl{thai} ให้กับคลาสของเอกสารนี้ \texteng{And it could be used in conjunction with Latin script, as you can see here. This par of the sentence is using Latin font,} whereas this part is using the Thai font.
 
     \begin{eng}
-        English text here. {\tha และนี่ภาษาไทย}
+        English text here. {\tha และนี่\sffamily ภาษาไทย}
     \end{eng}
 
     \autoref{sec:intro} a \sectionautorefname{} b \autoref{eq:a} \autoref{ssub:wow} \autoref{item:j}
