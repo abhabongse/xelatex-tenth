@@ -36,8 +36,11 @@
 %%------------------------------------------------------------------
 %%  Package options.
 %%------------------------------------------------------------------
-% Set whether to reset letterform upon language switching
+% Set whether to reset letterform upon language switching. If set,
+% then \letterformdefault@en and \letterformdefault@th will be ignored.
 \newbool{fontstlwgext@letterformreset}
+\DeclareOption{resetletterform}{\booltrue{fontstlwgext@letterformreset}}
+\ProcessOptions\relax
 
 %%------------------------------------------------------------------
 %%  Helper commands

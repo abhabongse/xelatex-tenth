@@ -89,11 +89,10 @@
 \ifbool{isthai}{%
     \RequirePackage[main=thai,thai,english]{babel}%
     \RequirePackage[utf8x]{inputenc}%
-    \RequirePackage{fonts-tlwg-ext}%
+    \RequirePackage[resetletterform]{fonts-tlwg-ext}%
     \babeltags{eng = english,tha = thai}
     \def\familydefault@th@tt{zi4}
     \def\encodingdefault@th@tt{T1}
-    \boolfalse{fontstlwgext@letterformreset}
     \setstretch{1.5}
 }{}
 
