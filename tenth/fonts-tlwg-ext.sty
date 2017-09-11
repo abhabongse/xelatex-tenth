@@ -1,4 +1,4 @@
-%% thaiext.sty
+%% fonts-twlg-ext.sty
 %% Copyright 2017 Abhabongse Janthong
 %
 % This work may be distributed and/or modified under the
@@ -15,6 +15,7 @@
 % thaienum.sty and thaienum.tex.
 %
 % This package simplifies the font familiy switching for babel-thai
+% and acts as a replacement of fonts-tlwg.
 %
 \ProvidesPackage{fonts-tlwg-ext}[2017/09/11 v0.1]
 \RequirePackage{etoolbox}
@@ -31,6 +32,12 @@
 \PackageWarning{thaienum}{Package 'babel' not loaded with option 'thai' %
 (please load 'babel' package with option 'thai')}%
 }
+
+%%------------------------------------------------------------------
+%%  Package options.
+%%------------------------------------------------------------------
+% Set whether to reset letterform upon language switching
+\newbool{fontstlwgext@letterformreset}
 
 %%------------------------------------------------------------------
 %%  Helper commands
@@ -95,7 +102,9 @@
 \newrobustcmd\fontstlwgext@setlanguage[1]{%
     \fontstlwgext@setup%
     \edef\language@@s{#1}%
-    \edef\letterform@@s{\csname letterformdefault@\language@@s\endcsname}%
+    \ifbool{fontstlwgext@letterformreset}{%
+        \edef\letterform@@s{\csname letterformdefault@\language@@s\endcsname}%
+    }{}
     \fontstlwgext@invoke%
 }
 \renewrobustcmd\latintext{\fontstlwgext@setlanguage{en}}

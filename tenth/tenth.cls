@@ -93,6 +93,7 @@
     \babeltags{eng = english,tha = thai}
     \def\familydefault@th@tt{zi4}
     \def\encodingdefault@th@tt{T1}
+    \boolfalse{fontstlwgext@letterformreset}
     \setstretch{1.5}
 }{}
 
