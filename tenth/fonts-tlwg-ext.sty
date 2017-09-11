@@ -33,6 +33,12 @@
 }
 
 %%------------------------------------------------------------------
+%%  Package options.
+%%------------------------------------------------------------------
+% Set whether to reset letterform upon language switching
+\newbool{fontstlwgext@letterformreset}
+
+%%------------------------------------------------------------------
 %%  Helper commands
 %%------------------------------------------------------------------
 \def\eprc#1#2{\ifundef#1{\edef#1{#2}}{}}
@@ -95,7 +101,9 @@
 \newrobustcmd\fontstlwgext@setlanguage[1]{%
     \fontstlwgext@setup%
     \edef\language@@s{#1}%
-    \edef\letterform@@s{\csname letterformdefault@\language@@s\endcsname}%
+    \ifbool{fontstlwgext@letterformreset}{%
+        \edef\letterform@@s{\csname letterformdefault@\language@@s\endcsname}%
+    }{}
     \fontstlwgext@invoke%
 }
 \renewrobustcmd\latintext{\fontstlwgext@setlanguage{en}}
