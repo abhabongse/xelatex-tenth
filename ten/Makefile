@@ -9,6 +9,5 @@ $(pdfs): %.pdf: %.tex shared.tex ten.cls
 clean:
 	latexmk -c
 
-allclean:
-	latexmk -c
+cleanall: clean
 	rm -f $(pdfs)

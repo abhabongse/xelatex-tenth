@@ -73,7 +73,7 @@
 %%------------------------------------------------------------------
 %%  Setup font families (including for math)
 %%------------------------------------------------------------------
-\RequirePackage[T1]{fontenc}
+\RequirePackage[T1,LTH]{fontenc}
 \RequirePackage{libertine}
 \RequirePackage[varqu,varl]{inconsolata}
 %% Include math fonts.
@@ -544,5 +544,5 @@
 %%------------------------------------------------------------------
 % Include this package to allow cross-reference hyperlink
 % PEOPLE SAY THIS SHOULD BE ADDED LAST
-\RequirePackage[pdftex,unicode]{hyperref}
+\RequirePackage[pdftex,unicode=true]{hyperref}
 \newrobustcmd\sectionref[1]{\hyperref[#1]{\S\ref*{#1}}}

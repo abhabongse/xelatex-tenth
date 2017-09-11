@@ -1,4 +1,4 @@
-.PHONY: all clean
+.PHONY: all clean cleanall
 en_pdfs = tenth_en_oneside.pdf tenth_en_twoside.pdf
 th_pdfs = tenth_th_oneside.pdf tenth_th_twoside.pdf
 pdfs = $(en_pdfs) $(th_pdfs)
@@ -17,6 +17,5 @@ shared_th.tex: shared_th.pre.tex
 clean:
 	latexmk -c
 
-allclean:
-	latexmk -c
+cleanall: clean
 	rm -f $(pdfs) $(th_texs)
