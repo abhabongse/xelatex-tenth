@@ -89,7 +89,8 @@
 \ifbool{isthai}{%
     \RequirePackage[main=thai,thai,english]{babel}%
     \RequirePackage[utf8x]{inputenc}%
-    \RequirePackage[resetletterform]{fonts-tlwg-ext}%
+    \RequirePackage[resetletterform]{thaifont-setup}%
+    \RequirePackage{thaicaptions}
     \babeltags{eng = english,tha = thai}
     \def\fontstlwg@scale{0.92}
     \def\familydefault@th@sf{laksaman}
@@ -279,6 +280,9 @@
 \setlist[itemize,1]{label={\footnotesize\faChevronCircleRight}}
 \setlist[itemize,2]{label={\small\faAngleRight}}
 \setlist[itemize,3]{label={\footnotesize\faAngleDoubleRight}}
+\ifbool{isthai}{%
+    \RequirePackage{thaienum}
+}{}
 
 %%------------------------------------------------------------------
 %%  Set numbering of pages and enumerations
