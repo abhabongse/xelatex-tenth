@@ -87,13 +87,24 @@
 
 %% Setup Thai fonts is the option is specified
 \ifbool{isthai}{%
+    % Load packages
     \RequirePackage[main=thai,thai,english]{babel}%
     \RequirePackage[utf8x]{inputenc}%
     \RequirePackage[resetletterform]{thaifont-setup}%
     \RequirePackage{thaicaptions}
-    \babeltags{eng = english,tha = thai}
+    \babeltags{eng=english,tha=thai}
+    % Scale all fonts from fonts-tlwg package (recently updated feature).
     \def\fontstlwg@scale{0.92}
+    % Use sans-serif as default for both Latin and Thai scripts.
+    % This requires the option 'resetletterform' for thaifont-setup package.
+    \def\letterformdefault@en{sf}
+    \def\letterformdefault@th{sf}
+    % Set TH Sarabus New as default Thai sans-serif font.
     \def\familydefault@th@sf{laksaman}
+    % Use light/semibold variant for mdseries and bfseries font in opensans.
+    \def\seriesdefault@en@sf@md{l}
+    \def\seriesdefault@en@sf@bf{sb}
+    % Default to inconsolata for monospaced fonts (with encoding T1)
     \def\familydefault@th@tt{zi4}
     \def\encodingdefault@th@tt{T1}
     \setstretch{1.33}

@@ -80,6 +80,8 @@
     \edef\rmdefault@@v{\rmdefault}%
     \edef\sfdefault@@v{\sfdefault}%
     \edef\ttdefault@@v{\ttdefault}%
+    \edef\mddefault@@v{\mddefault}%
+    \edef\bfdefault@@v{\bfdefault}%
     % Set default letterform for each language
     \ifdefequal\familydefault@@v\sfdefault@@v{%
         \eprc\letterformdefault@en{sf}%
@@ -106,9 +108,24 @@
     \eprc\familydefault@th@sf{garuda}%
     \eprc\familydefault@en@tt{\ttdefault@@v}%
     \eprc\familydefault@th@tt{ttypist}%
+    % Set default font weights for mdseries for each font family
+    \eprc\seriesdefault@en@rm@md{\mddefault@@v}%
+    \eprc\seriesdefault@th@rm@md{\mddefault@@v}%
+    \eprc\seriesdefault@en@sf@md{\mddefault@@v}%
+    \eprc\seriesdefault@th@sf@md{\mddefault@@v}%
+    \eprc\seriesdefault@en@tt@md{\mddefault@@v}%
+    \eprc\seriesdefault@th@tt@md{\mddefault@@v}%
+    % Set default font weights for bfseries for each font family
+    \eprc\seriesdefault@en@rm@bf{\bfdefault@@v}%
+    \eprc\seriesdefault@th@rm@bf{\bfdefault@@v}%
+    \eprc\seriesdefault@en@sf@bf{\bfdefault@@v}%
+    \eprc\seriesdefault@th@sf@bf{\bfdefault@@v}%
+    \eprc\seriesdefault@en@tt@bf{\bfdefault@@v}%
+    \eprc\seriesdefault@th@tt@bf{\bfdefault@@v}%
     % Set 'current' anchor point if never introduced
     \eprc\language@@s{en}%
     \eprc\letterform@@s{\letterformdefault@en}%
+    \eprc\fontweight@@s{md}%
 }
 
 % Language switching commands
@@ -133,11 +150,22 @@
 \renewrobustcmd\sffamily{\thfsetup@setletterform{sf}}
 \renewrobustcmd\ttfamily{\thfsetup@setletterform{tt}}
 
+% Font weight switching commands
+\newrobustcmd\thfsetup@setfontweight[1]{%
+    \thfsetup@init%
+    \edef\fontweight@@s{#1}%
+    \thfsetup@invoke%
+}
+\renewrobustcmd\mdseries{\thfsetup@setfontweight{md}}
+\renewrobustcmd\bfseries{\thfsetup@setfontweight{bf}}
+
+
 % Invoke font switching selection after \language@@s or \letterform@@s
 % are set (called by \thfsetup@setlanguage or \thfsetup@setletterform).
 \newrobustcmd\thfsetup@invoke{%
     \fontencoding{\csname encodingdefault@\language@@s @\letterform@@s\endcsname}%
     \fontfamily{\csname familydefault@\language@@s @\letterform@@s\endcsname}%
+    \fontseries{\csname seriesdefault@\language@@s @\letterform@@s @\fontweight@@s\endcsname}%
     \selectfont%
     \edef\encodingdefault{\csname encodingdefault@\language@@s @\letterform@@s\endcsname}%
     \edef\familydefault{\csname familydefault@\language@@s @\letterform@@s\endcsname}%
