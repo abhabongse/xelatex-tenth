@@ -73,17 +73,18 @@
 %%------------------------------------------------------------------
 %%  Setup font families (including for math)
 %%------------------------------------------------------------------
+%% T1 is the default encoding, otherwise use LTH
 \RequirePackage[LTH,T1]{fontenc}
-\RequirePackage{libertine}
+%% Setup font names
+\RequirePackage{libertineRoman}
+\usepackage[defaultsans,scale=0.9]{opensans}
 \RequirePackage[varqu,varl]{inconsolata}
+\newrobustcmd\linuxlibertine{LinuxLibertineT-TLF}
+\newrobustcmd\opensans{fos}
+\newrobustcmd\inconsolata{zi4}
 %% Include math fonts.
 \RequirePackage{amsthm}
 \RequirePackage[libertine]{newtxmath}
-
-%% Setup font names
-\newrobustcmd\linuxlibertine{LinuxLibertineT-TLF}
-\newrobustcmd\linuxbiolinum{LinuxBiolinumT-TLF}
-\newrobustcmd\inconsolata{zi4}
 
 %% Setup Thai fonts is the option is specified
 \ifbool{isthai}{%
@@ -118,7 +119,7 @@
     kerning=true,spacing=true,factor=1150,stretch=15,shrink=15]{microtype}
 \microtypecontext{spacing=nonfrench}
 \SetExtraKerning[unit=space]%
-    {encoding={*},family={\linuxlib},series={*},%
+    {encoding={*},family={\linuxlibertine},series={*},%
         size={footnotesize,small,normalsize}}%
     {\textendash={250,250},      % en-dash, add more space around it
      \textemdash={300,300},      % em-dash, add more space around it
@@ -127,6 +128,8 @@
      \textquotedblleft={,150},   % left quotation mark, space from right
      \textquotedblright={150,}  % right quotation mark, space from left
 }
+\SetTracking{encoding={*}, shape=sc}{80}
+\SetTracking{encoding={*}, series=cl}{80}
 
 %%------------------------------------------------------------------
 %%  Setup color choices

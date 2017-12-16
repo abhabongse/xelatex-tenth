@@ -1,10 +1,10 @@
 .PHONY: all clean cleanall
-dep_files = tenth.cls thaienum.sty thaicaptions.sty thaifont-setup.sty
+dep_files = tenth.cls thaicaptions.sty thaifont-setup.sty
 en_pdfs = tenth_en_oneside.pdf tenth_en_twoside.pdf
 th_pdfs = tenth_th_oneside.pdf tenth_th_twoside.pdf
 pdfs = $(en_pdfs) $(th_pdfs)
 
-all: $(pdfs)
+all: $(en_pdfs) $(th_pdfs)
 
 $(en_pdfs): %.pdf: %.tex shared_en.tex $(dep_files)
 	latexmk -pdf -interaction=nonstopmode $<
