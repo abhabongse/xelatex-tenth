@@ -55,7 +55,7 @@
 \renewrobustcmd*\marginfont{\color{OrangeRed4}\footnotesize\setstretch{1}}
 \newrobustcmd{\marginhead}[1]{\marginnote{\color{black}\itshape{}#1}}
 
-\RequirePackage[hang,flushmargin]{footmisc}
+\RequirePackage[bottom,hang,flushmargin]{footmisc}
 \setlength{\footnotemargin}{0.5pc}
 
 %%------------------------------------------------------------------
