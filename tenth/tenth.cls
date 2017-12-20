@@ -119,14 +119,6 @@
   \setstretch{1.33}%
   }{}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%% ---- Footnotes ---- %%
-%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Make sure the footnote is pushed towards the bottom of the page
-\RequirePackage[bottom,hang,flushmargin]{footmisc}
-\setlength{\footnotemargin}{0.5pc}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ---- Typographies ---- %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -149,20 +141,21 @@
   \textquotedblright={150,}   % right quotation mark, space from left
   }
 % Letterspacing
-\SetTracking{encoding={*}, shape=sc}{80}
-\SetTracking{encoding={*}, series=cl}{80}
+\SetTracking{encoding={*},shape=sc}{80}
+\SetTracking{encoding={*},series=cl}{80}
 
-%%------------------------------------------------------------------
-%%  Setup color choices
-%%------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Colors ---- %%
+%%%%%%%%%%%%%%%%%%%%%%
+
 \RequirePackage[dvipsnames,svgnames,x11names,table,fixpdftex,hyperref]{xcolor}
 
 % Color palette
-\definecolor{pRed}{HTML}{A42D4B}
-\definecolor{pGreen}{HTML}{6EB233}
-\definecolor{pBlue}{HTML}{29339B}
-\definecolor{pYellow}{HTML}{F2BB05}
-\definecolor{pWhite}{HTML}{E5F9E0}
+\definecolor{TenthRed}{HTML}{A42D4B}
+\definecolor{TenthGreen}{HTML}{6EB233}
+\definecolor{TenthBlue}{HTML}{29339B}
+\definecolor{TenthYellow}{HTML}{F2BB05}
+\definecolor{TenthWhite}{HTML}{E5F9E0}
 
 % Color settings for mdframed
 \definecolor{DefaultShade}{gray}{0.975}
@@ -181,16 +174,25 @@
 \colorlet{Symbol}{Ivory4!60!Gold4}
 \colorlet{Comment}{Green4}
 
-% Commands for colored squares
+% Inline colored squares
 \newrobustcmd{\colorsq}[1]{\textcolor{#1}{$\blacksquare$}}
-\newrobustcmd{\rsq}{\colorsq{pRed}}
-\newrobustcmd{\gsq}{\colorsq{pGreen}}
-\newrobustcmd{\bsq}{\colorsq{pBlue}}
-\newrobustcmd{\ysq}{\colorsq{pYellow}}
+\newrobustcmd{\rsq}{\colorsq{TenthRed}}
+\newrobustcmd{\gsq}{\colorsq{TenthGreen}}
+\newrobustcmd{\bsq}{\colorsq{TenthBlue}}
+\newrobustcmd{\ysq}{\colorsq{TenthYellow}}
 
-%%------------------------------------------------------------------
-%%  Setup math equations and symbols
-%%------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Footnotes ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Make sure the footnote is pushed towards the bottom of the page
+\RequirePackage[bottom,hang,flushmargin]{footmisc}
+\setlength{\footnotemargin}{0.5pc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Equations ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \RequirePackage{amsmath}
 \RequirePackage{IEEEtrantools}
 \RequirePackage{mathtools}
@@ -203,9 +205,9 @@
 
 % Customization of math environment
 \renewrobustcmd{\qedsymbol}{$\blacksquare$}
-\newrobustcmd{\pencileq}[1]{{\footnotesize\faPencil}\hrsp\textbf{#1}}
-\def\tagform@#1{\maketag@@@{(\ignorespaces\pencileq{#1}\unskip\@@italiccorr)}}
-\renewrobustcmd{\eqref}[1]{\textup{\maketag@@@{(\hyperref[#1]{\ignorespaces\pencileq{\ref*{#1}}\unskip\@@italiccorr})}}}
+% \newrobustcmd{\pencileq}[1]{{\footnotesize\faPencil}\hrsp\textbf{#1}}
+% \def\tagform@#1{\maketag@@@{(\ignorespaces\pencileq{#1}\unskip\@@italiccorr)}}
+% \renewrobustcmd{\eqref}[1]{\textup{\maketag@@@{(\hyperref[#1]{\ignorespaces\pencileq{\ref*{#1}}\unskip\@@italiccorr})}}}
 
 %%------------------------------------------------------------------
 %%  Setup mdframed environment
