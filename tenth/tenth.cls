@@ -1,7 +1,7 @@
-%% ten.cls
+%% tenth.cls
 %% Author: Abhabongse Janthong
 %
-% This document class provides preloaded most common packages and most common
+% This document class preloads most common packages and most common
 % configurations of the document according to my own taste.
 %
 % It is released under MIT License because the author thinks that the
@@ -9,72 +9,79 @@
 \NeedsTeXFormat{LaTeX2e}[2016/02/01]
 \ProvidesClass{tenth}[2017/08/26 v0.2 (Abhabongse Janthong)]
 
-%%------------------------------------------------------------------
-%%  Very important utility package
-%%------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Very important utility packages ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
 
-%%------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Options for this document class ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  Define and process variables and options for this document
 %%  class. This has to be done before base class is loaded.
-%%------------------------------------------------------------------
 
-%%  Whether 'twoside' option is loaded (default: false)
+% Whether 'twoside' option is loaded (default: false)
 \newbool{istwoside}
 \DeclareOption{twoside}{%
     \booltrue{istwoside}%
     \PassOptionsToClass{twoside}{article}%
 }
 
-%%  Whether 'thai' option is loaded (default: false)
+% Whether 'thai' option is loaded (default: false)
 \newbool{isthai}
 \DeclareOption{thai}{%
     \booltrue{isthai}
 }
 
-%%  Pass along all other options not captured above
+% Pass along all other options not captured above
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
-%%  Now load the base class
+% Now load the base class
 \LoadClass{article}
 
-%%------------------------------------------------------------------
-%%  Setup paper margin and marginnote command.
-%%------------------------------------------------------------------
-\RequirePackage[%
-    top=1.25in,bottom=1.25in,outer=1.75in,inner=1in,heightrounded,%
-    marginparwidth=1in,marginparsep=1.25pc,head=2pc,foot=3.5pc]{geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Paper margins ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%------------------------------------------------------------------
-%%  Setup marginnote command.
-%%------------------------------------------------------------------
+\RequirePackage[%
+  top=1.25in,bottom=1.25in,outer=1.75in,inner=1in,heightrounded,%
+  marginparwidth=1in,marginparsep=1.25pc,head=2pc,foot=3.5pc%
+  ]{geometry}
+
+% Set up marginnote commands
 \RequirePackage[heightadjust]{marginnote}
 \renewrobustcmd*\marginnotevadjust{4.33pt}
 \renewrobustcmd*\marginfont{\color{OrangeRed4}\footnotesize\setstretch{1}}
 \newrobustcmd{\marginhead}[1]{\marginnote{\color{black}\itshape{}#1}}
 
-\RequirePackage[bottom,hang,flushmargin]{footmisc}
-\setlength{\footnotemargin}{0.5pc}
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Spacings ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%------------------------------------------------------------------
-%%  Setup constant lengths for parts of document.
-%%------------------------------------------------------------------
 \RequirePackage{setspace}
 \setstretch{1.33}
 \setlength{\parskip}{0pc}
 \setlength{\parindent}{2pc}
+
+% Spaces above or below equations
 \setlength{\abovedisplayskip}{0.75pc plus 0.25pc minus 0.25pc}
 \setlength{\belowdisplayskip}{0.75pc plus 0.25pc minus 0.25pc}
 \setlength{\abovedisplayshortskip}{0.75pc plus 0.25pc minus 0.25pc}
 \setlength{\belowdisplayshortskip}{0.75pc plus 0.25pc minus 0.25pc}
 
-%%------------------------------------------------------------------
-%%  Setup font families (including for math)
-%%------------------------------------------------------------------
-%% T1 is the default encoding, otherwise use LTH
+% Hair space
+\newrobustcmd{\hrsp}{\ifmmode\mskip1mu\else\kern0.0625em\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Languages ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% T1 is the default encoding, otherwise use LTH
 \RequirePackage[LTH,T1]{fontenc}
+
 %% Setup font names
 \RequirePackage{libertineRoman}
 \usepackage[defaultsans,scale=0.9]{opensans}
@@ -82,52 +89,66 @@
 \newrobustcmd\linuxlibertine{LinuxLibertineT-TLF}
 \newrobustcmd\opensans{fos}
 \newrobustcmd\inconsolata{zi4}
+
 %% Include math fonts.
 \RequirePackage{amsthm}
 \RequirePackage[libertine]{newtxmath}
 
 %% Setup Thai fonts is the option is specified
 \ifbool{isthai}{%
-    % Load packages
-    \RequirePackage[main=thai,thai,english]{babel}%
-    \RequirePackage[utf8x]{inputenc}%
-    \RequirePackage[resetletterform]{thaifont-setup}%
-    \RequirePackage{thaicaptions}
-    \babeltags{eng=english,tha=thai}
-    % Scale all fonts from fonts-tlwg package (recently updated feature).
-    \def\fontstlwg@scale{0.92}
-    % Use sans-serif as default for both Latin and Thai scripts.
-    % This requires the option 'resetletterform' for thaifont-setup package.
-    \def\letterformdefault@en{sf}
-    \def\letterformdefault@th{sf}
-    % Set TH Sarabus New as default Thai sans-serif font.
-    \def\familydefault@th@sf{laksaman}
-    % Use light/semibold variant for mdseries and bfseries font in opensans.
-    \def\seriesdefault@en@sf@md{l}
-    \def\seriesdefault@en@sf@bf{sb}
-    % Default to inconsolata for monospaced fonts (with encoding T1)
-    \def\familydefault@th@tt{zi4}
-    \def\encodingdefault@th@tt{T1}
-    \setstretch{1.33}
-}{}
+  % Load packages
+  \RequirePackage[main=thai,thai,english]{babel}%
+  \RequirePackage[utf8x]{inputenc}%
+  \RequirePackage[resetletterform]{thaifont-setup}%
+  \RequirePackage{thaicaptions}%
+  \babeltags{eng=english,tha=thai}%
+  % Scale all fonts from fonts-tlwg package (recently updated feature).
+  \def\fontstlwg@scale{0.92}%
+  % Use sans-serif as default for both Latin and Thai scripts.
+  % This requires the option 'resetletterform' for thaifont-setup package.
+  \def\letterformdefault@en{sf}%
+  \def\letterformdefault@th{sf}%
+  % Set TH Sarabus New as default Thai sans-serif font.
+  \def\familydefault@th@sf{laksaman}%
+  % Use light/semibold variant for mdseries and bfseries font in opensans.
+  \def\seriesdefault@en@sf@md{l}%
+  \def\seriesdefault@en@sf@bf{sb}%
+  % Default to inconsolata for monospaced fonts (with encoding T1)
+  \def\familydefault@th@tt{zi4}%
+  \def\encodingdefault@th@tt{T1}%
+  \setstretch{1.33}%
+  }{}
 
-%%------------------------------------------------------------------
-%%  Load 'microtype' which is the best package ever
-%%------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Footnotes ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Make sure the footnote is pushed towards the bottom of the page
+\RequirePackage[bottom,hang,flushmargin]{footmisc}
+\setlength{\footnotemargin}{0.5pc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Typographies ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  This package provides enhancement to text displays
+
 \RequirePackage[%
-    activate={true,nocompatibility},final,tracking=true,letterspace=60,%
-    kerning=true,spacing=true,factor=1150,stretch=15,shrink=15]{microtype}
+  activate={true,nocompatibility},final,tracking=true,letterspace=60,%
+  kerning=true,spacing=true,factor=1150,stretch=15,shrink=15%
+  ]{microtype}
 \microtypecontext{spacing=nonfrench}
-\SetExtraKerning[unit=space]%
-    {encoding={*},family={\linuxlibertine},series={*},%
-        size={footnotesize,small,normalsize}}%
-    {\textendash={250,250},      % en-dash, add more space around it
-     \textemdash={300,300},      % em-dash, add more space around it
-     "28={,150},                 % left bracket, add space from right
-     "29={150,},                 % right bracket, add space from left
-     \textquotedblleft={,150},   % left quotation mark, space from right
-     \textquotedblright={150,}  % right quotation mark, space from left
-}
+\SetExtraKerning[unit=space]{%
+  encoding={*},family={\linuxlibertine},series={*},%
+  size={footnotesize,small,normalsize}%
+  }{%
+  \textendash={250,250},      % en-dash, add more space around it
+  \textemdash={300,300},      % em-dash, add more space around it
+  "28={,150},                 % left bracket, add space from right
+  "29={150,},                 % right bracket, add space from left
+  \textquotedblleft={,150},   % left quotation mark, space from right
+  \textquotedblright={150,}   % right quotation mark, space from left
+  }
+% Letterspacing
 \SetTracking{encoding={*}, shape=sc}{80}
 \SetTracking{encoding={*}, series=cl}{80}
 
@@ -438,8 +459,6 @@
 %%------------------------------------------------------------------
 %%  Additional definitions
 %%------------------------------------------------------------------
-% Define hair space
-\newrobustcmd{\hrsp}{\ifmmode\mskip1mu\else\kern0.0625em\fi}
 
 % Define shorthands for mathematical sets
 \newrobustcmd{\Algebraic}{\mathbb{A}}
@@ -483,10 +502,8 @@
 % \RequirePackage{pst-grad,pst-plot}
 % \usetikzlibrary{positioning}
 
-%%------------------------------------------------------------------
-%%  Final hyperref package
-%%------------------------------------------------------------------
-% Include this package to allow cross-reference hyperlink
-% PEOPLE SAY THIS SHOULD BE ADDED LAST
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Hyperlinks (should always be last) ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage[pdftex,unicode=true]{hyperref}
 \newrobustcmd\sectionref[1]{\hyperref[#1]{\S\ref*{#1}}}
