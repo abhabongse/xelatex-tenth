@@ -66,7 +66,8 @@ There are two possible places where you can put these font files:
 - `FiraGO-Regular.otf`
 - `FiraGO-SemiBoldItalic.otf`
 - `FiraGO-SemiBold.otf`
-- `FiraCode-Bold.otf`
-- `FiraCode-Light.otf`
-- `FiraCode-Medium.otf`
-- `FiraCode-Regular.otf`
+- `FiraCode-Bold.ttf`
+- `FiraCode-Light.ttf`
+- `FiraCode-Medium.ttf`
+- `FiraCode-Regular.ttf`
+- `FiraCode-SemiBold.ttf`
