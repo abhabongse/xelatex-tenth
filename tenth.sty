@@ -1,0 +1,554 @@
+%!TEX root = main.tex
+%% tenth.cls
+%% Author: Abhabongse Janthong
+%
+% This custom style preloads most common packages and most common
+% configurations of the document according to my own taste.
+%
+% It is released under MIT License because the author thinks that the
+% LaTeX Project Public License is annoying and life is complicated.
+\NeedsTeXFormat{LaTeX2e}[2016/02/01]
+\ProvidesPackage{tenth}[2021/01/03 v0.3 (Abhabongse Janthong)]
+
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{family=tenth,prefix=tenth@}
+\DeclareBoolOption[false]{localfonts}
+\ProcessKeyvalOptions{tenth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Very important utility packages ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Spacings ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[nodisplayskipstretch]{setspace}
+%% Hair space
+\newrobustcmd{\hrsp}{\ifmmode\mskip1mu\else\kern0.0625em\fi}
+
+%% Spaces above or below equations
+\setlength{\abovedisplayskip}{0pc plus 0pc minus 0.1pc}
+\setlength{\belowdisplayskip}{0pc plus 0pc minus 0.1pc}
+\setlength{\abovedisplayshortskip}{0pc plus 0pc minus 0.05pc}
+\setlength{\belowdisplayshortskip}{0pc plus 05pc minus 0.05pc}
+\setlength{\parskip}{0.5pc}
+\setlength{\parindent}{2pc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Fonts and Languages ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{amsmath}
+\RequirePackage{mathtools}
+\RequirePackage{euler}
+\RequirePackage{amssymb}
+\RequirePackage{mathspec}
+\RequirePackage{fontspec}
+\RequirePackage[fixed]{fontawesome5}
+\RequirePackage{xunicode}
+\RequirePackage{xltxtra}
+
+% Enable line breaks for Thai text
+\XeTeXlinebreaklocale "th_TH"
+\XeTeXlinebreakskip = 0pt plus 0.75pt minus 0.5pt
+
+\defaultfontfeatures[Sarabun]{
+\iftenth@localfonts
+    Path            = fonts/ ,
+    Extension       = .ttf ,
+\fi
+    UprightFont     = {*-Light} ,
+    ItalicFont      = {*-LightItalic} ,
+    BoldFont        = {*-Bold} ,
+    BoldItalicFont  = {*-BoldItalic} ,
+    FontFace        = {eb}{n}{*-ExtraBold},
+    FontFace        = {eb}{it}{*-ExtraBoldItalic},
+    FontFace        = {db}{n}{*-SemiBold},
+    FontFace        = {db}{it}{*-SemiBoldItalic},
+    FontFace        = {sb}{n}{*-Medium},
+    FontFace        = {sb}{it}{*-MediumItalic},
+    FontFace        = {mb}{n}{*-Regular},
+    FontFace        = {mb}{it}{*-Italic},
+    FontFace        = {lt}{n}{*-ExtraLight},
+    FontFace        = {lt}{it}{*-ExtraLightItalic},
+    FontFace        = {el}{n}{*-Thin},
+    FontFace        = {el}{it}{*-ThinItalic},
+    Scale           = {MatchLowercase} ,
+    WordSpace       = 1.25 ,
+    Mapping         = tex-text ,
+}
+
+\defaultfontfeatures[FiraGO]{
+\iftenth@localfonts
+    Path            = fonts/ ,
+    Extension       = .otf ,
+\fi
+    UprightFont     = {*-Book} ,
+    ItalicFont      = {*-BookItalic} ,
+    BoldFont        = {*-Bold} ,
+    BoldItalicFont  = {*-BoldItalic} ,
+    FontFace        = {eb}{n}{*-ExtraBold},
+    FontFace        = {eb}{it}{*-ExtraBoldItalic},
+    FontFace        = {db}{n}{*-SemiBold},
+    FontFace        = {db}{it}{*-SemiBoldItalic},
+    FontFace        = {sb}{n}{*-Medium},
+    FontFace        = {sb}{it}{*-MediumItalic},
+    FontFace        = {mb}{n}{*-Regular},
+    FontFace        = {mb}{it}{*-Italic},
+    FontFace        = {lt}{n}{*-Light},
+    FontFace        = {lt}{it}{*-LightItalic},
+    FontFace        = {el}{n}{*-ExtraLight},
+    FontFace        = {el}{it}{*-ExtraLightItalic},
+    Scale           = {MatchLowercase} ,
+    WordSpace       = 1.25 ,
+    Mapping         = tex-text ,
+}
+
+\defaultfontfeatures[FiraCode]{
+\iftenth@localfonts
+    Path            = fonts/ ,
+    Extension       = .otf ,
+\fi
+    UprightFont     = {*-Regular} ,
+    BoldFont        = {*-Bold} ,
+    FontFace        = {md}{n}{*-Medium},
+    FontFace        = {lt}{n}{*-Light},
+    Scale           = {MatchLowercase} ,
+    WordSpace       = 1.25 ,
+    Contextuals     = Alternate ,
+    Numbers         = SlashedZero ,  % ironically change slashed zero to dotted zero
+}
+
+\setmainfont{Sarabun}
+\setsansfont{FiraGO}
+\setmonofont{FiraCode}
+% \setmathsfont(Digits,Latin,Greek)[Numbers={Lining,Proportional}]{texgyrepagella-math.otf}
+\setmathrm{texgyrepagella-math.otf}
+% \DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
+
+\DeclareRobustCommand\ebseries{\fontseries{eb}\selectfont}
+\DeclareTextFontCommand{\texteb}{\ebseries}
+\DeclareRobustCommand\dbseries{\fontseries{db}\selectfont}
+\DeclareTextFontCommand{\textdb}{\dbseries}
+\DeclareRobustCommand\sbseries{\fontseries{sb}\selectfont}
+\DeclareTextFontCommand{\textsb}{\sbseries}
+\DeclareRobustCommand\mbseries{\fontseries{mb}\selectfont}
+\DeclareTextFontCommand{\textmb}{\mbseries}
+\DeclareRobustCommand\ltseries{\fontseries{lt}\selectfont}
+\DeclareTextFontCommand{\textlt}{\ltseries}
+\DeclareRobustCommand\elseries{\fontseries{el}\selectfont}
+\DeclareTextFontCommand{\textel}{\elseries}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Typographies ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{relsize}
+\RequirePackage[factor=1150]{microtype}
+\newrobustcmd{\ltrsp}[1][5]{\addfontfeature{LetterSpace=#1}}
+\newrobustcmd{\duration}[1]{{\ebseries\relscale{0.8}\addfontfeature{LetterSpace=10}#1}}
+\newrobustcmd{\ifpageodd}[2]{\ifodd\thepage{#1}\else{#2}\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Images ---- %%
+%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{graphicx}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Colors ---- %%
+%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[x11names,svgnames,usenames,dvipsnames,table,hyperref]{xcolor}
+\RequirePackage{hyperref}
+
+%% Color palette
+\colorlet{IconColor}{black!80!white}
+\colorlet{PillColor}{black!20!white}
+\colorlet{AltPillColor}{black!80!white}
+\colorlet{RedBg}{Red1!25!white}
+\colorlet{GreenBg}{Chartreuse3!25}
+\colorlet{BlueBg}{NavyBlue!15}
+\colorlet{YellowBg}{Yellow2!30}
+
+%% Color settings for listings
+\colorlet{CodePrimaryKeyword}{RoyalBlue3}
+\colorlet{CodeSecondaryKeyword}{Red3}
+\colorlet{CodeTertiaryKeyword}{TealBlue}
+\colorlet{CodeIdentifier}{black!80!white}
+\colorlet{CodeNumber}{Red3}
+\colorlet{CodeString}{Red3}
+\colorlet{CodeComment}{Green4}
+\colorlet{CodeSymbol}{Ivory4!60!Gold4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Sidenotes ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[noadjust]{marginnote}
+\reversemarginpar
+\RequirePackage{sidenotes}
+\newrobustcmd{\adjustsidenote}[1]{%
+    \RenewDocumentCommand\sidenotetext{ o o +m }{%
+    \IfNoValueOrEmptyTF{##1}{%
+        \@sidenotes@placemarginal{##2}{#1\vphantom{~}\llap{\textsuperscript{\thesidenote}{}\,}\footnotesize##3}%
+        \refstepcounter{sidenote}%
+    }{%
+        \@sidenotes@placemarginal{##2}{#1\vphantom{~}\llap{\textsuperscript{##1}\,}##3}%
+    }%
+    }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Captions ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[%
+  margin=1pc,font={rm,up,md,footnotesize},labelfont={bf},labelsep=period,%
+  format=plain,indention=1pc,justification=justified]{caption}
+\RequirePackage{subcaption}
+\captionsetup{compatibility=false}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Lists and enumerations ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{enumitem}
+\RequirePackage{alphalph}
+\RequirePackage{multicol}
+% \setlist{%
+%   topsep=0pc,itemsep=0pc,partopsep=0.25pc,parsep=0.25pc,%
+%   leftmargin=2pc,itemindent=0.25pc,listparindent=0.25in,%
+%   labelindent=!,labelsep=0.5pc,%
+% }
+% \setlist[1]{%
+%   topsep=0.5pc,itemsep=0.5pc,partopsep=0.5pc,parsep=0.5pc%
+% %   leftmargin=2pc,itemindent=0pc,%
+% }
+% \setlist[description]{
+%   leftmargin=2pc,itemindent=*,listparindent=0.25in,%
+%   labelindent=0pc,labelsep=1pc,%
+% }
+
+% Define Thai numeral translation
+\def\thaitranslate#1{\ifx @#1%
+    \else\ifcase#1๐\or ๑\or ๒\or ๓\or ๔\or ๕\or ๖\or ๗\or ๘\or ๙\else\fi
+    \expandafter\thaitranslate
+    \fi
+}
+\def\@thainum#1{\expandafter\thaitranslate\number#1@}
+\def\thainum#1{\expandafter\@thainum\csname c@#1\endcsname}
+% Define Thai alphabet (skipping ฃฅฆ)
+\def\thaialph#1{\expandafter\@thaialph\csname c@#1\endcsname}
+\def\@thaialph#1{%
+    \ifcase#1\or ก\or ข\or ค\or ง\or จ\or ฉ\or ช\or ซ\or ฌ\or ญ\or ฎ\or ฏ\or
+        ฐ\or ฑ\or ฒ\or ณ\or ด\or ต\or ถ\or ท\or ธ\or น\or บ\or ป\or ผ\or ฝ\or
+        พ\or ฟ\or ภ\or ม\or ย\or ร\or ล\or ว\or ศ\or ษ\or ส\or ห\or ฬ\or อ\or
+        ฮ\else\@ctrerr\fi}
+% Define full Thai alphabet
+\def\thaifullalph#1{\expandafter\@thaifullalph\csname c@##1\endcsname}
+\def\@thaifullalph#1{%
+    \ifcase#1\or ก\or ข\or ฃ\or ค\or ฅ\or ฆ\or ง\or จ\or ฉ\or ช\or ซ\or ฌ\or ญ\or ฎ\or ฏ\or
+        ฐ\or ฑ\or ฒ\or ณ\or ด\or ต\or ถ\or ท\or ธ\or น\or บ\or ป\or ผ\or ฝ\or
+        พ\or ฟ\or ภ\or ม\or ย\or ร\or ล\or ว\or ศ\or ษ\or ส\or ห\or ฬ\or อ\or
+        ฮ\else\@ctrerr\fi}
+% Define multi-character Thai alphabet counter
+\newalphalph{\@thaialphs}[alph]{\@thaialph}{41}
+\newrobustcmd*{\thaialphs}[1]{%
+    \expandafter\@thaialphs\csname c@#1\endcsname%
+}
+\newalphalph{\@thaifullalphs}[alph]{\@thaifullalph}{44}
+\newrobustcmd*{\thaifullalphs}[1]{%
+    \expandafter\@thaifullalphs\csname c@#1\endcsname%
+}
+% Add Thai enumeration counters
+\AddEnumerateCounter{\thainum}{\@thainum}{๙}
+\AddEnumerateCounter{\thaialph}{\@thaialph}{ณ}
+\AddEnumerateCounter{\thaifullalph}{\@thaifullalph}{ณ}
+\AddEnumerateCounter{\thaialphs}{\@thaialphs}{ณ}
+\AddEnumerateCounter{\thaifullalphs}{\@thaifullalphs}{ณ}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Headings and sections ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TODO
+\RequirePackage{titling}
+\setlength{\droptitle}{-2pc}
+\pretitle{\noindent\sffamily\Huge\sbseries}
+\posttitle{\vskip 0pc}
+\preauthor{\noindent\sffamily\LARGE\ltseries}
+\postauthor{\vskip 0pc}
+
+\RequirePackage{titlesec}
+\setcounter{secnumdepth}{3}
+
+\titleformat*{\section}{\sffamily\bfseries\LARGE}
+\titleformat*{\subsection}{\sffamily\sbseries\Large}
+\titleformat*{\subsubsection}{\sffamily\mbseries\large}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Page headers and footers ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{fancyhdr}
+\newrobustcmd{\pageheader}{}
+\setlength{\headheight}{15pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[LE,RO]{\pageheader}\fancyfoot[LE,RO]{\ltseries\thepage}}
+\fancypagestyle{titlepage}{\fancyhf{}\fancyfoot[LE,RO]{\ltseries\thepage}}
+\renewrobustcmd{\headrulewidth}{0pt}
+\renewrobustcmd{\footrulewidth}{0pt}
+\pagestyle{plain}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Tables ---- %%
+%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{booktabs}
+\setlength{\heavyrulewidth}{1pt}
+\setlength{\lightrulewidth}{0.5pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Text styles ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Underline styles
+\RequirePackage[normalem]{ulem}
+
+%% Verbatim mode
+\RequirePackage{fancyvrb}
+\DefineVerbatimEnvironment{plainvrb}{Verbatim}{fontfamily=FiraMono(0)}
+
+%% Text pills
+\RequirePackage{tcolorbox}
+\newtcbox{\pill}[1][PillColor]{%
+    on line,arc=4.5pt,colback=#1,colframe=#1,%
+    before upper={\rule[-2.5pt]{0pt}{10pt}},boxrule=0pt,%
+    boxsep=0pt,left=3pt,right=3pt,top=0pt,bottom=0pt,%
+}
+\newrobustcmd{\labelpill}[2][PillColor]{{\relscale{0.8}\pill[#1]{\mdseries#2}}}
+\newrobustcmd{\labelpillalt}[2][AltPillColor]{{\relscale{0.8}\pill[#1]{\mdseries\color{white}#2}}}
+
+%% Text highlights
+\newrobustcmd{\hlt}[2][PillColor]{%
+  \ifmmode{\mathchoice%
+      {\colorbox{#1}{$\displaystyle\strut{}#2$}}%
+      {\colorbox{#1}{$\textstyle\strut{}#2$}}%
+      {\colorbox{#1}{$\scriptstyle\strut{}#2$}}%
+      {\colorbox{#1}{$\scriptscriptstyle\strut{}#2$}}}%
+  \else%
+      {\colorbox{#1}{\strut{}#2}}%
+  \fi}
+\newrobustcmd{\rhlt}[1]{\hlt[RedBg]{#1}}
+\newrobustcmd{\ghlt}[1]{\hlt[GreenBg]{#1}}
+\newrobustcmd{\bhlt}[1]{\hlt[BlueBg]{#1}}
+\newrobustcmd{\yhlt}[1]{\hlt[YellowBg]{#1}}
+
+%% Decorators
+\newrobustcmd{\twoemrule}{\rule[2.25pt]{2em}{0.5pt}}
+\newrobustcmd{\threeemrule}{\rule[2.25pt]{3em}{0.5pt}}
+
+%% Text Banner
+\newrobustcmd{\secbanner}[2][24pc]{%
+    {\color{black!85!white}\rule[-0.25pt]{1.5pc}{8pt}}%
+    { #2 }%
+    {\color{black!85!white}\rule[-0.25pt]{#1-1.5pc-\widthof{ #2 }}{8pt}}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Math mode ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% \DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
+% \RequirePackage{amssymb}
+% \RequirePackage{IEEEtrantools}
+% \RequirePackage{mathtools}
+% \RequirePackage{chemarrow}
+% \RequirePackage{adforn}  % Ornaments package
+% \RequirePackage{textcomp}
+% \RequirePackage{wasysym}
+% \RequirePackage{aliascnt}
+% \RequirePackage{cancel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Math extra definitions ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Define theorem frames
+\RequirePackage{mdframed}
+\mdfdefinestyle{theorembox}{%
+    linecolor=black!60,%
+    innertopmargin=0pc,%
+    innerbottommargin=0.5pc,%
+    leftmargin=-1pc,innerleftmargin=1pc,%
+    rightmargin=-1pc,innerrightmargin=1pc,%
+    linewidth=2.5pt,%
+    topline=false,bottomline=false,rightline=false,%
+}
+
+%% Define theorem environments
+\RequirePackage{amsthm}
+\theoremstyle{definition}
+\newmdtheoremenv[style=theorembox,linecolor=NavyBlue!50]{theorem}{ทฤษฎีบท}
+\newmdtheoremenv[style=theorembox,linecolor=BurntOrange!70]{principle}[theorem]{หลักการ}
+\newmdtheoremenv[style=theorembox,linecolor=BurntOrange!70]{problem}[theorem]{ปัญหา}
+\newtheorem{definition}[theorem]{นิยาม}
+\newtheorem{lemma}[theorem]{บทตั้ง}
+\newtheorem{postulate}[theorem]{ข้อตกลง}
+\newtheorem{corollary}[theorem]{บทแทรก}
+\newtheorem{observation}[theorem]{ข้อสังเกต}
+\newtheorem{question}[theorem]{คำถาม}
+
+%% Configure theorem referencing 
+\newrobustcmd{\customref}[2]{\hyperref[#1]{#2\ref*{#1}}}
+\renewrobustcmd{\theoremautorefname}{หัวข้อที่}
+
+%% Create black square box at the end of environment (with \qedhere support)
+\newrobustcmd\xqed[1]{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{#1}}
+\newrobustcmd\stophere{\xqed{\ensuremath{\blacksquare}}}
+\AtBeginEnvironment{theorem}{\pushQED{\stophere}}
+\AtEndEnvironment{theorem}{\popQED}
+\AtBeginEnvironment{principle}{\pushQED{\stophere}}
+\AtEndEnvironment{principle}{\popQED}
+\AtBeginEnvironment{[problem]}{\pushQED{\stophere}}
+\AtEndEnvironment{[problem]}{\popQED}
+\AtBeginEnvironment{definition}{\pushQED{\stophere}}
+\AtEndEnvironment{definition}{\popQED}
+\AtBeginEnvironment{lemma}{\pushQED{\stophere}}
+\AtEndEnvironment{lemma}{\popQED}
+\AtBeginEnvironment{postulate}{\pushQED{\stophere}}
+\AtEndEnvironment{postulate}{\popQED}
+\AtBeginEnvironment{corollary}{\pushQED{\stophere}}
+\AtEndEnvironment{corollary}{\popQED}
+\AtBeginEnvironment{observation}{\pushQED{\stophere}}
+\AtEndEnvironment{observation}{\popQED}
+
+%% Define shorthands for mathematical sets
+\newrobustcmd{\Algebraic}{\mathbb{A}}
+\newrobustcmd{\Complex}{\mathbb{C}}
+\newrobustcmd{\Field}{\mathbb{F}}
+\newrobustcmd{\Natural}{\mathbb{N}}
+\newrobustcmd{\Quotient}{\mathbb{Q}}
+\newrobustcmd{\Real}{\mathbb{R}}
+\newrobustcmd{\Zahlen}{\mathbb{Z}}
+
+%% Define shorthand for overline
+\newrobustcmd{\ol}{\overline}
+
+%% Define some more math operators
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator*{\argmax}{arg{\hrsp}max}
+\DeclareMathOperator*{\argmin}{arg{\hrsp}min}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Code listings ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{listings}
+\RequirePackage{lstfiracode}
+\lstset{%
+  % Basic Settings
+  basicstyle=\ttfamily,%
+  captionpos=b,%
+  % Margins and Background
+  xleftmargin=2.5pc,%
+  xrightmargin=1.5pc,%
+  frame=none,%
+  framesep=0.5pc,%
+  framextopmargin=0pc,%
+  framexbottommargin=0pc,%
+  framexleftmargin=0pc,%
+  framexrightmargin=0pc,%
+  % Spacing and Horizontal Flow
+  showspaces=false,%
+  showstringspaces=false,%
+  showtabs=false,%
+  tabsize=2,%
+  breaklines=true,%
+  columns=fullflexible,%
+  keepspaces=true,%
+  % Vertical Flow
+  aboveskip=\bigskipamount,%
+  belowskip=\medskipamount,%
+  abovecaptionskip=\medskipamount,%
+  belowcaptionskip=\smallskipamount,%
+  lineskip=0.0001pt,
+  % Line Numbers
+  stepnumber=1,%
+  numbers=left,%
+  numbersep=1pc,%
+  numberstyle=\ttfamily\color{LightGray},%
+  % Special Keyword Format
+  stringstyle=\color{CodeString},%
+  commentstyle=\color{CodeComment},%
+  identifierstyle=\color{CodeIdentifier},%
+  keywordstyle=[1]{\bfseries\color{CodePrimaryKeyword}},%
+  keywordstyle=[2]{\bfseries\color{CodeSecondaryKeyword}},%
+  keywordstyle=[3]{\bfseries\color{CodeTertiaryKeyword}},%
+  extendedchars=true}
+\captionsetup[lstlisting]{margin={2pc,-3.00001pc},oneside}
+\renewrobustcmd\lstlistingname{Source Code}
+\newrobustcmd{\lstnumberautorefname}{Line}
+
+\let\origthelstnumber\thelstnumber
+\newrobustcmd*\SuppressNumber{%
+    \lst@AddToHook{OnNewLine}{%
+        \let\thelstnumber\relax%
+        \advance\c@lstnumber-\@ne\relax}}
+\newrobustcmd*\ReactivateNumber{%
+    \lst@AddToHook{OnNewLine}{%
+        \let\thelstnumber\origthelstnumber%
+        \advance\c@lstnumber\@ne\relax}}
+\newrobustcmd*\ActivateNumber[1]{%
+    \setcounter{lstnumber}{\numexpr#1-1\relax}
+    \lst@AddToHook{OnNewLine}{%
+        \let\thelstnumber\origthelstnumber%
+        \refstepcounter{lstnumber}}}
+\newrobustcmd*\AlternateNumber[1]{%
+    \lst@AddToHook{OnNewLine}{%
+        \gdef\thelstnumber{#1}}}
+
+\lstdefinelanguage{pseudocode}{%
+    keywordstyle=[1]{\bfseries\color{CodePrimaryKeyword}},%
+    keywordstyle=[2]{\bfseries\color{CodeSecondaryKeyword}},%
+    keywordstyle=[3]{\bfseries\color{CodeTertiaryKeyword}},%
+    morekeywords=[1]{%
+        function,procedure,return,halt,terminate,exit,%
+        for,each,to,downto,loop,while,do,repeat,until,break,continue,end,%
+        if,then,else,elseif,case,matches},%
+    morekeywords=[2]{%
+        input,output,print,and,or,not,xor,div,mod,%
+        is,in,max,min,sum,swap,floor,ceil},%
+    morekeywords=[3]{true,false,empty,nil,lambda},%
+    sensitive=false,%
+    morestring=[b]",%
+    morestring=[b]',%
+    morecomment=[l]{\#},%
+    literate=*%
+        %% Single character
+        {0}{{{\color{CodeNumber}{0}}}}1
+        {1}{{{\color{CodeNumber}{1}}}}1
+        {2}{{{\color{CodeNumber}{2}}}}1
+        {3}{{{\color{CodeNumber}{3}}}}1
+        {4}{{{\color{CodeNumber}{4}}}}1
+        {5}{{{\color{CodeNumber}{5}}}}1
+        {6}{{{\color{CodeNumber}{6}}}}1
+        {7}{{{\color{CodeNumber}{7}}}}1
+        {8}{{{\color{CodeNumber}{8}}}}1
+        {9}{{{\color{CodeNumber}{9}}}}1
+        {+}{{{\bfseries\color{CodeSymbol}{+}}}}1
+        {-}{{{\bfseries\color{CodeSymbol}{-}}}}1
+        {*}{{{\bfseries\color{CodeSymbol}{*}}}}1
+        {/}{{{\bfseries\color{CodeSymbol}{/}}}}1
+        {@}{{{\bfseries\color{CodeSymbol}{@}}}}1
+        {:}{{{\bfseries\color{CodeSymbol}{:}}}}1
+        {->}{{{\bfseries\color{CodeSymbol}{->}}}}2
+        ,
+    mathescape=false,%
+    escapeinside={<\%}{\%>},%
+}
+
+%% Set default listing language
+\lstset{language=pseudocode}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Datetime ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[datesep={-},timesep={:},showseconds=false,showzone=false]{datetime2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Lorem Ipsum ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{lipsum}
