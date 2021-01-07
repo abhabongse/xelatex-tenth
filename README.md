@@ -1,7 +1,8 @@
 # XeLaTeX Template
 
 Preconfigured template for XeLaTeX documents.
-Codename `tenth` used to stand for for **T**emplate for **En**glish and **Th**ai as it was historically set up for pdfLaTeX, but no more!
+Codename `tenth` used to stand for for **T**emplate for **En**glish and **Th**ai 
+as it was historically set up for pdfLaTeX, but no more!
 It even supports more scripts with `fontspec` package.
 
 Other preconfigurations are according to my own taste, of course.
@@ -11,23 +12,33 @@ Feel free to look at or modify `tenth.sty` as you wish.
 
 This template is preconfigured with the following fonts: 
 
-- [Google Font variant of Sarabun](https://github.com/cadsondemak/Sarabun) as the main font (represented as `\rmfamily`)
-- [FiraGO](https://github.com/bBoxType/FiraGO) as the loopless font (represented as `\sffamily`)
-- [FiraCode](https://github.com/tonsky/FiraCode) as the monospaced font (represented as `\ttfamily`)
+-   [Google Font variant of Sarabun](https://github.com/cadsondemak/Sarabun) 
+    as the main font (represented as `\rmfamily`)
+-   [FiraGO](https://github.com/bBoxType/FiraGO)
+    as the loopless font (represented as `\sffamily`)
+-   [FiraCode](https://github.com/tonsky/FiraCode)
+    as the monospaced font (represented as `\ttfamily`)
 
-In case you are wondering, all fonts mentioned above are released under [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).
-
-However, they are not provided along with this template.
-You will need to visit each link provided above and download them to your machine.
+In case you are wondering, all fonts mentioned above are released 
+under [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).
 See below for the exhaustive list of fonts filenames.
 
-There are two possible places where you can put these font files:
+However, these font files do not come with this template;
+you will need to download them either by visiting each link provided above,
+or simply use the prepared download script:
+```bash
+$ ./download_fonts.py
+```
 
-1.  Inside `fonts/` subdirectory; in this particular case, you will also need to use `tenth` package with option `localfonts=true`.
+Next, you have two options of what to do with the downloaded fonts:
+1.  Keep them inside `fonts/` directory.
+    For this particular case, you will need to supply the `localfonts=true`
+    to the loading of `tenth` xelatex package:
     ```tex
     \usepackage[localfonts=true]{tenth}
     ```
-2.  Installed normally into your computer, then include this package.
+2.  Install them (located in `fonts/` directory) into your computer,
+    and include the following package:
     ```tex
     \usepackage{tenth}
     ```
