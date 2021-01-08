@@ -3,6 +3,9 @@
 A curated collection of [IPE](http://ipe.otfried.org/) stylesheets 
 and other utility files to help kickstart creating a new IPE drawing.
 
+Everything inside this `diagrams/` subdirectory is self-contained
+and is independent from the root of the repository.
+
 ## What is IPE?
 
 IPE is the vector graphics editing software developed by Prof. Otfried Cheong.

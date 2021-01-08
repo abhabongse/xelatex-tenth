@@ -29,11 +29,11 @@ and browse for a new `*.isy` file followed by clicking `Add`.
 
 Another way is to use the following command from terminal:
 ```bash
-$ ipescript add-style sheet.isy my-drawings.ipe
+$ ipescript add-style sheet.isy my-drawings.xml
 ```
 
 Ideally, the added stylesheet file should be located 
-within the same directory as the main `*.ipe` (drawing) file 
+within the same directory as the main `*.xml` (drawing) file 
 so that stylesheet reloading is easier later own.
 
 
@@ -51,7 +51,7 @@ with the `File > Run Latex` menu (shortcut: <kbd>Ctrl</kbd>+<kbd>L</kbd>).
 
 Or from command line, type in the following:
 ```bash
-$ ipescript update-styles my-drawings.ipe
+$ ipescript update-styles my-drawings.xml
 ```
 
 
@@ -69,7 +69,7 @@ $ ipescript update-master master-preamble.tex
 
 If you wish to also apply the stylesheet with existing IPE document:
 ```bash
-$ ipescript update-master master-preamble.tex my-drawings.ipe
+$ ipescript update-master master-preamble.tex my-drawings.xml
 ```
 
 
