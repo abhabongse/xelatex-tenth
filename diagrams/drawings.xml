@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70218" creator="Ipe 7.2.23">
-<info created="D:20210108174852" modified="D:20210108185050" tex="xetex"/>
+<info created="D:20210108174852" modified="D:20210108213649" tex="xetex"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -405,7 +405,7 @@ h
 \makeatother
 </preamble>
 </ipestyle>
-<page section="petersen">
+<page section="Petersen">
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
 <group layer="alpha" matrix="1 0 0 1 112 66.9411">
