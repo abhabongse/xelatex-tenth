@@ -1,0 +1,93 @@
+%%BeginIpePreamble
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Very important utility packages ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{etoolbox}
+\usepackage{calc}
+
+% Declare hair space command
+\newrobustcmd{\hrsp}{\ifmmode\mskip1mu\else\kern0.0625em\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Basic math ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{mathtools}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ---- Fonts and Languages ---- %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{euler}
+\usepackage{amssymb}
+\usepackage{mathspec}
+\usepackage{fontspec}
+\usepackage[fixed]{fontawesome5}
+
+\XeTeXlinebreaklocale "th_TH"
+\XeTeXlinebreakskip = 0pt plus 0.75pt minus 0.5pt
+
+\defaultfontfeatures[Sarabun]{
+    UprightFont     = {*-Light},
+    ItalicFont      = {*-LightItalic},
+    BoldFont        = {*-Bold},
+    BoldItalicFont  = {*-BoldItalic},
+    FontFace        = {eb}{n}{*-ExtraBold},
+    FontFace        = {eb}{it}{*-ExtraBoldItalic},
+    FontFace        = {db}{n}{*-SemiBold},
+    FontFace        = {db}{it}{*-SemiBoldItalic},
+    FontFace        = {sb}{n}{*-Medium},
+    FontFace        = {sb}{it}{*-MediumItalic},
+    FontFace        = {mb}{n}{*-Regular},
+    FontFace        = {mb}{it}{*-Italic},
+    FontFace        = {lt}{n}{*-ExtraLight},
+    FontFace        = {lt}{it}{*-ExtraLightItalic},
+    FontFace        = {el}{n}{*-Thin},
+    FontFace        = {el}{it}{*-ThinItalic},
+    Scale           = {MatchLowercase} ,
+    WordSpace       = 1.25 ,
+    Mapping         = tex-text ,
+}
+
+\defaultfontfeatures[FiraGO]{
+    UprightFont     = {*-Book},
+    ItalicFont      = {*-BookItalic},
+    BoldFont        = {*-Bold},
+    BoldItalicFont  = {*-BoldItalic},
+    FontFace        = {eb}{n}{*-ExtraBold},
+    FontFace        = {eb}{it}{*-ExtraBoldItalic},
+    FontFace        = {db}{n}{*-SemiBold},
+    FontFace        = {db}{it}{*-SemiBoldItalic},
+    FontFace        = {sb}{n}{*-Medium},
+    FontFace        = {sb}{it}{*-MediumItalic},
+    FontFace        = {mb}{n}{*-Regular},
+    FontFace        = {mb}{it}{*-Italic},
+    FontFace        = {lt}{n}{*-Light},
+    FontFace        = {lt}{it}{*-LightItalic},
+    FontFace        = {el}{n}{*-ExtraLight},
+    FontFace        = {el}{it}{*-ExtraLightItalic},
+    Scale           = {MatchLowercase} ,
+    WordSpace       = 1.25 ,
+    Mapping         = tex-text ,
+}
+
+\defaultfontfeatures[FiraCode]{
+    UprightFont     = {*-Regular},
+    BoldFont        = {*-Bold},
+    FontFace        = {sb}{n}{*-SemiBold},
+    FontFace        = {mb}{n}{*-Medium},
+    FontFace        = {lt}{n}{*-Light},
+    Scale           = {MatchLowercase} ,
+    WordSpace       = 1.25 ,
+    Contextuals     = Alternate ,
+    Numbers         = SlashedZero ,
+}
+
+\setmainfont{Sarabun}
+\setsansfont{FiraGO}
+\setmonofont{FiraCode}
+\setmathrm{texgyrepagella-math.otf}
+
+\makeatother
+%%EndIpePreamble

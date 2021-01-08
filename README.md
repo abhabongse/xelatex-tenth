@@ -8,6 +8,14 @@ It even supports more scripts with `fontspec` package.
 Other preconfigurations are according to my own taste, of course.
 Feel free to look at or modify `tenth.sty` as you wish.
 
+
+## Diagrams
+
+Please see [a separate README](diagrams/README.md)
+on how to use the software called IPE
+to draw diagrams and embed them in XeLaTeX documents. 
+
+
 ## Fonts
 
 This template is preconfigured with the following fonts: 

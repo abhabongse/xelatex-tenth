@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipestyle SYSTEM "ipe.dtd">
+<ipestyle name="presentation-16x9">
+<opacity name="10%" value="0.1"/>
+<opacity name="25%" value="0.25"/>
+<opacity name="50%" value="0.5"/>
+<opacity name="75%" value="0.75"/>
+<opacity name="90%" value="0.9"/>
+<opacity name="95%" value="0.95"/>
+<color name="title" value="0.10588235294117647 0.6549019607843137 0.3411764705882353"/>
+<color name="bars" value="0.9803921568627451"/>
+<dashstyle name="dashed" value="[4] 0"/>
+<dashstyle name="dotted" value="[1 3] 0"/>
+<dashstyle name="dash dotted" value="[4 2 1 2] 0"/>
+<dashstyle name="dash dot dotted" value="[4 2 1 2 1 2] 0"/>
+<pen name="normal" value="1.2"/>
+<pen name="heavier" value="2.4"/>
+<pen name="fat" value="3.6"/>
+<pen name="ultrafat" value="6"/>
+<textsize name="normal" value="\normalsize"/>
+<textsize name="large" value="\large"/>
+<textsize name="Large" value="\Large"/>
+<textsize name="LARGE" value="\LARGE"/>
+<textsize name="huge" value="\huge"/>
+<textsize name="Huge" value="\Huge"/>
+<textsize name="small" value="\small"/>
+<textsize name="footnote" value="\footnotesize"/>
+<textsize name="script" value="\scriptsize"/>
+<textsize name="tiny" value="\tiny"/>
+<textstretch name="normal" value="3.2"/>
+<textstretch name="large" value="3.25"/>
+<textstretch name="Large" value="3.3"/>
+<textstretch name="LARGE" value="3.35"/>
+<textstretch name="huge" value="3.4"/>
+<textstretch name="Huge" value="3.45"/>
+<textstretch name="small" value="3.0"/>
+<textstretch name="footnote" value="2.8"/>
+<textstretch name="script" value="2.4"/>
+<textstretch name="tiny" value="2.4"/>
+<symbolsize name="normal" value="9"/>
+<symbolsize name="large" value="15"/>
+<symbolsize name="small" value="6"/>
+<symbolsize name="tiny" value="3.3"/>
+<arrowsize name="normal" value="15"/>
+<arrowsize name="large" value="20"/>
+<arrowsize name="small" value="10"/>
+<arrowsize name="tiny" value="6"/>
+<gridsize name="2 pts" value="2"/>
+<gridsize name="4 pts" value="4"/>
+<gridsize name="8 pts" value="8"/>
+<gridsize name="12 pts" value="12"/>
+<gridsize name="16 pts" value="16"/>
+<gridsize name="18 pts" value="18"/>
+<gridsize name="24 pts" value="24"/>
+<gridsize name="32 pts" value="32"/>
+<gridsize name="36 pts" value="36"/>
+<gridsize name="72 pts" value="72"/>
+<anglesize name="90 deg" value="90"/>
+<anglesize name="60 deg" value="60"/>
+<anglesize name="45 deg" value="45"/>
+<anglesize name="30 deg" value="30"/>
+<anglesize name="22.5 deg" value="22.5"/>
+<tiling name="falling" angle="-60" width="3" step="12"/>
+<tiling name="rising" angle="30" width="3" step="12"/>
+<textstyle name="left" begin="\begin{flushleft}" end="\end{flushleft}"/>
+<textstyle name="center" begin="\begin{center}" end="\end{center}"/>
+<textstyle name="right" begin="\begin{flushright}" end="\end{flushright}"/>
+<textstyle name="align*" begin="\vspace*{-1.25em}\begin{align*}" end="\end{align*}"/>
+<textstyle name="footnote" begin="\color{Snow4}\itshape\begin{flushright}" end="\end{flushright}"/>
+<symbol name="mark/circle(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e 0.4 0 0 0.4 0 0 e
+</path></symbol>
+<symbol name="mark/disk(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+</path></symbol>
+<symbol name="mark/fdisk(sfx)" transformations="translations">
+<group><path fill="sym-fill">
+0.5 0 0 0.5 0 0 e
+</path><path fill="sym-stroke" fillrule="eofill">
+0.6 0 0 0.6 0 0 e 0.4 0 0 0.4 0 0 e
+</path></group></symbol>
+<symbol name="mark/box(sx)" transformations="translations">
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m 0.6 -0.6 l 0.6 0.6 l -0.6 0.6 l h
+-0.4 -0.4 m 0.4 -0.4 l 0.4 0.4 l -0.4 0.4 l h</path></symbol>
+<symbol name="mark/square(sx)" transformations="translations">
+<path fill="sym-stroke">
+-0.6 -0.6 m 0.6 -0.6 l 0.6 0.6 l -0.6 0.6 l h</path></symbol>
+<symbol name="mark/fsquare(sfx)" transformations="translations">
+<group><path fill="sym-fill">
+-0.5 -0.5 m 0.5 -0.5 l 0.5 0.5 l -0.5 0.5 l h</path>
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m 0.6 -0.6 l 0.6 0.6 l -0.6 0.6 l h
+-0.4 -0.4 m 0.4 -0.4 l 0.4 0.4 l -0.4 0.4 l h</path></group></symbol>
+<symbol name="mark/cross(sx)" transformations="translations">
+<group><path fill="sym-stroke">
+-0.43 -0.57 m 0.57 0.43 l 0.43 0.57 l -0.57 -0.43 l h</path>
+<path fill="sym-stroke">
+-0.43 0.57 m 0.57 -0.43 l 0.43 -0.57 l -0.57 0.43 l h</path>
+</group></symbol>
+<symbol name="arrow/arc(spx)">
+<path pen="sym-pen" stroke="sym-stroke" fill="sym-stroke">
+0 0 m -1.0 0.333 l -1.0 -0.333 l h</path></symbol>
+<symbol name="arrow/farc(spx)">
+<path pen="sym-pen" stroke="sym-stroke" fill="white">
+0 0 m -1.0 0.333 l -1.0 -0.333 l h</path></symbol>
+<symbol name="arrow/fnormal(spx)">
+<path pen="sym-pen" stroke="sym-stroke" fill="white">
+0 0 m -1.0 0.333 l -1.0 -0.333 l h</path></symbol>
+<symbol name="arrow/pointed(spx)">
+<path pen="sym-pen" stroke="sym-stroke" fill="sym-stroke">
+0 0 m -1.0 0.333 l -0.8 0 l -1.0 -0.333 l h</path></symbol>
+<symbol name="arrow/fpointed(spx)">
+<path pen="sym-pen" stroke="sym-stroke" fill="white">
+0 0 m -1.0 0.333 l -0.8 0 l -1.0 -0.333 l h</path></symbol>
+<symbol name="arrow/linear(spx)">
+<path pen="sym-pen" stroke="sym-stroke">
+-1.0 0.333 m 0 0 l -1.0 -0.333 l</path></symbol>
+<symbol name="arrow/fdouble(spx)">
+<path pen="sym-pen" stroke="sym-stroke" fill="white">
+0 0 m -1.0 0.333 l -1.0 -0.333 l h
+-1 0 m -2.0 0.333 l -2.0 -0.333 l h
+</path></symbol>
+<symbol name="arrow/double(spx)">
+<path pen="sym-pen" stroke="sym-stroke" fill="sym-stroke">
+0 0 m -1.0 0.333 l -1.0 -0.333 l h
+-1 0 m -2.0 0.333 l -2.0 -0.333 l h
+</path></symbol>
+<symbol name="footer/title-author">
+<text transformations="translations" pos="1120 -32" stroke="black" type="label" width="171.352" height="11.1944" depth="3.108" halign="right" valign="baseline" size="script" stroke="0.4">{\pginfofont\MakeLowercase{\theshorttitle} | \MakeLowercase{\theauthor}}</text>
+</symbol>
+<preamble>
+\makeatletter
+\usepackage{etoolbox}
+
+\usepackage[T1]{fontenc}
+\newrobustcmd\pgtitlefont{\usefont{T1}{NotoSerif-TOsF}{eb}{n}}
+\newrobustcmd\pgnumfont{\usefont{T1}{fos}{b}{sc}}
+\newrobustcmd\pginfofont{\usefont{T1}{fos}{sb}{sc}}
+
+\newrobustcmd\iffirstpage{\ifnumequal{1}{\arabic{ipePage}}}
+\renewrobustcmd\PageTitle[1]{{\pgtitlefont{#1}}}
+
+\newrobustcmd\thetitle{}
+\newrobustcmd\theshorttitle{}
+\newrobustcmd\theauthor{}
+\makeatother
+</preamble>
+<layout paper="1280 720" origin="80 60" frame="1120 560" skip="40" crop="no"/>
+<titlestyle pos="0 592" size="Large" color="title" halign="left" valign="baseline"/>
+<pagenumberstyle pos="0 -32" size="script" color="0.4" halign="left" valign="baseline" >\iffirstpage{}{\pgnumfont\ipeNumber{\arabic{ipePage}}{\arabic{ipePage}\textperiodcentered\Alph{ipeView}}}</pagenumberstyle>
+<symbol name="Background" xform="yes"><group>
+<path fill="bars">
+-80 0 m
+-80 -64 l
+1200 -64 l
+1200 0 l
+h
+</path>
+<path fill="bars">
+1200 560 m
+1200 672 l
+-80 672 l
+-80 560 l
+h
+</path>
+</group></symbol>
+</ipestyle>
