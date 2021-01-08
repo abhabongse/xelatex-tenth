@@ -28,7 +28,7 @@
 %% Renew this command to change textual formatting of page numbering
 \newrobustcmd\pagenumberstyle{\sffamily}
 %% Renew this command to change page footer on bottom right corner
-\newrobustcmd\pagefooter{}
+\newrobustcmd\pagefooter{\phantom{empty text}}
 %% Renew \PageTitle to customize the style of page title
 \renewrobustcmd\PageTitle[1]{#1}
 
@@ -48,8 +48,8 @@
 <path fill="1" gradient="footer-grad">
 -64 0 m -64 -64 l 1216 -64 l 1216 0 l h</path></symbol>
 <!-- Clone this symbol for custom page footer -->
-<symbol name="footer/text">
-<text pin="yes" transformations="rigit" stroke="0.1" type="label" size="miniscule" pos="0 -36" valign="baseline" halign="left">{\pagefooter}</text>
+<symbol name="footer">
+<text pin="yes" transformations="rigit" stroke="0.1" type="label" size="miniscule" pos="0 -36" valign="baseline" halign="left">\pagefooter</text>
 </symbol>
 <!--
   ____
