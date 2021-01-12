@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipestyle SYSTEM "ipe.dtd">
+<ipestyle name="inkscape">
+<color name="Inkscape Black" value="0.0 0.0 0.0" />
+<color name="Inkscape 90% Gray" value="0.10196078431372549 0.10196078431372549 0.10196078431372549" />
+<color name="Inkscape 80% Gray" value="0.2 0.2 0.2" />
+<color name="Inkscape 70% Gray" value="0.30196078431372547 0.30196078431372547 0.30196078431372547" />
+<color name="Inkscape 60% Gray" value="0.4 0.4 0.4" />
+<color name="Inkscape 50% Gray" value="0.5019607843137255 0.5019607843137255 0.5019607843137255" />
+<color name="Inkscape 40% Gray" value="0.6 0.6 0.6" />
+<color name="Inkscape 30% Gray" value="0.7019607843137254 0.7019607843137254 0.7019607843137254" />
+<color name="Inkscape 20% Gray" value="0.8 0.8 0.8" />
+<color name="Inkscape 10% Gray" value="0.9019607843137255 0.9019607843137255 0.9019607843137255" />
+<color name="Inkscape 7.5% Gray" value="0.9254901960784314 0.9254901960784314 0.9254901960784314" />
+<color name="Inkscape 5% Gray" value="0.9490196078431372 0.9490196078431372 0.9490196078431372" />
+<color name="Inkscape 2.5% Gray" value="0.9764705882352941 0.9764705882352941 0.9764705882352941" />
+<color name="Inkscape White" value="1.0 1.0 1.0" />
+<color name="Inkscape Maroon" value="0.5019607843137255 0.0 0.0" />
+<color name="Inkscape Red" value="1.0 0.0 0.0" />
+<color name="Inkscape Olive" value="0.5019607843137255 0.5019607843137255 0.0" />
+<color name="Inkscape Yellow" value="1.0 1.0 0.0" />
+<color name="Inkscape Green" value="0.0 0.5019607843137255 0.0" />
+<color name="Inkscape Lime" value="0.0 1.0 0.0" />
+<color name="Inkscape Teal" value="0.0 0.5019607843137255 0.5019607843137255" />
+<color name="Inkscape Aqua" value="0.0 1.0 1.0" />
+<color name="Inkscape Navy" value="0.0 0.0 0.5019607843137255" />
+<color name="Inkscape Blue" value="0.0 0.0 1.0" />
+<color name="Inkscape Purple" value="0.5019607843137255 0.0 0.5019607843137255" />
+<color name="Inkscape Fuchsia" value="1.0 0.0 1.0" />
+</ipestyle>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipestyle SYSTEM "ipe.dtd">
+<ipestyle name="matlab-jet-72">
+<color name="MATLAB Jet #0" value="0.0 0.0 0.4980392156862745" />
+<color name="MATLAB Jet #6" value="0.0 0.0 0.7764705882352941" />
+<color name="MATLAB Jet #12" value="0.0 0.10980392156862745 1.0" />
+<color name="MATLAB Jet #18" value="0.0 0.4392156862745098 1.0" />
+<color name="MATLAB Jet #24" value="0.0 0.7764705882352941 1.0" />
+<color name="MATLAB Jet #30" value="0.10980392156862745 1.0 0.8862745098039215" />
+<color name="MATLAB Jet #36" value="0.4392156862745098 1.0 0.5529411764705883" />
+<color name="MATLAB Jet #42" value="0.7764705882352941 1.0 0.2196078431372549" />
+<color name="MATLAB Jet #48" value="1.0 0.8862745098039215 0.0" />
+<color name="MATLAB Jet #54" value="1.0 0.5529411764705883 0.0" />
+<color name="MATLAB Jet #60" value="1.0 0.2196078431372549 0.0" />
+<color name="MATLAB Jet #66" value="0.8862745098039215 0.0 0.0" />
+<color name="MATLAB Jet #72" value="0.5529411764705883 0.0 0.0" />
+</ipestyle>

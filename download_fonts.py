@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+Run this script to download required fonts
+from GitHub repository into local fonts directory.
+"""
 import os
 import shutil
 import sys
@@ -47,6 +51,11 @@ FONT_URLS = [
 ]
 
 
+def main():
+    for font_url in FONT_URLS:
+        download_file(font_url)
+
+
 def download_file(url):
     # Create local file path
     split_result = urlsplit(url)
@@ -63,5 +72,4 @@ def download_file(url):
 
 
 if __name__ == '__main__':
-    for font_url in FONT_URLS:
-        download_file(font_url)
+    main()

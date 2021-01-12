@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipestyle SYSTEM "ipe.dtd">
+<ipestyle name="android-eclair-icons">
+<color name="Android White" value="1.0 1.0 1.0" />
+<color name="Android Light Gray" value="0.7490196078431373 0.7490196078431373 0.7490196078431373" />
+<color name="Android Gray" value="0.5019607843137255 0.5019607843137255 0.5019607843137255" />
+<color name="Android Dark Gray" value="0.25098039215686274 0.25098039215686274 0.25098039215686274" />
+<color name="Android Black" value="0.0 0.0 0.0" />
+<color name="Android Light Blue" value="0.4 0.6 1.0" />
+<color name="Android Blue" value="0.2 0.4 0.8" />
+<color name="Android Dark Blue" value="0.0 0.2 0.6" />
+<color name="Android Light Green" value="0.6 0.8 0.2" />
+<color name="Android Green" value="0.0 0.8 0.0" />
+<color name="Android Dark Green" value="0.4 0.6 0.0" />
+<color name="Android Yellow" value="1.0 0.8 0.0" />
+<color name="Android Light Orange" value="1.0 0.6 0.0" />
+<color name="Android Orange" value="1.0 0.4 0.0" />
+<color name="Android Red" value="0.8 0.0 0.0" />
+</ipestyle>

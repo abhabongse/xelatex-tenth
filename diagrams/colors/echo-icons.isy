@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipestyle SYSTEM "ipe.dtd">
+<ipestyle name="echo-icons">
+<color name="Echo Blue 1" value="0.09803921568627451 0.6823529411764706 1.0" />
+<color name="Echo Blue 2" value="0.0 0.5176470588235295 0.7843137254901961" />
+<color name="Echo Blue 3" value="0.0 0.3607843137254902 0.5803921568627451" />
+<color name="Echo Red 1" value="1.0 0.2549019607843137 0.2549019607843137" />
+<color name="Echo Red 2" value="0.8627450980392157 0.0 0.0" />
+<color name="Echo Red 3" value="0.7098039215686275 0.0 0.0" />
+<color name="Echo Orange 1" value="1.0 1.0 0.24313725490196078" />
+<color name="Echo Orange 2" value="1.0 0.6 0.0" />
+<color name="Echo Orange 3" value="1.0 0.4 0.0" />
+<color name="Echo Brown 1" value="1.0 0.7529411764705882 0.13333333333333333" />
+<color name="Echo Brown 2" value="0.7215686274509804 0.5058823529411764 0.0" />
+<color name="Echo Brown 3" value="0.5019607843137255 0.30196078431372547 0.0" />
+<color name="Echo Green 1" value="0.8 1.0 0.25882352941176473" />
+<color name="Echo Green 2" value="0.6039215686274509 0.8705882352941177 0.0" />
+<color name="Echo Green 3" value="0.0 0.5686274509803921 0.0" />
+<color name="Echo Purple 1" value="0.9450980392156862 0.792156862745098 1.0" />
+<color name="Echo Purple 2" value="0.8431372549019608 0.4235294117647059 1.0" />
+<color name="Echo Purple 3" value="0.7294117647058823 0.0 1.0" />
+<color name="Echo Metalic 1" value="0.7411764705882353 0.803921568627451 0.8313725490196079" />
+<color name="Echo Metalic 2" value="0.6196078431372549 0.6705882352941176 0.6901960784313725" />
+<color name="Echo Metalic 3" value="0.21176470588235294 0.3058823529411765 0.34901960784313724" />
+<color name="Echo Metalic 4" value="0.054901960784313725 0.13725490196078433 0.1803921568627451" />
+<color name="Echo Grey 1" value="1.0 1.0 1.0" />
+<color name="Echo Grey 2" value="0.8 0.8 0.8" />
+<color name="Echo Grey 3" value="0.6 0.6 0.6" />
+<color name="Echo Grey 4" value="0.4 0.4 0.4" />
+<color name="Echo Grey 5" value="0.17647058823529413 0.17647058823529413 0.17647058823529413" />
+</ipestyle>

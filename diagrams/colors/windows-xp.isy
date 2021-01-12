@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipestyle SYSTEM "ipe.dtd">
+<ipestyle name="windows-xp">
+<color name="Windows XP R153 G102 B0" value="0.6 0.4 0.0" />
+<color name="Windows XP R204 G153 B0" value="0.8 0.6 0.0" />
+<color name="Windows XP R255 G204 B0" value="1.0 0.8 0.0" />
+<color name="Windows XP R255 G255 B0" value="1.0 1.0 0.0" />
+<color name="Windows XP R255 G255 B153" value="1.0 1.0 0.6" />
+<color name="Windows XP R255 G219 B157" value="1.0 0.8588235294117647 0.615686274509804" />
+<color name="Windows XP R255 G204 B102" value="1.0 0.8 0.4" />
+<color name="Windows XP R255 G153 B51" value="1.0 0.6 0.2" />
+<color name="Windows XP R255 G121 B75" value="1.0 0.4745098039215686 0.29411764705882354" />
+<color name="Windows XP R255 G51 B0" value="1.0 0.2 0.0" />
+<color name="Windows XP R153 G0 B0" value="0.6 0.0 0.0" />
+<color name="Windows XP R51 G51 B102" value="0.2 0.2 0.4" />
+<color name="Windows XP R0 G51 B153" value="0.0 0.2 0.6" />
+<color name="Windows XP R0 G102 B204" value="0.0 0.4 0.8" />
+<color name="Windows XP R0 G131 B215" value="0.0 0.5137254901960784 0.8431372549019608" />
+<color name="Windows XP R0 G153 B255" value="0.0 0.6 1.0" />
+<color name="Windows XP R62 G154 B222" value="0.24313725490196078 0.6039215686274509 0.8705882352941177" />
+<color name="Windows XP R153 G204 B255" value="0.6 0.8 1.0" />
+<color name="Windows XP R180 G226 B255" value="0.7058823529411765 0.8862745098039215 1.0" />
+<color name="Windows XP R222 G255 B255" value="0.8705882352941177 1.0 1.0" />
+<color name="Windows XP R255 G204 B255" value="1.0 0.8 1.0" />
+<color name="Windows XP R204 G204 B255" value="0.8 0.8 1.0" />
+<color name="Windows XP R153 G153 B255" value="0.6 0.6 1.0" />
+<color name="Windows XP R102 G102 B204" value="0.4 0.4 0.8" />
+<color name="Windows XP R153 G153 B204" value="0.6 0.6 0.8" />
+<color name="Windows XP R102 G102 B153" value="0.4 0.4 0.6" />
+<color name="Windows XP R0 G102 B0" value="0.0 0.4 0.0" />
+<color name="Windows XP R0 G153 B0" value="0.0 0.6 0.0" />
+<color name="Windows XP R102 G204 B51" value="0.4 0.8 0.2" />
+<color name="Windows XP R153 G255 B102" value="0.6 1.0 0.4" />
+<color name="Windows XP R204 G244 B204" value="0.8 0.9568627450980393 0.8" />
+</ipestyle>

@@ -15,6 +15,8 @@ It can also render LaTeX code and is powerful enough to create full-fledged pres
 
 ## Color Choices
 
+### Built-in
+
 New versions of IPE comes with stylesheet with pre-defined colors
 from [`xcolor`](https://www.ctan.org/pkg/xcolor) LaTeX package
 (particularly those provided via `svgnames` and `x11names` options).
@@ -27,6 +29,12 @@ and these colors will be available in the drop-down menus.
 [Follow this step](TOPICS.md#show-ipe-configuration)
 to see where the system-wide directory for IPE is located 
 and do not forget to  [add them to your document file](TOPICS.md#adding-new-stylesheet) as well.
+
+### Customized Palettes
+
+IPE stylesheets for additional color palettes are available in [`colors/`](colors/) directory.
+New color stylesheet can also be created using the script
+[`colors/build_color_stylesheet.py`](colors/build_color_stylesheet.py).
 
 
 ## Presentation
