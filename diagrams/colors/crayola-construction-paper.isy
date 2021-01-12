@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipestyle SYSTEM "ipe.dtd">
+<ipestyle name="crayola-construction-paper">
+<color name="Crayola Construction Paper #FFA3B1" value="1.0 0.6392156862745098 0.6941176470588235" />
+<color name="Crayola Construction Paper #F3715A" value="0.9529411764705882 0.44313725490196076 0.35294117647058826" />
+<color name="Crayola Construction Paper #F37B70" value="0.9529411764705882 0.4823529411764706 0.4392156862745098" />
+<color name="Crayola Construction Paper #FFAD59" value="1.0 0.6784313725490196 0.34901960784313724" />
+<color name="Crayola Construction Paper #FFE599" value="1.0 0.8980392156862745 0.6" />
+<color name="Crayola Construction Paper #F8FC98" value="0.9725490196078431 0.9882352941176471 0.596078431372549" />
+<color name="Crayola Construction Paper #B4FFB4" value="0.7058823529411765 1.0 0.7058823529411765" />
+<color name="Crayola Construction Paper #12E3DB" value="0.07058823529411765 0.8901960784313725 0.8588235294117647" />
+<color name="Crayola Construction Paper #00BCD4" value="0.0 0.7372549019607844 0.8313725490196079" />
+<color name="Crayola Construction Paper #03A9F4" value="0.011764705882352941 0.6627450980392157 0.9568627450980393" />
+<color name="Crayola Construction Paper #4848FF" value="0.2823529411764706 0.2823529411764706 1.0" />
+<color name="Crayola Construction Paper #6A35CE" value="0.41568627450980394 0.20784313725490197 0.807843137254902" />
+<color name="Crayola Construction Paper #AA55AA" value="0.6666666666666666 0.3333333333333333 0.6666666666666666" />
+<color name="Crayola Construction Paper #7F7FBF" value="0.4980392156862745 0.4980392156862745 0.7490196078431373" />
+<color name="Crayola Construction Paper #795548" value="0.4745098039215686 0.3333333333333333 0.2823529411764706" />
+<color name="Crayola Construction Paper #FFFFFF" value="1.0 1.0 1.0" />
+</ipestyle>
