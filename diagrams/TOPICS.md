@@ -3,6 +3,7 @@
 ## Table of Contents
 
 -   [Show IPE configurations](#show-ipe-configurations)
+-   [New document with custom base stylesheet](#new-document-with-custom-base-stylesheet)
 -   [Adding new stylesheet](#adding-new-stylesheet)
 -   [Updating stylesheet](#updating-stylesheet)
 -   [Master preamble](#master-preamble)
@@ -19,6 +20,19 @@ Select `Help > Show configuration` from the software menu
 or use the following command in terminal:
 ```bash
 $ ipe -show-configuration
+```
+
+
+## New document with custom base stylesheet
+
+To start a new IPE document with a custom base stylesheet,
+use the following command from the terminal (leading `./` is necessary):
+```bash
+$ ipe -sheet ./basic.isy
+```
+or to start creating a 16x9 presentation:
+```bash
+$ ipe -sheet ./presentation-wdscrn.isy
 ```
 
 
