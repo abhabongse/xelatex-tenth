@@ -33,8 +33,8 @@
 \setlength{\belowdisplayskip}{0pc plus 0pc minus 0.1pc}
 \setlength{\abovedisplayshortskip}{0pc plus 0pc minus 0.05pc}
 \setlength{\belowdisplayshortskip}{0pc plus 05pc minus 0.05pc}
-\setlength{\parskip}{0.5pc}
-\setlength{\parindent}{2pc}
+\setlength{\parskip}{4pt}
+% \setlength{\parindent}{16pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ---- Fonts and Languages ---- %%
@@ -215,6 +215,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{alphalph}
 \RequirePackage{multicol}
+\setlist[description]{format=\sbseries}
 % \setlist{%
 %   topsep=0pc,itemsep=0pc,partopsep=0.25pc,parsep=0.25pc,%
 %   leftmargin=2pc,itemindent=0.25pc,listparindent=0.25in,%
@@ -292,8 +293,9 @@
 \RequirePackage{fancyhdr}
 \newrobustcmd{\pageheader}{}
 \setlength{\headheight}{15pt}
-\fancypagestyle{plain}{\fancyhf{}\fancyhead[LE,RO]{\pageheader}\fancyfoot[LE,RO]{\ltseries\thepage}}
-\fancypagestyle{titlepage}{\fancyhf{}\fancyfoot[LE,RO]{\ltseries\thepage}}
+\edef\pagesideopt{\if@twoside LE,\fi RO}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[\pagesideopt]{\pageheader}\fancyfoot[\pagesideopt]{\ltseries\thepage}}
+\fancypagestyle{titlepage}{\fancyhf{}\fancyfoot[\pagesideopt]{\ltseries\thepage}}
 \renewrobustcmd{\headrulewidth}{0pt}
 \renewrobustcmd{\footrulewidth}{0pt}
 \pagestyle{plain}
@@ -371,51 +373,56 @@
 %% Define theorem frames
 \RequirePackage{mdframed}
 \mdfdefinestyle{theorembox}{%
-    linecolor=black!60,%
-    innertopmargin=0pc,%
-    innerbottommargin=0.5pc,%
-    leftmargin=-1pc,innerleftmargin=1pc,%
+    linecolor=black!40,%
+    skipabove=0.75pc,innertopmargin=0pc,%
+    innerbottommargin=0.75pc,%
+    leftmargin=-1.2pc,innerleftmargin=1.2pc,%
     rightmargin=-1pc,innerrightmargin=1pc,%
-    linewidth=2.5pt,%
+    linewidth=3pt,%
     topline=false,bottomline=false,rightline=false,%
 }
 
 %% Define theorem environments
 \RequirePackage{amsthm}
 \theoremstyle{definition}
-\newmdtheoremenv[style=theorembox,linecolor=NavyBlue!50]{theorem}{ทฤษฎีบท}
-\newmdtheoremenv[style=theorembox,linecolor=BurntOrange!70]{principle}[theorem]{หลักการ}
-\newmdtheoremenv[style=theorembox,linecolor=BurntOrange!70]{problem}[theorem]{ปัญหา}
+\newmdtheoremenv[style=theorembox]{theorem}{ทฤษฎีบท}
+\newmdtheoremenv[style=theorembox]{lemma}[theorem]{บทตั้ง}
+\newmdtheoremenv[style=theorembox]{corollary}[theorem]{บทแทรก}
+\newmdtheoremenv[style=theorembox]{proposition}[theorem]{ประพจน์}
+\newmdtheoremenv[style=theorembox]{conjecture}[theorem]{ข้อคาดการณ์}
+\newmdtheoremenv[style=theorembox]{principle}[theorem]{หลักการ}
 \newtheorem{definition}[theorem]{นิยาม}
-\newtheorem{lemma}[theorem]{บทตั้ง}
-\newtheorem{postulate}[theorem]{ข้อตกลง}
-\newtheorem{corollary}[theorem]{บทแทรก}
+\newtheorem{undefinedterm}[theorem]{อนิยาม}
+\newtheorem{condition}[theorem]{เงื่อนไข}
+\newtheorem{axiom}[theorem]{สัจพจน์}
+\newtheorem{problem}[theorem]{ปัญหา}
+\newtheorem{exercise}[theorem]{แบบฝึกหัด}
+\newtheorem{example}[theorem]{ตัวอย่าง}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{หมายเหตุ}
+\newtheorem{note}[theorem]{บันทึก}
 \newtheorem{observation}[theorem]{ข้อสังเกต}
-\newtheorem{question}[theorem]{คำถาม}
-
-%% Configure theorem referencing 
-\newrobustcmd{\customref}[2]{\hyperref[#1]{#2\ref*{#1}}}
-\renewrobustcmd{\theoremautorefname}{หัวข้อที่}
 
 %% Create black square box at the end of environment (with \qedhere support)
 \newrobustcmd\xqed[1]{\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill\quad\hbox{#1}}
-\newrobustcmd\stophere{\xqed{\ensuremath{\blacksquare}}}
-\AtBeginEnvironment{theorem}{\pushQED{\stophere}}
-\AtEndEnvironment{theorem}{\popQED}
-\AtBeginEnvironment{principle}{\pushQED{\stophere}}
-\AtEndEnvironment{principle}{\popQED}
-\AtBeginEnvironment{[problem]}{\pushQED{\stophere}}
-\AtEndEnvironment{[problem]}{\popQED}
-\AtBeginEnvironment{definition}{\pushQED{\stophere}}
-\AtEndEnvironment{definition}{\popQED}
-\AtBeginEnvironment{lemma}{\pushQED{\stophere}}
-\AtEndEnvironment{lemma}{\popQED}
-\AtBeginEnvironment{postulate}{\pushQED{\stophere}}
-\AtEndEnvironment{postulate}{\popQED}
-\AtBeginEnvironment{corollary}{\pushQED{\stophere}}
-\AtEndEnvironment{corollary}{\popQED}
-\AtBeginEnvironment{observation}{\pushQED{\stophere}}
-\AtEndEnvironment{observation}{\popQED}
+\newrobustcmd\stophere{\xqed{\ensuremath{\blacklozenge}}}
+\newrobustcmd\inserttheoremsymbol[2]{%
+    \AtBeginEnvironment{#1}{\pushQED{\xqed{#2}}}
+    \AtEndEnvironment{#1}{\popQED}
+}
+\inserttheoremsymbol{theorem}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{lemma}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{corollary}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{proposition}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{conjecture}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{principle}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{definition}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{undefinedterm}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{condition}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{axiom}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{remark}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{observation}{\ensuremath{\blacklozenge}}
+\inserttheoremsymbol{note}{\ensuremath{\blacklozenge}}
 
 %% Define shorthands for mathematical sets
 \newrobustcmd{\Algebraic}{\mathbb{A}}
